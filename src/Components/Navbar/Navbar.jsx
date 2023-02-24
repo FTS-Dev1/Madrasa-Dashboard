@@ -8,7 +8,7 @@ import { Drawer } from 'antd';
 import { HiMenuAlt2 } from 'react-icons/hi';
 import { ReactComponent as NavSearch } from '../../Assets/Images/navSearch.svg';
 import { ReactComponent as Shopping } from '../../Assets/Images/shop.svg';
-import logo from '../../Assets/Images/logos.png'
+import logo from '../../Assets/Images/logo.png'
 
 // CSS :
 import './Navbar.scss'

@@ -28,6 +28,8 @@ h6 {
     --light: #fff;
     --dark: #000000;
     --themeColor: #FCD117;
+    --themeColorGreen: #006400;
+    --backgroundColor: #fff5c9;
 }
 
 /* ************ Custom Classes ************** */
@@ -68,18 +70,18 @@ h6 {
 
 /* ************ Custom  ScrollBar ************** */
 
-// ::-webkit-scrollbar {
-//     width: 5px;
-// }
+::-webkit-scrollbar {
+    width: 5px;
+}
 
-// ::-webkit-scrollbar-track {
-//     border-radius: 10px !important;
-//     background-color: transparent;
-//     // box-shadow: inset 0 0 6px rgba(0, 0, 0, .3) !important;
+::-webkit-scrollbar-track {
+    border-radius: 10px !important;
+    background-color: transparent;
+    // box-shadow: inset 0 0 6px rgba(0, 0, 0, .3) !important;
 
-// }
+}
 
-// ::-webkit-scrollbar-thumb {
-//     border-radius: 10px !important;
-//     background: #5c5b5b;
-// }
+::-webkit-scrollbar-thumb {
+    border-radius: 10px !important;
+    background: #5c5b5b;
+}

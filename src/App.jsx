@@ -1,8 +1,10 @@
-import { Route, Routes } from 'react-router-dom';
+import React from 'react';
+import { Route, Routes, Navigate } from 'react-router-dom';
 
 // Componets :
 import Navbar from './Components/Navbar/Navbar';
-import Home from './Pages/Home/Home';
+import Dashboard from './Pages/Dashboard/Dashboard';
+import Login from './Pages/Auth/Login/Login';
 
 // CSS :
 import './App.scss';
@@ -13,11 +15,21 @@ import './App.scss';
 
 const App = () => {
 
+  const ProtectedRoute = ({ user, children }) => {
+    if (!user) {
+      return <Navigate to="/login" replace />;
+    }
+
+    return children;
+  };
+
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       <Routes>
-        <Route path='/' element={<Home />} />
+        <Route path='login' element={<Login />} />
+        <Route path='dashboard/*' element={<Dashboard />} />
+        <Route path='*' element={<Navigate to="/dashboard" replace />} />
       </Routes>
     </>
   );

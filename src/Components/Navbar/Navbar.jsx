@@ -1,20 +1,16 @@
-import React from 'react'
-
-import { HiMenuAlt2 } from 'react-icons/hi';
-
+import React, { useState } from 'react'
 import { NavLink, useNavigate, useLocation } from 'react-router-dom'
 
-// import { ReactComponent as Logo } from '../../Assets/Images/logo.svg';
-import logo from '../../Assets/Images/logos.png'
+// MUI | ANT-D :
+import { Drawer } from 'antd';
+
+// Asstets | ICONS :
+import { HiMenuAlt2 } from 'react-icons/hi';
 import { ReactComponent as NavSearch } from '../../Assets/Images/navSearch.svg';
 import { ReactComponent as Shopping } from '../../Assets/Images/shop.svg';
+import logo from '../../Assets/Images/logos.png'
 
-// import PrimaryButton from '../../Components/Atoms/PrimaryButton/PrimaryButton';
-
-
-import { Drawer } from 'antd';
-import { useState } from 'react';
-
+// CSS :
 import './Navbar.scss'
 
 
@@ -98,4 +94,4 @@ const Navbar = () => {
     )
 }
 
-export default Navbar
+export default Navbar;

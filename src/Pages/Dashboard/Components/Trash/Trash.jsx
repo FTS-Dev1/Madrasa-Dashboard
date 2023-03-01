@@ -1,12 +1,15 @@
-import React,{useState} from 'react'
+import React, { useState } from 'react'
 
 // Components :
-import Table from '../../Components/table/Table'
+import Table from '../../../../components/table/Table'
 
-import './Users.scss'
+// CSS :
+import "./Trash.scss"
 
 
-const User = () => {
+
+
+const Trash = () => {
 
     const [reports, setReports] = useState([
         {
@@ -149,18 +152,15 @@ const User = () => {
         },
     ]
 
-
     return (
         <>
-         <div className="users-container">
-         <Table
+            <Table
                 rows={reports}
                 columns={columns}
                 hasSearch
             />
-         </div>
         </>
     )
 }
 
-export default User;
+export default Trash

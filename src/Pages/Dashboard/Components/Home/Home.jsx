@@ -1,5 +1,9 @@
 import React from 'react'
 
+// Components :
+import Cards from './Components/ReportCards/Cards'
+
+// CSS :
 import './Home.scss'
 
 
@@ -8,8 +12,10 @@ import './Home.scss'
 
 const Home = () => {
     return (
-        <div>
-            This is  Home
+        <div className='dashboardHomeContainer'>
+            <div className="heading">DASHBOARD</div>
+            <Cards />
+            <div className="subHeading">Sales Report</div>
         </div>
     )
 }

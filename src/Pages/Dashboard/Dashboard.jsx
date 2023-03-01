@@ -8,6 +8,9 @@ import { Layout, Menu } from "antd"
 import Logo from "../../Assets/Images/logo.png"
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa"
 
+// Components :
+import Navbar from '../../Components/Navbar/Navbar'
+
 // Routes :
 import RoutesList from "./DashboardRouts"
 // CSS :
@@ -29,6 +32,7 @@ const Dashboard = () => {
 
     return (
         <>
+            <Navbar />
             <div className="dashboardContainer">
                 <Sider collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)} width="250" className="sider" trigger={<> <div className="trig">{collapsed ? <FaAngleRight /> : <FaAngleLeft />}</div> </>}>
                     <div className="logoBox">
@@ -36,15 +40,17 @@ const Dashboard = () => {
                     </div>
                     <Menu defaultSelectedKeys={['/']} mode="inline" items={RoutesList} onClick={handleMenuClick} />
                 </Sider>
-                <Routes>
-                    {
-                        RoutesList && RoutesList.map((item) => {
-                            return (
-                                <Route path={item.key} element={item.element} />
-                            )
-                        })
-                    }
-                </Routes>
+                <div className="rightContainer">
+                    <Routes>
+                        {
+                            RoutesList && RoutesList.map((item) => {
+                                return (
+                                    <Route path={item.key} element={item.element} />
+                                )
+                            })
+                        }
+                    </Routes>
+                </div>
             </div>
         </>
     )

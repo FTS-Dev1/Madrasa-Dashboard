@@ -1,6 +1,5 @@
 .dashboardContainer {
     display: flex;
-    gap: 1rem;
 
     .sider {
         height: 100vh;
@@ -17,7 +16,8 @@
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                padding: 2rem 0;
+                padding: 1.5rem 0;
+                opacity: 0;
 
                 img {
                     width: 100px;
@@ -68,5 +68,10 @@
                 border-radius: 8px;
             }
         }
+    }
+
+    .rightContainer {
+        width: 100%;
+        padding: 7rem 2rem;
     }
 }

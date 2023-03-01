@@ -1,14 +1,16 @@
-import React, { useState } from 'react'
-import { NavLink, useNavigate, useLocation } from 'react-router-dom'
+import React from 'react'
+import { Navigate } from 'react-router-dom';
 
-// MUI | ANT-D :
-import { Drawer } from 'antd';
+// ANT-D | MUI :
+import { Popover } from 'antd';
 
-// Asstets | ICONS :
-import { HiMenuAlt2 } from 'react-icons/hi';
-import { ReactComponent as NavSearch } from '../../Assets/Images/navSearch.svg';
-import { ReactComponent as Shopping } from '../../Assets/Images/shop.svg';
+// Assets | ICONS :
+import { RiSearchLine } from 'react-icons/ri';
+import { IoMdNotificationsOutline } from 'react-icons/io';
+import { MdOutlineChevronRight } from 'react-icons/md';
+import { AiOutlineUser, AiFillSetting } from 'react-icons/ai';
 import logo from '../../Assets/Images/logo.png'
+import profile from '../../Assets/Images/profile.jpg'
 
 // CSS :
 import './Navbar.scss'
@@ -17,81 +19,96 @@ import './Navbar.scss'
 
 
 
+const logout = () => {
+    alert("done")
+    Navigate("login")
+}
+const text =
+    <div className='d-title'>
+        <div className='name'>Morgan Freeman</div>
+        <div className="skill">Backend Engineer</div>
+    </div>;
+const content = (
+
+    <>
+        <div className='d-bio'>
+            <div className="border"></div>
+            <a href="#">
+                <AiOutlineUser className='icon' />
+                <p>Contact</p>
+            </a>
+            <a href="#">
+                <AiFillSetting className='icon' />
+                Add Account
+            </a>
+            <a href="#" className='logout'>
+                <AiFillSetting className='icon' />
+                Reset Password
+            </a>
+            <a href="#" className='logout'>
+                <AiFillSetting className='icon' />
+                Help
+            </a>
+            <div className="border"></div>
+            <a href="#" className='logout' onClick={logout}>
+                <AiFillSetting className='icon' />
+                Logout
+            </a>
+
+        </div>
+    </>
+);
+
+
+
+
+
+
 const Navbar = () => {
 
-    const [open, setOpen] = useState(false);
-    const showDrawer = () => {
-        setOpen(true);
-    };
-    const onClose = () => {
-        setOpen(false);
-    };
-
-    const location = useLocation();
-
-    const navbarColor = {
-        color: "black",
-        fill: "black",
-        stroke: "black"
-    }
-    if (location.pathname === '/categories') {
-        navbarColor.color = '#fff';
-        navbarColor.fill = "#fff";
-        navbarColor.stroke = "#fff";
-    }
-    else if (location.pathname === '/blog') {
-        navbarColor.color = '#fff';
-        navbarColor.fill = "#fff";
-        navbarColor.stroke = "#fff";
-    }
-
     return (
-        <div className="navbar-container">
-            <div className="navbar container" >
-                <div className="logo">
-                    <a>
-                        {/* <Logo /> */}
-                        <img src={logo} alt="" />
-                    </a>
-                </div>
-                <div className="webmenu" >
-                    <NavLink to='/' style={navbarColor}>Home</NavLink>
-                    <NavLink to='/blogs' style={navbarColor}>Blogs</NavLink>
-                    <NavLink to='/categories' style={navbarColor}>Categories</NavLink>
-                    <NavLink to='/about' style={navbarColor}>About Us</NavLink>
-                    <NavLink to='/contact' style={navbarColor}>Contact  Us</NavLink>
-                    <NavLink to='/search'><NavSearch style={navbarColor} /></NavLink>
-                    <NavLink to='/shopping'><Shopping style={navbarColor} /></NavLink>
-                    {/* <PrimaryButton heading="Register" primary={myFun} /> */}
-                </div>
-                <div className="mobilemenu">
-                    <HiMenuAlt2 className='icon' onClick={showDrawer} />
-                    <Drawer
-                        closeIcon='true'
-                        title="Logo"
-                        placement="left"
-                        onClose={onClose}
-                        open={open}
-                        width={300}
-                        theme="light"
-                    >
-
-                        <div className="flex-menu" >
-                            <NavLink to='/' style={{ color: navbarColor }}>Home</NavLink>
-                            <NavLink to='/blogs' style={{ color: navbarColor }}>Blogs</NavLink>
-                            <NavLink to='/categories' style={{ color: navbarColor }}>Categories</NavLink>
-                            <NavLink to='/about' style={{ color: navbarColor }}>About Us</NavLink>
-                            <NavLink to='/contact' style={{ color: navbarColor }}>Contact  Us</NavLink>
-                            <NavLink to='/search'><NavSearch style={{ fill: navbarColor }} /></NavLink>
-                            <NavLink to='/shopping'><Shopping style={{ stroke: navbarColor }} /></NavLink>
-                            {/* <PrimaryButton heading="Register" primary={myFun} /> */}
+        <>
+            <div className="nav-container">
+                <div className="shadow"></div>
+                <div className='navbar'>
+                    <div className="flex-nav">
+                        <div className="left-nav">
+                            <div className="logo">
+                                <img src={logo} alt="" />
+                                {/* <div className='heading'>Madrasa</div> */}
+                            </div>
                         </div>
-
-                    </Drawer>
+                        <div className="right-nav">
+                            <div className="sub-menu">
+                                <p>Application</p>
+                                <div className="img">
+                                    <MdOutlineChevronRight />
+                                </div>
+                                <p>Dashboard</p>
+                            </div>
+                            <div className="bio">
+                                <div className='inputfield'>
+                                    <input type="text" placeholder='Search...' />
+                                    <RiSearchLine className="icon" />
+                                </div>
+                                <div className='notification'>
+                                    <IoMdNotificationsOutline className='icon' />
+                                </div>
+                                <div className="nav-popover">
+                                    <Popover
+                                        placement="bottomRight" title={text} content={content} trigger="click">
+                                        <div className='img'>
+                                            <img src={profile} alt="" />
+                                        </div>
+                                    </Popover>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div >
+        </>
     )
 }
 
-export default Navbar;
+export default Navbar

@@ -8,6 +8,7 @@ import Login from './Pages/Auth/Login/Login';
 
 // CSS :
 import './App.scss';
+import Register from './Pages/Auth/Register/Register';
 
 
 
@@ -28,6 +29,7 @@ const App = () => {
       {/* <Navbar /> */}
       <Routes>
         <Route path='login' element={<Login />} />
+        <Route path='register' element={<Register />} />
         <Route path='dashboard/*' element={<Dashboard />} />
         <Route path='*' element={<Navigate to="/dashboard" replace />} />
       </Routes>

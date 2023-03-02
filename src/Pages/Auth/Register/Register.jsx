@@ -4,15 +4,12 @@ import { Button } from 'antd'
 
 import madrasa from '../../../Assets/Images/logo.png'
 import logo from '../../../Assets/Images/logo.svg'
-// CSS :
-import "./Login.scss"
+
+import './Register.scss'
 
 
 
-
-
-const Login = () => {
-
+const Register = () => {
     const [loading, setloading] = useState(false)
 
     const loadingFun = () => {
@@ -20,7 +17,7 @@ const Login = () => {
     }
     return (
         <>
-            <div className='login-container'>
+            <div className='register-container'>
                 <div className="left-section">
                     <div className="login-bio">
                         <div className="n-logo">
@@ -39,20 +36,15 @@ const Login = () => {
                 <div className="right-section">
                     <form action="users" method='post'>
                         <div className="wrap-container">
-                            <div className="heading">Sign In</div>
+                            <div className="heading">Sign Up</div>
                             <p className="para">A few more clicks to sign in to your account. Manage all your e-commerce accounts in one place</p>
                             <div className="f-fields">
                                 <input className='s-input' type="text" placeholder='Email' name="email" />
                                 <input className='s-input' type="password" placeholder='Password' name="password" />
-                                <div className="remember-me">
-                                    <div className="check-box">
-                                        <input type="checkbox" />
-                                        <p>Remember me</p>
-                                    </div>
-                                    <p>Forgot Password?</p>
-                                </div>
+                                <input className='s-input' type="password" placeholder='Password' name="password" />
+                                <input className='s-input' type="password" placeholder='Password' name="password" />
                                 <div className="s-buttons">
-                                    <Button loading={loading} className='login' onClick={loadingFun}>Login</Button>
+                                    {/* <Button loading={loading} className='login' onClick={loadingFun}>Login</Button> */}
                                     <Button className='register' >Register</Button>
                                 </div>
                             </div>
@@ -65,4 +57,4 @@ const Login = () => {
     )
 }
 
-export default Login
+export default Register

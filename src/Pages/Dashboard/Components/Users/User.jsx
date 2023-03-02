@@ -55,7 +55,7 @@ const User = () => {
             action: "Actions",
         },
         {
-            id: 120,
+            id: 121,
             avatar: "Avatar",
             name: `Osama Aslam`,
             email: `osamaaslam029@gmail.com`,
@@ -119,6 +119,8 @@ const User = () => {
         },
     ])
 
+    const [filteredData, setFilteredData] = useState(rows)
+
     const columns = [
         {
             title: 'ID',
@@ -134,7 +136,18 @@ const User = () => {
             title: 'Name',
             dataIndex: 'name',
             key: 'name',
-            sorter: (a, b) => a.name.localeCompare(b.name)
+            sorter: (a, b) => a.name.localeCompare(b.name),
+            filters: [
+                {
+                    text: 'Osama Aslam',
+                    value: 'Osama Aslam',
+                },
+                {
+                    text: 'Junaid',
+                    value: 'Junaid',
+                },
+            ],
+            onFilter: (value, record) => record.name.indexOf(value) === 0
 
         },
         {
@@ -161,16 +174,28 @@ const User = () => {
 
     ]
 
+    const searchHandler = (event) => {
+        let filtredData = rows.filter((data) =>
+            data.name.toLocaleLowerCase().includes(event) ||
+            data.email.toLocaleLowerCase().includes(event) ||
+            data.phone.toLocaleLowerCase().includes(event)
+        )
+        setFilteredData(filtredData)
+    }
+
 
     return (
+
         <>
             <div className="users-container">
                 <div className="heading">Users</div>
                 <div className="table">
                     <Table
-                        rows={rows}
+                        rows={filteredData}
                         columns={columns}
                         hasSearch
+                        searchHandler={searchHandler}
+
                     />
                 </div>
             </div>

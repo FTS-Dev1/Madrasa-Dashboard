@@ -94,3 +94,70 @@ h6 {
     align-items: center;
     gap: 1rem;
 }
+
+// table custom css
+.table {
+
+    // row hover bg color 
+    .ant-table-thead>tr>th {
+        background-color: var(--backgroundColor) !important;
+        color: var(--themeColorGreen) !important;
+    }
+
+    // search field || button
+    .custom-table .ant-input-search-button {
+        background-color: var(--themeColor) !important;
+        color: var(--themeColorGreen) !important;
+        height: 35px !important;
+    }
+
+    .custom-table .ant-input-affix-wrapper {
+        border: 1px solid var(--backgroundColor) !important;
+        border-radius: 5px !important;
+        height: 35px !important;
+        padding: 0px 10px !important;
+        flex-grow: 1 !important;
+    }
+
+    .ant-input-affix-wrapper:focus,
+    .ant-input-affix-wrapper-focused {
+        box-shadow: 0 0 0 2px #0064001f;
+    }
+
+    // row hover bg color 
+    .ant-table-tbody>tr>td.ant-table-cell-row-hover {
+        background-color: var(--backgroundColor) !important;
+    }
+
+    // pagination button 
+    .ant-pagination .ant-pagination-item-active a {
+        color: var(--themeColorGreen) !important;
+
+        &:hover {
+            color: var(--themeColorGreen) !important;
+        }
+    }
+
+    .ant-pagination-item-active {
+        border-color: var(--themeColorGreen) !important;
+    }
+
+    .ant-table-wrapper .ant-table-column-sorter-up.active,
+    .ant-table-wrapper .ant-table-column-sorter-down.active {
+        color: var(--themeColorGreen) !important;
+    }
+
+}
+
+// page headings's css
+.heading {
+    font-size: 2rem;
+    font-weight: bold;
+    text-shadow: 1px 2px 5px rgba(81, 67, 21, 0.8);
+}
+
+.subHeading {
+    font-size: 1rem;
+    font-weight: bold;
+    text-shadow: 1px 1px 3px rgba(81, 67, 21, 0.8);
+}

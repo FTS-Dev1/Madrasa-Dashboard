@@ -2,7 +2,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 58px;
+    gap: 1rem;
+    height: 100%;
 
     .title {
         font-family: sofia-pro, Roboto, Helvetica, Arial, sans-serif;
@@ -15,8 +16,7 @@
     }
 
     .chart {
-        width: 160px;
-        height: 160px;
+        height: 90%;
     }
 
     .status_box {

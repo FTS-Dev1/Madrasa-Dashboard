@@ -87,3 +87,10 @@ h6 {
     background: #5c5b5b;
 }
 
+// Flex Properties
+.flexLineSpace {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}

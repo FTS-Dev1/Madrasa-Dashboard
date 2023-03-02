@@ -2,7 +2,7 @@ import React from 'react'
 
 // Chart.Js : 
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
-import { Doughnut } from "react-chartjs-2";
+import { Doughnut, Pie } from "react-chartjs-2";
 
 // CSS :
 import "./DonutChart.scss"
@@ -19,10 +19,10 @@ const Sample = {
     labels: [],
     datasets: [
         {
+            label: "Users",
             data: [40, 166],
-            backgroundColor: ["#D72A5E", "#259E55"],
-            hoverBackgroundColor: ["#FF6384", "#36A2EB", "#FFCE56"],
-            borderWidth: 1
+            backgroundColor: ["#006400", "#FCD117"],
+            borderWidth: 4
         }
     ]
 };
@@ -30,18 +30,18 @@ const Sample = {
 
 
 
-const DonutChart = ({ title, data }) => {
+const DonutChart = ({ title, data = Sample }) => {
     const onClick = (e) => {
         console.log(e);
     };
     return (
         <>
             <div className="donutchart_container">
-                <div className='title'>
+                {/* <div className='title'>
                     {title}
-                </div>
+                </div> */}
                 <div className='chart'>
-                    <Doughnut data={data} onClick={(e) => onClick(e)} />
+                    <Pie data={data} onClick={(e) => onClick(e)} />
                 </div>
                 <div className='status_box'>
                     <div className='status'>

@@ -1,9 +1,18 @@
 import React from 'react'
 
+import BlogFields from './Component/BlogFields/BlogFields'
+
+import './Blogs.scss'
+
+
+
+
+
 const Blogs = () => {
   return (
-    <div>s
-      
+    <div className='dashboardBlogsContainer'>
+        <div className="heading">Blogs</div>
+        <BlogFields/>
     </div>
   )
 }

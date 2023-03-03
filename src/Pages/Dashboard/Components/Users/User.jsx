@@ -3,14 +3,18 @@ import React, { useState } from 'react'
 // Components :
 import Table from './Component/table/Table'
 
+// CSS :
 import './Users.scss'
+
+
+
 
 
 const User = () => {
 
     const [rows, setRows] = useState([
         {
-            id: 120,
+            id: 121,
             avatar: "Avatar",
             name: `Osama Aslam`,
             email: `osamaaslam029@gmail.com`,
@@ -19,7 +23,7 @@ const User = () => {
             action: "Actions",
         },
         {
-            id: 120,
+            id: 122,
             avatar: "Avatar",
             name: `Junaid Latif`,
             email: `junaidlatif004@gmail.com`,
@@ -28,7 +32,7 @@ const User = () => {
             action: "Actions",
         },
         {
-            id: 120,
+            id: 123,
             avatar: "Avatar",
             name: `Sufyan Aslam`,
             email: `sufyanaslam029@gmail.com`,
@@ -37,7 +41,7 @@ const User = () => {
             action: "Actions",
         },
         {
-            id: 120,
+            id: 124,
             avatar: "Avatar",
             name: `Zahid Ghafoor`,
             email: `zahidghafoor@gmail.com`,
@@ -46,7 +50,7 @@ const User = () => {
             action: "Actions",
         },
         {
-            id: 120,
+            id: 125,
             avatar: "Avatar",
             name: `Hammad`,
             email: `hadi200@gmail.com`,
@@ -55,7 +59,7 @@ const User = () => {
             action: "Actions",
         },
         {
-            id: 121,
+            id: 126,
             avatar: "Avatar",
             name: `Shahzaib`,
             email: `shahzaib029@gmail.com`,
@@ -64,7 +68,7 @@ const User = () => {
             action: "Actions",
         },
         {
-            id: 120,
+            id: 127,
             avatar: "Avatar",
             name: `Zulifqar`,
             email: `zulifqar004@gmail.com`,
@@ -73,7 +77,7 @@ const User = () => {
             action: "Actions",
         },
         {
-            id: 120,
+            id: 128,
             avatar: "Avatar",
             name: `Gazanfar`,
             email: `osamaaslam029@gmail.com`,
@@ -82,7 +86,7 @@ const User = () => {
             action: "Actions",
         },
         {
-            id: 120,
+            id: 129,
             avatar: "Avatar",
             name: `Sohail`,
             email: `zahidghafoor@gmail.com`,
@@ -91,7 +95,7 @@ const User = () => {
             action: "Actions",
         },
         {
-            id: 120,
+            id: 130,
             avatar: "Avatar",
             name: `Asad`,
             email: `junaidlatif004@gmail.com`,
@@ -99,11 +103,10 @@ const User = () => {
             role: "Admin",
             action: "Actions",
         },
-       
+
     ])
 
     const [filteredData, setFilteredData] = useState(rows)
-
 
     const columns = [
         {
@@ -147,22 +150,19 @@ const User = () => {
 
     ]
 
-
     const searchHandler = (event) => {
-        console.log(event)
-        let filtredData = rows.filter((data) =>
-            data.name.toLocaleLowerCase().includes(event) 
-            ||
-            data.email.toLocaleLowerCase().includes(event)
+        let filteredData = rows.filter((data) =>
+            data.name.includes(event) ||
+            data.email.includes(event)
         )
-        setFilteredData(filtredData)
-    }
 
+        setFilteredData(filteredData)
+    }
 
     return (
 
         <>
-            <div className="users-container">
+            <div className="dashboardUsersContainer">
                 <div className="heading">Users</div>
                 <div className="table">
                     <Table
@@ -170,7 +170,6 @@ const User = () => {
                         columns={columns}
                         hasSearch
                         searchHandler={searchHandler}
-
                     />
                 </div>
             </div>

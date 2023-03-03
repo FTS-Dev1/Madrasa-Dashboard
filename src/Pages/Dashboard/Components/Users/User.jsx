@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 // Components :
-import Table from '../../Components/table/Table'
+import Table from './Component/table/Table'
 
 import './Users.scss'
 
@@ -48,8 +48,8 @@ const User = () => {
         {
             id: 120,
             avatar: "Avatar",
-            name: `Sufyan Aslam`,
-            email: `sufyanaslam029@gmail.com`,
+            name: `Hammad`,
+            email: `hadi200@gmail.com`,
             phone: "03134645127",
             role: "User",
             action: "Actions",
@@ -57,8 +57,8 @@ const User = () => {
         {
             id: 121,
             avatar: "Avatar",
-            name: `Osama Aslam`,
-            email: `osamaaslam029@gmail.com`,
+            name: `Shahzaib`,
+            email: `shahzaib029@gmail.com`,
             phone: "03045064423",
             role: "Admin",
             action: "Actions",
@@ -66,8 +66,8 @@ const User = () => {
         {
             id: 120,
             avatar: "Avatar",
-            name: `Junaid Latif`,
-            email: `junaidlatif004@gmail.com`,
+            name: `Zulifqar`,
+            email: `zulifqar004@gmail.com`,
             phone: "03174919167",
             role: "User",
             action: "Actions",
@@ -75,7 +75,7 @@ const User = () => {
         {
             id: 120,
             avatar: "Avatar",
-            name: `Osama Aslam`,
+            name: `Gazanfar`,
             email: `osamaaslam029@gmail.com`,
             phone: "03045064423",
             role: "Admin",
@@ -84,7 +84,7 @@ const User = () => {
         {
             id: 120,
             avatar: "Avatar",
-            name: `Zahid Ghafoor`,
+            name: `Sohail`,
             email: `zahidghafoor@gmail.com`,
             phone: "03004050167",
             role: "Admin",
@@ -93,33 +93,17 @@ const User = () => {
         {
             id: 120,
             avatar: "Avatar",
-            name: `Junaid Latif`,
+            name: `Asad`,
             email: `junaidlatif004@gmail.com`,
             phone: "03174919167",
             role: "Admin",
             action: "Actions",
         },
-        {
-            id: 120,
-            avatar: "Avatar",
-            name: `Osama Aslam`,
-            email: `osamaaslam029@gmail.com`,
-            phone: "03045064423",
-            role: "Admin",
-            action: "Actions",
-        },
-        {
-            id: 120,
-            avatar: "Avatar",
-            name: `Osama Aslam`,
-            email: `osamaaslam029@gmail.com`,
-            phone: "03045064423",
-            role: "Admin",
-            action: "Actions",
-        },
+       
     ])
 
     const [filteredData, setFilteredData] = useState(rows)
+
 
     const columns = [
         {
@@ -137,17 +121,6 @@ const User = () => {
             dataIndex: 'name',
             key: 'name',
             sorter: (a, b) => a.name.localeCompare(b.name),
-            filters: [
-                {
-                    text: 'Osama Aslam',
-                    value: 'Osama Aslam',
-                },
-                {
-                    text: 'Junaid',
-                    value: 'Junaid',
-                },
-            ],
-            onFilter: (value, record) => record.name.indexOf(value) === 0
 
         },
         {
@@ -174,11 +147,13 @@ const User = () => {
 
     ]
 
+
     const searchHandler = (event) => {
+        console.log(event)
         let filtredData = rows.filter((data) =>
-            data.name.toLocaleLowerCase().includes(event) ||
-            data.email.toLocaleLowerCase().includes(event) ||
-            data.phone.toLocaleLowerCase().includes(event)
+            data.name.toLocaleLowerCase().includes(event) 
+            ||
+            data.email.toLocaleLowerCase().includes(event)
         )
         setFilteredData(filtredData)
     }

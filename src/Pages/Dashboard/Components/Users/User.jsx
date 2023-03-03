@@ -1,59 +1,18 @@
 import React, { useState } from 'react'
 
 // Components :
-import Table from '../../Components/table/Table'
+import Table from './Component/table/Table'
 
+// CSS :
 import './Users.scss'
+
+
+
 
 
 const User = () => {
 
     const [rows, setRows] = useState([
-        {
-            id: 120,
-            avatar: "Avatar",
-            name: `Osama Aslam`,
-            email: `osamaaslam029@gmail.com`,
-            phone: "03045064423",
-            role: "Admin",
-            action: "Actions",
-        },
-        {
-            id: 120,
-            avatar: "Avatar",
-            name: `Junaid Latif`,
-            email: `junaidlatif004@gmail.com`,
-            phone: "03174919167",
-            role: "Admin",
-            action: "Actions",
-        },
-        {
-            id: 120,
-            avatar: "Avatar",
-            name: `Sufyan Aslam`,
-            email: `sufyanaslam029@gmail.com`,
-            phone: "03134645127",
-            role: "User",
-            action: "Actions",
-        },
-        {
-            id: 120,
-            avatar: "Avatar",
-            name: `Zahid Ghafoor`,
-            email: `zahidghafoor@gmail.com`,
-            phone: "03004050167",
-            role: "Admin",
-            action: "Actions",
-        },
-        {
-            id: 120,
-            avatar: "Avatar",
-            name: `Sufyan Aslam`,
-            email: `sufyanaslam029@gmail.com`,
-            phone: "03134645127",
-            role: "User",
-            action: "Actions",
-        },
         {
             id: 121,
             avatar: "Avatar",
@@ -64,25 +23,25 @@ const User = () => {
             action: "Actions",
         },
         {
-            id: 120,
+            id: 122,
             avatar: "Avatar",
             name: `Junaid Latif`,
             email: `junaidlatif004@gmail.com`,
             phone: "03174919167",
-            role: "User",
-            action: "Actions",
-        },
-        {
-            id: 120,
-            avatar: "Avatar",
-            name: `Osama Aslam`,
-            email: `osamaaslam029@gmail.com`,
-            phone: "03045064423",
             role: "Admin",
             action: "Actions",
         },
         {
-            id: 120,
+            id: 123,
+            avatar: "Avatar",
+            name: `Sufyan Aslam`,
+            email: `sufyanaslam029@gmail.com`,
+            phone: "03134645127",
+            role: "User",
+            action: "Actions",
+        },
+        {
+            id: 124,
             avatar: "Avatar",
             name: `Zahid Ghafoor`,
             email: `zahidghafoor@gmail.com`,
@@ -91,32 +50,60 @@ const User = () => {
             action: "Actions",
         },
         {
-            id: 120,
+            id: 125,
             avatar: "Avatar",
-            name: `Junaid Latif`,
+            name: `Hammad`,
+            email: `hadi200@gmail.com`,
+            phone: "03134645127",
+            role: "User",
+            action: "Actions",
+        },
+        {
+            id: 126,
+            avatar: "Avatar",
+            name: `Shahzaib`,
+            email: `shahzaib029@gmail.com`,
+            phone: "03045064423",
+            role: "Admin",
+            action: "Actions",
+        },
+        {
+            id: 127,
+            avatar: "Avatar",
+            name: `Zulifqar`,
+            email: `zulifqar004@gmail.com`,
+            phone: "03174919167",
+            role: "User",
+            action: "Actions",
+        },
+        {
+            id: 128,
+            avatar: "Avatar",
+            name: `Gazanfar`,
+            email: `osamaaslam029@gmail.com`,
+            phone: "03045064423",
+            role: "Admin",
+            action: "Actions",
+        },
+        {
+            id: 129,
+            avatar: "Avatar",
+            name: `Sohail`,
+            email: `zahidghafoor@gmail.com`,
+            phone: "03004050167",
+            role: "Admin",
+            action: "Actions",
+        },
+        {
+            id: 130,
+            avatar: "Avatar",
+            name: `Asad`,
             email: `junaidlatif004@gmail.com`,
             phone: "03174919167",
             role: "Admin",
             action: "Actions",
         },
-        {
-            id: 120,
-            avatar: "Avatar",
-            name: `Osama Aslam`,
-            email: `osamaaslam029@gmail.com`,
-            phone: "03045064423",
-            role: "Admin",
-            action: "Actions",
-        },
-        {
-            id: 120,
-            avatar: "Avatar",
-            name: `Osama Aslam`,
-            email: `osamaaslam029@gmail.com`,
-            phone: "03045064423",
-            role: "Admin",
-            action: "Actions",
-        },
+
     ])
 
     const [filteredData, setFilteredData] = useState(rows)
@@ -137,17 +124,6 @@ const User = () => {
             dataIndex: 'name',
             key: 'name',
             sorter: (a, b) => a.name.localeCompare(b.name),
-            filters: [
-                {
-                    text: 'Osama Aslam',
-                    value: 'Osama Aslam',
-                },
-                {
-                    text: 'Junaid',
-                    value: 'Junaid',
-                },
-            ],
-            onFilter: (value, record) => record.name.indexOf(value) === 0
 
         },
         {
@@ -175,19 +151,18 @@ const User = () => {
     ]
 
     const searchHandler = (event) => {
-        let filtredData = rows.filter((data) =>
-            data.name.toLocaleLowerCase().includes(event) ||
-            data.email.toLocaleLowerCase().includes(event) ||
-            data.phone.toLocaleLowerCase().includes(event)
+        let filteredData = rows.filter((data) =>
+            data.name.includes(event) ||
+            data.email.includes(event)
         )
-        setFilteredData(filtredData)
-    }
 
+        setFilteredData(filteredData)
+    }
 
     return (
 
         <>
-            <div className="users-container">
+            <div className="dashboardUsersContainer">
                 <div className="heading">Users</div>
                 <div className="table">
                     <Table
@@ -195,7 +170,6 @@ const User = () => {
                         columns={columns}
                         hasSearch
                         searchHandler={searchHandler}
-
                     />
                 </div>
             </div>

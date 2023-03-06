@@ -1,9 +1,14 @@
 import React, { useState } from 'react'
 
+import { Route, Routes, Navigate, useLocation, useNavigate } from 'react-router-dom';
+
 import { Button } from 'antd'
 
 import madrasa from '../../../Assets/Images/logo.png'
 import logo from '../../../Assets/Images/loginLogo.png'
+
+import { Select } from 'antd';
+
 
 import './Register.scss'
 
@@ -15,15 +20,23 @@ const Register = () => {
     const loadingFun = () => {
         setloading(true)
     }
+
+    const handleChange = (value) => {
+        console.log(`selected ${value}`);
+    };
+    const Navigate = useNavigate();
+    const signInFun = () => {
+        Navigate('/login')
+    }
     return (
         <>
-            <div className='register-container'>
-                <div className="left-section">
-                    <div className="login-bio">
-                        <div className="n-logo">
+            <div className='registerContainer'>
+                <div className="leftSection">
+                    <div className="loginBio">
+                        <div className="logo">
                             <img src={madrasa} alt="" />
                         </div>
-                        <div className="logo">
+                        <div className="madrasaLogo">
                             <img src={logo} alt="" />
                         </div>
                         <div className="content">
@@ -33,22 +46,45 @@ const Register = () => {
                         </div>
                     </div>
                 </div>
-                <div className="right-section">
+                <div className="rightSection">
                     <form action="users" method='post'>
-                        <div className="wrap-container">
+                        <div className="wrapContainer">
                             <div className="heading">Sign Up</div>
                             <p className="para">A few more clicks to sign in to your account. Manage all your e-commerce accounts in one place</p>
-                            <div className="f-fields">
-                                <input className='s-input' type="text" placeholder='Email' name="email" />
-                                <input className='s-input' type="password" placeholder='Password' name="password" />
-                                <input className='s-input' type="password" placeholder='Password' name="password" />
-                                <input className='s-input' type="password" placeholder='Password' name="password" />
-                                <div className="s-buttons">
-                                    {/* <Button loading={loading} className='login' onClick={loadingFun}>Login</Button> */}
+                            <div className="flexFields">
+                                <div className="fields">
+                                    <input className='registerInput' type="text" placeholder='First Name' name="email" />
+                                    <input className='registerInput' type="text" placeholder='Last Name' name="password" />
+                                </div>
+                                <input className='registerInput' type="text" placeholder='Email' name="email" />
+                                <input className='registerInput' type="text" placeholder='Phone Number' name="email" />
+                                <div className="fields">
+                                    <Select
+                                        defaultValue="Teacher"
+                                        style={{ width: 200 }}
+                                        onChange={handleChange}
+                                        options={[
+                                            {
+                                                label: 'Teacher',
+                                                value: 'Teacher'
+                                            },
+                                            {
+                                                label: 'Student',
+                                                value: 'Student'
+                                            },
+                                        ]}
+                                    />
+                                </div>
+                                <div className="fields">
+                                    <input className='registerInput' type="password" placeholder='Password' name="password" />
+                                    <input className='registerInput' type="password" placeholder='Confirm Password' name="password" />
+                                </div>
+                                <div className="registerButton">
                                     <Button className='register' >Register</Button>
+                                    <p>Already have an account? <a className='signin cursor' onClick={signInFun}>Sign In</a> </p>
                                 </div>
                             </div>
-                            <p className='terms'>By signin up, you agree to our <a href=''>Terms and Conditions</a> & <a href=''>Privacy Policy</a></p>
+                            <p className='terms'>By signin up, you agree to our <a>Terms and Conditions</a> & <a>Privacy Policy</a></p>
                         </div>
                     </form>
                 </div>

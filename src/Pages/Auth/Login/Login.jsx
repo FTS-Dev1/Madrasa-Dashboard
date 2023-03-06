@@ -1,9 +1,17 @@
 import React, { useState } from 'react'
 
+// MUI | ANT-D :
 import { Button } from 'antd'
 
+// Assets | ICONS :
 import madrasa from '../../../Assets/Images/logo.png'
 import logo from '../../../Assets/Images/logo.svg'
+
+// API :
+import { LoginAPI } from "../../../API/auth";
+// helpers :
+import { toast } from 'react-toastify';
+
 // CSS :
 import "./Login.scss"
 
@@ -13,10 +21,50 @@ import "./Login.scss"
 
 const Login = () => {
 
+    const [formData, setFormData] = useState({
+        email: "",
+        password: ""
+    })
     const [loading, setloading] = useState(false)
 
-    const loadingFun = () => {
-        setloading(true)
+    const enteringFormData = (event) => {
+        let { name, value } = event.target;
+
+        setFormData({
+            ...formData,
+            [name]: value
+        })
+    }
+    const loadingFun = async () => {
+        let res = await LoginAPI({ email: formData, password: formData.password })
+        if (res.error != null) {
+            toast.error(res.error, {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+            });
+        } else {
+            toast.success("Login Success", {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+            });
+            let token = res.data.token.plainTextToken
+            localStorage.setItem("madrasaToken", token)
+            setTimeout(() => {
+                window.location.href = "/"
+            }, 3000);
+        }
     }
     return (
         <>
@@ -42,8 +90,8 @@ const Login = () => {
                             <div className="heading">Sign In</div>
                             <p className="para">A few more clicks to sign in to your account. Manage all your e-commerce accounts in one place</p>
                             <div className="f-fields">
-                                <input className='s-input' type="text" placeholder='Email' name="email" />
-                                <input className='s-input' type="password" placeholder='Password' name="password" />
+                                <input className='s-input' type="text" placeholder='Email' name="email" onChange={enteringFormData} value={formData.email} />
+                                <input className='s-input' type="password" placeholder='Password' name="password" onChange={enteringFormData} value={formData.password} />
                                 <div className="remember-me">
                                     <div className="check-box">
                                         <input type="checkbox" />

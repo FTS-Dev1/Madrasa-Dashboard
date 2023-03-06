@@ -5,11 +5,14 @@ import { Route, Routes, Navigate } from 'react-router-dom';
 import Navbar from './Components/Navbar/Navbar';
 import Dashboard from './Pages/Dashboard/Dashboard';
 import Login from './Pages/Auth/Login/Login';
+import Register from './Pages/Auth/Register/Register';
+
+// Helpers :
+import { ToastContainer } from "react-toastify";
 
 // CSS :
 import './App.scss';
-import Register from './Pages/Auth/Register/Register';
-
+import 'react-toastify/dist/ReactToastify.css';
 
 
 
@@ -26,6 +29,18 @@ const App = () => {
 
   return (
     <>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
       {/* <Navbar /> */}
       <Routes>
         <Route path='login' element={<Login />} />

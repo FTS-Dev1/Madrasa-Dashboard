@@ -1,9 +1,17 @@
 import React, { useState } from 'react'
 
+// MUI | ANT-D :
 import { Button } from 'antd'
 
-import madrasa from '../../../Assets/Images/logo.png'
-import logo from '../../../Assets/Images/loginLogo.png'
+// Assets | ICONS :
+import madrasa from '../../../Assets/Images/loginLogo.png'
+import logo from '../../../Assets/Images/logo.png'
+
+// API :
+import { LoginAPI } from "../../../API/auth";
+// helpers :
+import { toast } from 'react-toastify';
+
 // CSS :
 import "./Login.scss"
 import { useNavigate } from 'react-router-dom'
@@ -14,10 +22,50 @@ import { useNavigate } from 'react-router-dom'
 
 const Login = () => {
 
+    const [formData, setFormData] = useState({
+        email: "",
+        password: ""
+    })
     const [loading, setloading] = useState(false)
 
-    const loadingFun = () => {
-        setloading(true)
+    const enteringFormData = (event) => {
+        let { name, value } = event.target;
+
+        setFormData({
+            ...formData,
+            [name]: value
+        })
+    }
+    const loadingFun = async () => {
+        let res = await LoginAPI({ email: formData, password: formData.password })
+        if (res.error != null) {
+            toast.error(res.error, {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+            });
+        } else {
+            toast.success("Login Success", {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+            });
+            let token = res.data.token.plainTextToken
+            localStorage.setItem("madrasaToken", token)
+            setTimeout(() => {
+                window.location.href = "/"
+            }, 3000);
+        }
     }
 
     const Navigate = useNavigate();

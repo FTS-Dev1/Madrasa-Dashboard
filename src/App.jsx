@@ -17,15 +17,18 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 
+
+const ProtectedRoute = ({ user, children }) => {
+  if (!user) {
+    return <Navigate to="/login" replace />;
+  }
+
+  return children;
+};
 const App = () => {
 
-  const ProtectedRoute = ({ user, children }) => {
-    if (!user) {
-      return <Navigate to="/login" replace />;
-    }
-
-    return children;
-  };
+  let token = localStorage.getItem("madrasaToken")
+  let AuthToken = token ?? null
 
   return (
     <>
@@ -45,7 +48,7 @@ const App = () => {
       <Routes>
         <Route path='login' element={<Login />} />
         <Route path='register' element={<Register />} />
-        <Route path='dashboard/*' element={<Dashboard />} />
+        <Route path='dashboard/*' element={<ProtectedRoute user={AuthToken}> <Dashboard /> </ProtectedRoute>} />
         <Route path='*' element={<Navigate to="/dashboard" replace />} />
       </Routes>
     </>

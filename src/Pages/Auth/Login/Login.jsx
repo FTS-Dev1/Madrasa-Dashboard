@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 // MUI | ANT-D :
-import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
 import { Button, Input, Space } from 'antd';
 
 // Assets | ICONS :
-import madrasa from '../../../Assets/Images/loginLogo.png'
-import logo from '../../../Assets/Images/logo.png'
+import madrasa from '../../../Assets/Images/loginLogo.png';
+import logo from '../../../Assets/Images/logo.png';
 
 // API :
 import { LoginAPI } from "../../../API/auth";
@@ -14,14 +14,14 @@ import { LoginAPI } from "../../../API/auth";
 import { toast } from 'react-toastify';
 
 // CSS :
-import "./Login.scss"
-import { useNavigate } from 'react-router-dom'
+import "./Login.scss";
 
 
 
 
 
 const Login = () => {
+    const Navigate = useNavigate();
 
     const [formData, setFormData] = useState({
         email: "",
@@ -31,14 +31,15 @@ const Login = () => {
 
     const enteringFormData = (event) => {
         let { name, value } = event.target;
-
         setFormData({
             ...formData,
             [name]: value
         })
     }
-    const loadingFun = async () => {
-        let res = await LoginAPI({ email: formData, password: formData.password })
+
+    const handleLogin = async () => {
+        setloading(true)
+        let res = await LoginAPI({ email: formData.email, password: formData.password })
         if (res.error != null) {
             toast.error(res.error, {
                 position: "top-right",
@@ -51,7 +52,7 @@ const Login = () => {
                 theme: "dark",
             });
         } else {
-            toast.success("Login Success", {
+            toast.success(res.data.message, {
                 position: "top-right",
                 autoClose: 3000,
                 hideProgressBar: false,
@@ -61,20 +62,18 @@ const Login = () => {
                 progress: undefined,
                 theme: "dark",
             });
-            let token = res.data.token.plainTextToken
+            let token = res?.data?.data?.token?.plainTextToken
             localStorage.setItem("madrasaToken", token)
             setTimeout(() => {
                 window.location.href = "/"
             }, 3000);
         }
+        setloading(false)
     }
 
-    const Navigate = useNavigate();
     const registerFun = () => {
         Navigate('/register')
     }
-
-    const [passwordVisible, setPasswordVisible] = React.useState(false);
 
     return (
         <>
@@ -100,13 +99,10 @@ const Login = () => {
                             <div className="heading">Sign In</div>
                             <p className="para">A few more clicks to sign in to your account. Manage all your e-commerce accounts in one place</p>
                             <div className="flexFields">
-                                <input className='loginInput' type="text" placeholder='Email' name="email" />
-
+                                <input className='loginInput' type="text" placeholder='Email' name="email" onChange={enteringFormData} value={formData.email} />
                                 <Space direction="vertical">
-                                    <Input.Password placeholder="input password" />
+                                    <Input.Password placeholder="password" name='password' onChange={enteringFormData} value={formData.password} />
                                 </Space>
-
-                                {/* <input className='loginInput' type="password" placeholder='Password' name="password" /> */}
                                 <div className="rememberMe">
                                     <div className="checkbox">
                                         <input type="checkbox" />
@@ -115,11 +111,9 @@ const Login = () => {
                                     <p>Forgot Password?</p>
                                 </div>
                                 <div className="loginButton">
-                                    <Button loading={loading} className='login' onClick={loadingFun}>Login</Button>
+                                    <Button loading={loading} className='login' onClick={handleLogin}>Login</Button>
                                     <p>Create an account? <a className='signup cursor' onClick={registerFun}>Register</a> </p>
-
                                 </div>
-
                             </div>
                             <p className='terms'>By signin up, you agree to our <a>Terms and Conditions</a> & <a>Privacy Policy</a></p>
                         </div>

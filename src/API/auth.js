@@ -13,6 +13,7 @@ const LoginAPI = async ({ email, password }) => {
     try {
         let res = await axios({
             url: "/login",
+            method: "POST",
             data: {
                 email,
                 password

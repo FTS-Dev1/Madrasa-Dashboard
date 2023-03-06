@@ -1,5 +1,6 @@
 .dashboardContainer {
     display: flex;
+    max-height: 100vh;
 
     .sider {
         height: 100vh;
@@ -72,7 +73,9 @@
 
     .rightContainer {
         width: 100%;
-        padding: 7.5rem 2rem;
+        padding: 4rem 2rem;
+        padding-top: 7rem;
         background-color: var(--pageBackgroundColor);
+        overflow-y: scroll;
     }
 }

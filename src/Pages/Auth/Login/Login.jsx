@@ -6,6 +6,7 @@ import madrasa from '../../../Assets/Images/logo.png'
 import logo from '../../../Assets/Images/loginLogo.png'
 // CSS :
 import "./Login.scss"
+import { useNavigate } from 'react-router-dom'
 
 
 
@@ -17,6 +18,11 @@ const Login = () => {
 
     const loadingFun = () => {
         setloading(true)
+    }
+
+    const Navigate = useNavigate();
+    const registerFun = () => {
+        Navigate('/register')
     }
     return (
         <>
@@ -53,10 +59,12 @@ const Login = () => {
                                 </div>
                                 <div className="loginButton">
                                     <Button loading={loading} className='login' onClick={loadingFun}>Login</Button>
+                                    <p>Create an account? <a className='signup cursor' onClick={registerFun}>Register</a> </p>
+
                                 </div>
 
                             </div>
-                            <p className='terms'>By signin up, you agree to our <a href=''>Terms and Conditions</a> & <a href=''>Privacy Policy</a></p>
+                            <p className='terms'>By signin up, you agree to our <a>Terms and Conditions</a> & <a>Privacy Policy</a></p>
                         </div>
                     </form>
                 </div>

@@ -240,6 +240,15 @@
                             border: 1px solid #00A859;
 
                         }
+                        p {
+                            padding-top: 1rem;
+                            text-align: center;
+                            // font-size: 0.875rem;
+
+                            a {
+                                color: var(--themeColorGreen);
+                            }
+                        }
 
                     }
                 }

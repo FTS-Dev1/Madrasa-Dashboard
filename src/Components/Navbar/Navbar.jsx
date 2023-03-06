@@ -12,6 +12,9 @@ import { AiOutlineUser, AiFillSetting } from 'react-icons/ai';
 import logo from '../../Assets/Images/logo.png'
 import profile from '../../Assets/Images/profile.jpg'
 
+// Helpers :
+import { toast } from "react-toastify";
+
 // CSS :
 import './Navbar.scss'
 
@@ -20,8 +23,20 @@ import './Navbar.scss'
 
 
 const logout = () => {
-    alert("done")
-    Navigate("login")
+    localStorage.clear()
+    toast.warn("Logout Success", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+    });
+    setTimeout(() => {
+        window.location.href = "/"
+    }, 3000);
 }
 const text =
     <div className='d-title'>
@@ -50,10 +65,10 @@ const content = (
                 Help
             </a>
             <div className="border"></div>
-            <a href="#" className='logout' onClick={logout}>
+            <div className='logout' onClick={logout}>
                 <AiFillSetting className='icon' />
                 Logout
-            </a>
+            </div>
 
         </div>
     </>

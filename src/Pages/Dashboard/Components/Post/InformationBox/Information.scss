@@ -2,7 +2,11 @@ form {
     background-color: #fff;
     border-radius: 10px;
     height: min-content;
-    padding: 1rem;
+    padding: 1.5rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
 
     .mb-3 {
         display: flex;
@@ -131,11 +135,11 @@ form {
         }
 
         input:checked+.slider {
-            background-color: var(--primary);
+            background-color: var(--themeColor);
         }
 
         input:focus+.slider {
-            box-shadow: 0 0 1px var(--primary);
+            box-shadow: 0 0 1px var(--themeColor);
         }
 
         input:checked+.slider:before {

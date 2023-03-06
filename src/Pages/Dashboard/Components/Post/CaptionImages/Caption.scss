@@ -53,3 +53,9 @@
     }
 
 }
+.ant-upload-list-item-error{
+    border-color: var(--themeColor) !important;
+}
+.ant-upload.ant-upload-select:not(.ant-upload-disabled):hover{
+    border-color: var(--themeColorGreen) !important;
+}

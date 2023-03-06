@@ -7,6 +7,9 @@ import Dashboard from './Pages/Dashboard/Dashboard';
 import Login from './Pages/Auth/Login/Login';
 import Register from './Pages/Auth/Register/Register';
 
+// Helpers :
+import { ToastContainer } from "react-toastify";
+
 // CSS :
 import './App.scss';
 import 'react-toastify/dist/ReactToastify.css';

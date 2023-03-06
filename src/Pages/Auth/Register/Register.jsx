@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { Button } from 'antd'
 
 import madrasa from '../../../Assets/Images/logo.png'
-import logo from '../../../Assets/Images/logo.svg'
+import logo from '../../../Assets/Images/loginLogo.png'
 
 import './Register.scss'
 

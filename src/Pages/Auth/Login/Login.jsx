@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 
 // MUI | ANT-D :
-import { Button } from 'antd'
+import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
+import { Button, Input, Space } from 'antd';
 
 // Assets | ICONS :
 import madrasa from '../../../Assets/Images/loginLogo.png'
@@ -72,16 +73,19 @@ const Login = () => {
     const registerFun = () => {
         Navigate('/register')
     }
+
+    const [passwordVisible, setPasswordVisible] = React.useState(false);
+
     return (
         <>
             <div className='loginContainer'>
                 <div className="leftSection">
                     <div className="loginBio">
                         <div className="logo">
-                            <img src={madrasa} alt="" />
+                            <img src={logo} alt="" />
                         </div>
                         <div className="madrasaLogo">
-                            <img src={logo} alt="" />
+                            <img src={madrasa} alt="" />
                         </div>
                         <div className="content">
                             <div className="heading">A few more clicks to sign in to your account.
@@ -97,7 +101,12 @@ const Login = () => {
                             <p className="para">A few more clicks to sign in to your account. Manage all your e-commerce accounts in one place</p>
                             <div className="flexFields">
                                 <input className='loginInput' type="text" placeholder='Email' name="email" />
-                                <input className='loginInput' type="password" placeholder='Password' name="password" />
+
+                                <Space direction="vertical">
+                                    <Input.Password placeholder="input password" />
+                                </Space>
+
+                                {/* <input className='loginInput' type="password" placeholder='Password' name="password" /> */}
                                 <div className="rememberMe">
                                     <div className="checkbox">
                                         <input type="checkbox" />

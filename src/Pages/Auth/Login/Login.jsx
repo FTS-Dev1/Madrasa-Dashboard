@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 import { Button } from 'antd'
 
 // Assets | ICONS :
-import madrasa from '../../../Assets/Images/logo.png'
+import madrasa from '../../../Assets/Images/loginLogo.png'
 import logo from '../../../Assets/Images/logo.svg'
 
 // API :
@@ -14,6 +14,7 @@ import { toast } from 'react-toastify';
 
 // CSS :
 import "./Login.scss"
+import { useNavigate } from 'react-router-dom'
 
 
 
@@ -66,15 +67,20 @@ const Login = () => {
             }, 3000);
         }
     }
+
+    const Navigate = useNavigate();
+    const registerFun = () => {
+        Navigate('/register')
+    }
     return (
         <>
-            <div className='login-container'>
-                <div className="left-section">
-                    <div className="login-bio">
-                        <div className="n-logo">
+            <div className='loginContainer'>
+                <div className="leftSection">
+                    <div className="loginBio">
+                        <div className="logo">
                             <img src={madrasa} alt="" />
                         </div>
-                        <div className="logo">
+                        <div className="madrasaLogo">
                             <img src={logo} alt="" />
                         </div>
                         <div className="content">
@@ -84,27 +90,29 @@ const Login = () => {
                         </div>
                     </div>
                 </div>
-                <div className="right-section">
+                <div className="rightSection">
                     <form action="users" method='post'>
-                        <div className="wrap-container">
+                        <div className="wrapContainer">
                             <div className="heading">Sign In</div>
                             <p className="para">A few more clicks to sign in to your account. Manage all your e-commerce accounts in one place</p>
-                            <div className="f-fields">
-                                <input className='s-input' type="text" placeholder='Email' name="email" onChange={enteringFormData} value={formData.email} />
-                                <input className='s-input' type="password" placeholder='Password' name="password" onChange={enteringFormData} value={formData.password} />
-                                <div className="remember-me">
-                                    <div className="check-box">
+                            <div className="flexFields">
+                                <input className='loginInput' type="text" placeholder='Email' name="email" />
+                                <input className='loginInput' type="password" placeholder='Password' name="password" />
+                                <div className="rememberMe">
+                                    <div className="checkbox">
                                         <input type="checkbox" />
                                         <p>Remember me</p>
                                     </div>
                                     <p>Forgot Password?</p>
                                 </div>
-                                <div className="s-buttons">
+                                <div className="loginButton">
                                     <Button loading={loading} className='login' onClick={loadingFun}>Login</Button>
-                                    <Button className='register' >Register</Button>
+                                    <p>Create an account? <a className='signup cursor' onClick={registerFun}>Register</a> </p>
+
                                 </div>
+
                             </div>
-                            <p className='terms'>By signin up, you agree to our <a href=''>Terms and Conditions</a> & <a href=''>Privacy Policy</a></p>
+                            <p className='terms'>By signin up, you agree to our <a>Terms and Conditions</a> & <a>Privacy Policy</a></p>
                         </div>
                     </form>
                 </div>

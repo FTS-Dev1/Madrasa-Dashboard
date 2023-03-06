@@ -98,7 +98,7 @@ h6 {
     gap: 1rem;
 }
 
-// table custom css
+// Ant table custom css
 .table {
 
     // row hover bg color 
@@ -152,6 +152,10 @@ h6 {
 
 }
 
+//Ant icons
+.anticon svg{
+    fill: var(--themeColorGreen) !important;
+}
 // page headings's css
 .heading {
     font-size: 2rem;

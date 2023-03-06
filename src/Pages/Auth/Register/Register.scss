@@ -196,9 +196,13 @@
                     gap: 1rem;
                     padding-top: .5rem;
 
-                    .fields{
+                    .fields {
                         display: flex;
                         gap: 1rem;
+
+                        @media screen and (max-width:768px) {
+                            flex-direction: column;
+                        }
                     }
 
                     .registerInput {
@@ -250,7 +254,7 @@
                         p {
                             padding-top: 1rem;
                             text-align: center;
-                            // font-size: 0.875rem;
+                            font-size: 0.875rem;
 
                             a {
                                 color: var(--themeColorGreen);

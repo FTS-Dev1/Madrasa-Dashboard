@@ -5,7 +5,7 @@ import { Button } from 'antd'
 
 // Assets | ICONS :
 import madrasa from '../../../Assets/Images/loginLogo.png'
-import logo from '../../../Assets/Images/logo.svg'
+import logo from '../../../Assets/Images/logo.png'
 
 // API :
 import { LoginAPI } from "../../../API/auth";

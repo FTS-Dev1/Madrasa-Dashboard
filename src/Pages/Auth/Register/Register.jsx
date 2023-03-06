@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 
 import { Route, Routes, Navigate, useLocation, useNavigate } from 'react-router-dom';
 
-import { Button } from 'antd'
+import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
+import { Button, Input, Space } from 'antd';
 
 import madrasa from '../../../Assets/Images/logo.png'
 import logo from '../../../Assets/Images/loginLogo.png'
@@ -28,6 +29,8 @@ const Register = () => {
     const signInFun = () => {
         Navigate('/login')
     }
+    const [passwordVisible, setPasswordVisible] = React.useState(false);
+
     return (
         <>
             <div className='registerContainer'>
@@ -76,8 +79,12 @@ const Register = () => {
                                     />
                                 </div>
                                 <div className="fields">
-                                    <input className='registerInput' type="password" placeholder='Password' name="password" />
-                                    <input className='registerInput' type="password" placeholder='Confirm Password' name="password" />
+                                <Space direction="vertical">
+                                    <Input.Password placeholder="input password" />
+                                </Space>
+                                <Space direction="vertical">
+                                    <Input.Password placeholder="input password" />
+                                </Space>
                                 </div>
                                 <div className="registerButton">
                                     <Button className='register' >Register</Button>

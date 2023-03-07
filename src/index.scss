@@ -31,29 +31,11 @@ h6 {
     --themeColorGreen: #006400;
     --backgroundColor: #fff5c9;
     --lightYellow: #FFF5C9;
-    --pageBackgroundColor:#F5F5F5;
+    --pageBackgroundColor: #F5F5F5;
     --radius: 0.375rem;
 
 }
 
-/* ************ Custom Classes ************** */
-
-.container {
-    max-width: 1400px;
-    margin: 0 auto;
-
-    @media screen and (max-width:"1450px") {
-        max-width: 1050px;
-    }
-
-    @media screen and (max-width:"1100px") {
-        margin: 0 20px;
-    }
-}
-
-.cursor {
-    cursor: pointer;
-}
 
 /* ************ Custom Fonts ************** */
 
@@ -76,6 +58,7 @@ h6 {
 
 ::-webkit-scrollbar {
     width: 5px;
+    display: none;
 }
 
 ::-webkit-scrollbar-track {
@@ -90,6 +73,25 @@ h6 {
     background: #5c5b5b;
 }
 
+/* ************ Custom Classes ************** */
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+
+    @media screen and (max-width:"1450px") {
+        max-width: 1050px;
+    }
+
+    @media screen and (max-width:"1100px") {
+        margin: 0 20px;
+    }
+}
+
+.cursor {
+    cursor: pointer;
+}
+
 // Flex Properties
 .flexLineSpace {
     display: flex;
@@ -98,7 +100,83 @@ h6 {
     gap: 1rem;
 }
 
-// Ant table custom css
+// page headings's css
+.heading {
+    font-size: 2rem;
+    font-weight: bold;
+    text-shadow: 1px 2px 5px rgba(81, 67, 21, 0.8);
+}
+
+.subHeading {
+    font-size: 1rem;
+    font-weight: bold;
+    text-shadow: 1px 1px 3px rgba(81, 67, 21, 0.8);
+}
+
+/* ************ ANT-Design ************** */
+// ANT-D Input
+.ant-input-affix-wrapper {
+    padding: 9px 20px !important;
+    border-radius: var(--radius);
+    border: 1px solid rgba(0, 0, 0, 0.3) !important;
+}
+
+// ANT-D Selector
+.ant-select-single {
+    font-size: 14px !important;
+    width: 100% !important;
+}
+
+.ant-select-selector {
+    width: 100% !important;
+    height: 42px !important;
+    padding: 5px 20px !important;
+    border: 1px solid rgba(0, 0, 0, 0.3) !important;
+    box-shadow: none !important;
+    border-radius: var(--radius);
+}
+
+.ant-select-item-option-selected:not(.ant-select-item-option-disabled) {
+    background-color: var(--lightYellow) !important;
+}
+
+// ANT-D popover
+.antPopover {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+
+
+    .popoverItem {
+        display: flex;
+        color: #000000;
+        gap: 0.4rem;
+        border-radius: 5px;
+        padding: 5px;
+        align-items: center;
+
+        .icon {
+            height: 18px;
+            width: 18px;
+        }
+
+        &:hover {
+            background: rgb(221, 221, 221);
+        }
+    }
+
+    .border {
+        border-top: 1px solid rgb(139, 139, 139);
+    }
+
+}
+
+// ANT-D icons
+.anticon svg {
+    fill: var(--themeColorGreen) !important;
+}
+
+// ANT-D table 
 .table {
 
     // row hover bg color 
@@ -150,21 +228,4 @@ h6 {
         color: var(--themeColorGreen) !important;
     }
 
-}
-
-//Ant icons
-.anticon svg{
-    fill: var(--themeColorGreen) !important;
-}
-// page headings's css
-.heading {
-    font-size: 2rem;
-    font-weight: bold;
-    text-shadow: 1px 2px 5px rgba(81, 67, 21, 0.8);
-}
-
-.subHeading {
-    font-size: 1rem;
-    font-weight: bold;
-    text-shadow: 1px 1px 3px rgba(81, 67, 21, 0.8);
 }

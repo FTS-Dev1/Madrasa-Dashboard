@@ -1,5 +1,4 @@
 import React from 'react'
-import { Navigate } from 'react-router-dom';
 
 // ANT-D | MUI :
 import { Popover } from 'antd';
@@ -39,45 +38,36 @@ const logout = () => {
     }, 3000);
 }
 const text =
-    <div className='d-title'>
+    <div className='popoverHeading'>
         <div className='name'>Morgan Freeman</div>
-        <div className="skill">Backend Engineer</div>
+        <div className="skill" style={{ fontSize: "0.75rem" }}>Backend Engineer</div>
     </div>;
 const content = (
-
-    <>
-        <div className='d-bio'>
-            <div className="border"></div>
-            <a href="#">
-                <AiOutlineUser className='icon' />
-                <p>Contact</p>
-            </a>
-            <a href="#">
-                <AiFillSetting className='icon' />
-                Add Account
-            </a>
-            <a href="#" className='logout'>
-                <AiFillSetting className='icon' />
-                Reset Password
-            </a>
-            <a href="#" className='logout'>
-                <AiFillSetting className='icon' />
-                Help
-            </a>
-            <div className="border"></div>
-            <div className='logout' onClick={logout}>
-                <AiFillSetting className='icon' />
-                Logout
-            </div>
-
+    <div className='antPopover'>
+        <div className="border"></div>
+        <div className='popoverItem' href="#">
+            <AiOutlineUser className='icon' />
+            <p>Contact</p>
         </div>
-    </>
+        <div className='popoverItem' href="#">
+            <AiFillSetting className='icon' />
+            Add Account
+        </div>
+        <div className='popoverItem' href="#">
+            <AiFillSetting className='icon' />
+            Reset Password
+        </div>
+        <div className='popoverItem' href="#">
+            <AiFillSetting className='icon' />
+            Help
+        </div>
+        <div className="border"></div>
+        <div className='popoverItem' onClick={logout}>
+            <AiFillSetting className='icon' />
+            Logout
+        </div>
+    </div>
 );
-
-
-
-
-
 
 const Navbar = () => {
 

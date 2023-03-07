@@ -1,26 +1,19 @@
 import React, { useState } from 'react'
+import {useNavigate } from 'react-router-dom';
 
-import { Route, Routes, Navigate, useLocation, useNavigate } from 'react-router-dom';
+// MUI | ANT-D :
+import { Button, Input, Space,Select } from 'antd';
 
-import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
-import { Button, Input, Space } from 'antd';
-
+// Assets | ICONS :
 import madrasa from '../../../Assets/Images/logo.png'
 import logo from '../../../Assets/Images/loginLogo.png'
 
-import { Select } from 'antd';
-
-
+// CSS :
 import './Register.scss'
 
 
 
 const Register = () => {
-    const [loading, setloading] = useState(false)
-
-    const loadingFun = () => {
-        setloading(true)
-    }
 
     const handleChange = (value) => {
         console.log(`selected ${value}`);
@@ -80,10 +73,10 @@ const Register = () => {
                                 </div>
                                 <div className="fields">
                                 <Space direction="vertical">
-                                    <Input.Password placeholder="input password" />
+                                    <Input.Password placeholder="Enter Password" />
                                 </Space>
                                 <Space direction="vertical">
-                                    <Input.Password placeholder="input password" />
+                                    <Input.Password placeholder="Confirm Password" />
                                 </Space>
                                 </div>
                                 <div className="registerButton">

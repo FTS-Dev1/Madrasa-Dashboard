@@ -57,7 +57,6 @@ const content = (
             <AiFillSetting className='icon' />
             Logout
         </div>
-        <form action="" ></form>
     </div>
 );
 

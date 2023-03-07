@@ -29,8 +29,7 @@ h6 {
     --dark: #000000;
     --themeColor: #FCD117;
     --themeColorGreen: #00A859;
-    --backgroundColor: #fff5c9;
-    --lightYellow: #FFF5C9;
+    --lightYellow: #fff5c9;
     --pageBackgroundColor: #F5F5F5;
     --radius: 0.375rem;
     --border:rgba(0, 0, 0, 0.3);
@@ -215,7 +214,7 @@ h6 {
 
     // row hover bg color 
     .ant-table-thead>tr>th {
-        background-color: var(--backgroundColor) !important;
+        background-color: var(--lightYellow) !important;
         color: var(--themeColorGreen) !important;
     }
 
@@ -241,7 +240,7 @@ h6 {
 
     // row hover bg color 
     .ant-table-tbody>tr>td.ant-table-cell-row-hover {
-        background-color: var(--backgroundColor) !important;
+        background-color: var(--lightYellow) !important;
     }
 
     // pagination button 

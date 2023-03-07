@@ -6,7 +6,7 @@
         height: 100vh;
         display: grid;
         grid-template-rows: auto 45px;
-        background-color: var(--backgroundColor);
+        background-color: var(--lightYellow);
         box-shadow: 0px 1px 8px 0px rgba(0, 0, 0, 0.2);
 
         .ant-layout-sider-children {

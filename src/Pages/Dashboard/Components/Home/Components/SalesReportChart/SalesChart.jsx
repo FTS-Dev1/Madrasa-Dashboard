@@ -33,7 +33,7 @@ const SalesChart = () => {
             borderWidth: 2,
             borderDash: [2, 2],
             // borderColor: "#B5BFCE",
-            borderColor: "#FFF5C9",
+            borderColor: "#00A859",
             backgroundColor: "transparent",
             pointBorderColor: "transparent",
             tension: 0.4

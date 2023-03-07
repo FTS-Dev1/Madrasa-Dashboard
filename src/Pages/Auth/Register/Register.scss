@@ -208,7 +208,7 @@
 
                     .registerInput {
                         width: 100%;
-                        border: 1px solid rgba(0, 0, 0, 0.3);
+                        border: 1px solid var(--border);
                         padding: 12px 20px;
                         border-radius: var(--radius);
                     }

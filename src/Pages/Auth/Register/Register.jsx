@@ -121,7 +121,6 @@ const Register = () => {
                                 <input className='registerInput' type="text" placeholder='Phone Number' name="phone" onChange={enteringFormData} value={formData.phone} />
                                 <div className="fields">
                                     <Select
-                                        style={{ width: 200 }}
                                         onChange={handleSelectChange}
                                         value={formData.role}
                                         placeholder="Select Role"

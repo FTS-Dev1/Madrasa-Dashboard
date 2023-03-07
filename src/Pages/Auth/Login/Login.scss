@@ -197,7 +197,7 @@
                     padding-top: .5rem;
 
                     .loginInput {
-                        border: 1px solid rgba(0, 0, 0, 0.3);
+                        border: 1px solid var(--border);
                         border-radius: var(--radius);
                         padding: 12px 20px;
                     }

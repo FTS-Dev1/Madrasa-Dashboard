@@ -33,6 +33,7 @@ h6 {
     --lightYellow: #FFF5C9;
     --pageBackgroundColor: #F5F5F5;
     --radius: 0.375rem;
+    --border:rgba(0, 0, 0, 0.3);
 }
 
 
@@ -70,6 +71,22 @@ h6 {
 ::-webkit-scrollbar-thumb {
     border-radius: 10px !important;
     background: #5c5b5b;
+}
+
+/* ************ Input placeholder ************** */
+::placeholder {
+    color: var(--border) !important;
+    /* Firefox */
+}
+
+:-ms-input-placeholder {
+    color: var(--border) !important;
+    /* Internet Explorer 10-11 */
+}
+
+::-ms-input-placeholder {
+    color: var(--border) !important;
+    /* Microsoft Edge */
 }
 
 /* ************ Custom Classes ************** */
@@ -114,29 +131,46 @@ h6 {
 
 /* ************ ANT-Design ************** */
 // ANT-D Input
+.ant-input{
+    border-color: var(--border) !important;
+}
 .ant-input-affix-wrapper {
     padding: 9px 20px !important;
     border-radius: var(--radius);
-    border: 1px solid rgba(0, 0, 0, 0.3) !important;
+    border: 1px solid var(--border) !important;
 }
 
 // ANT-D Selector
 .ant-select-single {
     font-size: 14px !important;
     width: 100% !important;
+
 }
 
 .ant-select-selector {
     width: 100% !important;
     height: 42px !important;
     padding: 5px 20px !important;
-    border: 1px solid rgba(0, 0, 0, 0.3) !important;
     box-shadow: none !important;
     border-radius: var(--radius);
+    border: 1px solid var(--border) !important;
+
+    &:hover {
+        border-color: var(--themeColorGreen) !important;
+    }
 }
 
 .ant-select-item-option-selected:not(.ant-select-item-option-disabled) {
     background-color: var(--lightYellow) !important;
+}
+
+// ANT-D Date picker
+.ant-picker {
+    border: 1px solid var(--border) !important;
+
+    &:hover {
+        border-color: var(--themeColorGreen) !important;
+    }
 }
 
 // ANT-D popover
@@ -192,7 +226,7 @@ h6 {
     }
 
     .custom-table .ant-input-affix-wrapper {
-        border: 1px solid var(--backgroundColor) !important;
+        border: 1px solid var(--border) !important;
         border-radius: 5px !important;
         height: 35px !important;
         padding: 0px 10px !important;

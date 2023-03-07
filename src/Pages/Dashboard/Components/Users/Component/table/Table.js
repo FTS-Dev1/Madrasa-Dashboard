@@ -29,6 +29,7 @@ const Table = ({
     tableLeftActionsHandler = (action) => console.log(action),
     actionHandler = (row) => console.log(row),
     searchHandler = (search) => console.log(search),
+    loading
 }) => {
 
     const { confirm } = Modal;
@@ -168,6 +169,7 @@ const Table = ({
                 dataSource={rows}
                 columns={tableColumns}
                 pagination={{ position: ["bottomCenter"] }}
+                loading={loading}
             />
         </div>
     )

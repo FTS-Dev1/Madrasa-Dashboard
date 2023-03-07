@@ -1,7 +1,15 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 // Components :
 import Table from './Component/table/Table'
+
+// Assets | ICONS :
+import Avater from "../../../../Assets/Images/profile.jpg";
+
+// API :
+import { GetAllUsersAPI } from '../../../../API/user'
+// Helpers :
+import { toast } from "react-toastify";
 
 // CSS :
 import './Users.scss'
@@ -106,7 +114,9 @@ const User = () => {
 
     ])
 
-    const [filteredData, setFilteredData] = useState(rows)
+    const [data, setData] = useState([])
+    const [filteredData, setFilteredData] = useState([])
+    const [loading, setLoading] = useState(false)
 
     const columns = [
         {
@@ -118,6 +128,7 @@ const User = () => {
             title: 'Avatar',
             dataIndex: 'avatar',
             key: 'avatar',
+            render: (_, data) => <> <div className="avaterBox"> <img src={Avater} alt="ERROR" /> </div> </>
         },
         {
             title: 'Name',
@@ -159,6 +170,21 @@ const User = () => {
         setFilteredData(filteredData)
     }
 
+    const gettingAllUsers = async () => {
+        setLoading(true)
+        let res = await GetAllUsersAPI()
+        if (res.error != null) {
+            toast.error(res.error);
+        } else {
+            setData(res?.data?.data?.users || [])
+            setFilteredData(res?.data?.data?.users || [])
+        }
+        setLoading(false)
+    }
+    useEffect(() => {
+        gettingAllUsers()
+    }, [])
+
     return (
 
         <>
@@ -166,6 +192,7 @@ const User = () => {
                 <div className="heading">Users</div>
                 <div className="table">
                     <Table
+                        loading={loading}
                         rows={filteredData}
                         columns={columns}
                         hasSearch

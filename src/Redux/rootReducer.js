@@ -1,7 +1,7 @@
 import { combineReducers } from "@reduxjs/toolkit";
-import { loginReducer } from "./Slice/Login/loginSlice";
+import userDataSclice from "./Slice/userData";
 
 
 export const rootReducer = combineReducers({
-    login: loginReducer,
+    userData: userDataSclice,
 })

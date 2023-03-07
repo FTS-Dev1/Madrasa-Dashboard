@@ -1,7 +1,12 @@
 import React, { useState } from 'react'
-import './Information.scss'
+
 import { Select } from 'antd';
 import { DatePicker } from 'antd';
+
+// Css
+import './Information.scss'
+
+
 
 
 const OPTIONS = ['Apples', 'Nails', 'Bananas', 'Helicopters', 'Nails', 'Bananas', 'Helicopters'];
@@ -10,9 +15,7 @@ const onChange = (date, dateString) => {
     console.log(date, dateString);
 };
 
-
 const Infomation = () => {
-
     const handleChange = (value) => {
         console.log(`selected ${value}`);
     };
@@ -26,7 +29,6 @@ const Infomation = () => {
                 <label for="exampleInputEmail1" class="form-label">Written By</label>
                 <Select
                     defaultValue="lucy"
-
                     onChange={handleChange}
                     options={[
                         {

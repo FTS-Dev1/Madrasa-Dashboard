@@ -83,7 +83,7 @@ const Login = () => {
                             <div className="flexFields">
                                 <input className='loginInput' type="text" placeholder='Email' name="email" onChange={enteringFormData} value={formData.email} />
                                 <Space direction="vertical">
-                                    <Input.Password placeholder="password" name='password' onChange={enteringFormData} value={formData.password} />
+                                    <Input.Password placeholder="Password" name='password' onChange={enteringFormData} value={formData.password} />
                                 </Space>
                                 <div className="rememberMe">
                                     <div className="checkbox">

@@ -5,6 +5,7 @@
     display: flex;
     gap: 2rem;
     overflow: hidden;
+    background-color: #fff;
 
     @media screen and (max-width:1024px) {
         flex-direction: column;
@@ -42,7 +43,7 @@
         width: 57%;
         border-radius: 100%;
         opacity: 1;
-        background-color: #FFF5C9;
+        background-color: var(--lightYellow);
         transform: translate(0, 0) rotate(-4deg 0) skewY(0) scaleX(1) scaleY(1);
 
         @media screen and (max-width:1024px) {
@@ -196,7 +197,7 @@
                     padding-top: .5rem;
 
                     .loginInput {
-                        border: 1px solid rgba(0, 0, 0, 0.3);
+                        border: 1px solid var(--border);
                         border-radius: var(--radius);
                         padding: 12px 20px;
                     }
@@ -228,7 +229,7 @@
                             max-height: 40px;
                             height: 40px;
                             width: 100%;
-                            background: #00A859;
+                            background: var(--themeColorGreen);
                             padding: 20px 35px;
                             color: #fff;
                             border-radius: var(--radius);
@@ -236,7 +237,7 @@
                             display: flex;
                             align-items: center;
                             justify-content: center;
-                            border: 1px solid #00A859;
+                            border: 1px solid var(--themeColorGreen);
 
                         }
 
@@ -268,7 +269,7 @@
                     a {
                         font-weight: bold;
                         cursor: pointer;
-                        color: rgb(10, 180, 223);
+                        color: var(--themeColorGreen);
                     }
 
                 }

@@ -1,12 +1,17 @@
 import React, { useState } from 'react'
-import {useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 // MUI | ANT-D :
-import { Button, Input, Space,Select } from 'antd';
+import { Button, Input, Space, Select } from 'antd';
 
 // Assets | ICONS :
 import madrasa from '../../../Assets/Images/logo.png'
 import logo from '../../../Assets/Images/loginLogo.png'
+
+// API:
+import { RegisterAPI } from '../../../API/auth';
+// Helpers :
+import { toast } from 'react-toastify';
 
 // CSS :
 import './Register.scss'
@@ -14,15 +19,75 @@ import './Register.scss'
 
 
 const Register = () => {
-
-    const handleChange = (value) => {
-        console.log(`selected ${value}`);
-    };
     const Navigate = useNavigate();
+
+    const [formData, setFormData] = useState({
+        firstName: "",
+        lastName: "",
+        email: "",
+        phone: "",
+        role: null,
+        password: "",
+        confirmPassword: ""
+    });
+    const [loading, setloading] = useState(false);
+
+    const enteringFormData = (event) => {
+        let { name, value } = event.target;
+        setFormData({
+            ...formData,
+            [name]: value
+        })
+    };
+    const handleSelectChange = (value) => {
+        setFormData({
+            ...formData,
+            role: value
+        })
+    };
+
+    const handleRegister = async () => {
+        setloading(true)
+        let res = await RegisterAPI({
+            firsName: formData.firstName,
+            lastName: formData.lastName,
+            email: formData.email,
+            phone: formData.phone,
+            password: formData.password,
+            confirmPassword: formData.confirmPassword
+        })
+        if (res.error != null) {
+            toast.error(res.error, {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+            });
+        } else {
+            toast.success(res.data.message, {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+            });
+            setTimeout(() => {
+                Navigate("/login")
+            }, 3000);
+        }
+        setloading(false)
+    }
+
     const signInFun = () => {
         Navigate('/login')
     }
-    const [passwordVisible, setPasswordVisible] = React.useState(false);
 
     return (
         <>
@@ -49,16 +114,17 @@ const Register = () => {
                             <p className="para">A few more clicks to sign in to your account. Manage all your e-commerce accounts in one place</p>
                             <div className="flexFields">
                                 <div className="fields">
-                                    <input className='registerInput' type="text" placeholder='First Name' name="email" />
-                                    <input className='registerInput' type="text" placeholder='Last Name' name="password" />
+                                    <input className='registerInput' type="text" placeholder='First Name' name="firstName" onChange={enteringFormData} value={formData.firstName} />
+                                    <input className='registerInput' type="text" placeholder='Last Name' name="lastName" onChange={enteringFormData} value={formData.lastName} />
                                 </div>
-                                <input className='registerInput' type="text" placeholder='Email' name="email" />
-                                <input className='registerInput' type="text" placeholder='Phone Number' name="email" />
+                                <input className='registerInput' type="text" placeholder='Email' name="email" onChange={enteringFormData} value={formData.email} />
+                                <input className='registerInput' type="text" placeholder='Phone Number' name="phone" onChange={enteringFormData} value={formData.phone} />
                                 <div className="fields">
                                     <Select
-                                        defaultValue="Teacher"
                                         style={{ width: 200 }}
-                                        onChange={handleChange}
+                                        onChange={handleSelectChange}
+                                        value={formData.role}
+                                        placeholder="Select Role"
                                         options={[
                                             {
                                                 label: 'Teacher',
@@ -72,15 +138,15 @@ const Register = () => {
                                     />
                                 </div>
                                 <div className="fields">
-                                <Space direction="vertical">
-                                    <Input.Password placeholder="Enter Password" />
-                                </Space>
-                                <Space direction="vertical">
-                                    <Input.Password placeholder="Confirm Password" />
-                                </Space>
+                                    <Space direction="vertical">
+                                        <Input.Password placeholder="Enter Password" name='password' onChange={enteringFormData} value={formData.password} />
+                                    </Space>
+                                    <Space direction="vertical">
+                                        <Input.Password placeholder="Confirm Password" name='confirmPassword' onChange={enteringFormData} value={formData.confirmPassword} />
+                                    </Space>
                                 </div>
                                 <div className="registerButton">
-                                    <Button className='register' >Register</Button>
+                                    <Button className='register' loading={loading} onClick={handleRegister} >Register</Button>
                                     <p>Already have an account? <a className='signin cursor' onClick={signInFun}>Sign In</a> </p>
                                 </div>
                             </div>

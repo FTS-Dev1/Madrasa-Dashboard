@@ -24,7 +24,7 @@ const Infomation = () => {
     const filteredOptions = OPTIONS.filter((o) => !selectedItems.includes(o));
 
     return (
-        <form>
+        <form className='blogForm'>
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Written By</label>
                 <Select

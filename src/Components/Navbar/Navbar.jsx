@@ -23,19 +23,10 @@ import './Navbar.scss'
 
 const logout = () => {
     localStorage.clear()
-    toast.warn("Logout Success", {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "dark",
-    });
+    toast.warn("Logout Success");
     setTimeout(() => {
         window.location.href = "/"
-    }, 3000);
+    }, 2000);
 }
 const text =
     <div className='popoverHeading'>
@@ -66,6 +57,7 @@ const content = (
             <AiFillSetting className='icon' />
             Logout
         </div>
+        <form action="" ></form>
     </div>
 );
 

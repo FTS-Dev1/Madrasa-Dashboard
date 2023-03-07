@@ -18,6 +18,8 @@ import './Register.scss'
 
 
 
+
+
 const Register = () => {
     const Navigate = useNavigate();
 
@@ -57,30 +59,12 @@ const Register = () => {
             confirmPassword: formData.confirmPassword
         })
         if (res.error != null) {
-            toast.error(res.error, {
-                position: "top-right",
-                autoClose: 3000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "dark",
-            });
+            toast.error(res.error);
         } else {
-            toast.success(res.data.message, {
-                position: "top-right",
-                autoClose: 3000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "dark",
-            });
+            toast.success(res.data.message);
             setTimeout(() => {
                 Navigate("/login")
-            }, 3000);
+            }, 2000);
         }
         setloading(false)
     }

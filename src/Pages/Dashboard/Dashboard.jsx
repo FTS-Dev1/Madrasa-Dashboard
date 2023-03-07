@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Routes, Route, useNavigate } from 'react-router-dom'
+import { Routes, Route, useNavigate, useLocation } from 'react-router-dom'
 
 // MUI | ANT-D :
 import { Layout, Menu } from "antd"
@@ -22,6 +22,9 @@ import './Dashboard.scss';
 const { Sider } = Layout;
 const Dashboard = () => {
     const Navigate = useNavigate()
+    const Location = useLocation()
+
+    let selectedRoutes = [Location.pathname.split("/dashboard")[1] ? Location.pathname.split("/dashboard")[1] : "/"]
 
     const [collapsed, setCollapsed] = useState(false);
 
@@ -38,7 +41,7 @@ const Dashboard = () => {
                     <div className="logoBox">
                         <img style={collapsed ? { width: "40px" } : {}} src={Logo} alt="ERROR" />
                     </div>
-                    <Menu defaultSelectedKeys={['/']} mode="inline" items={RoutesList} onClick={handleMenuClick} />
+                    <Menu mode="inline" items={RoutesList} onClick={handleMenuClick} selectedKeys={selectedRoutes} />
                 </Sider>
                 <div className="rightContainer">
                     <Routes>

@@ -3,7 +3,7 @@ import './Content.scss'
 import { ReactComponent as Down } from '../../../../../../Assets/Post/down.svg'
 import { Editor } from "react-draft-wysiwyg";
 import { EditorState } from 'draft-js';
-import ReactQuill from '../../../Blogs/Component/ReactQuill/ReactQuill';
+import ReactQuill from '../../ReactQuill/ReactQuill';
 
 
 

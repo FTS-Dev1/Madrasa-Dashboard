@@ -41,32 +41,14 @@ const Login = () => {
         setloading(true)
         let res = await LoginAPI({ email: formData.email, password: formData.password })
         if (res.error != null) {
-            toast.error(res.error, {
-                position: "top-right",
-                autoClose: 3000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "dark",
-            });
+            toast.error(res.error);
         } else {
-            toast.success(res.data.message, {
-                position: "top-right",
-                autoClose: 3000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "dark",
-            });
+            toast.success(res.data.message);
             let token = res?.data?.data?.token?.plainTextToken
             localStorage.setItem("madrasaToken", token)
             setTimeout(() => {
                 window.location.href = "/"
-            }, 3000);
+            }, 2000);
         }
         setloading(false)
     }

@@ -30,7 +30,7 @@ const LoginAPI = async ({ email, password }) => {
     return resolved;
 }
 
-const RegisterAPI = async ({ firsName, lastName, email, phone, role, password, confirmPassword }) => {
+const RegisterAPI = async ({ firstName, lastName, email, phone, type, password, password_confirmation }) => {
     let resolved = {
         error: null,
         data: null
@@ -41,13 +41,13 @@ const RegisterAPI = async ({ firsName, lastName, email, phone, role, password, c
             url: "/register",
             method: "POST",
             data: {
-                firsName,
+                firstName,
                 lastName,
                 email,
                 phone,
-                role,
+                type,
                 password,
-                confirmPassword
+                password_confirmation
             }
         })
         resolved.data = res.data

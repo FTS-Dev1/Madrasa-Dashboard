@@ -11,6 +11,9 @@ import { AiOutlineUser, AiFillSetting } from 'react-icons/ai';
 import logo from '../../Assets/Images/logo.png'
 import profile from '../../Assets/Images/profile.jpg'
 
+// Redux :
+import { useSelector } from 'react-redux';
+
 // Helpers :
 import { toast } from "react-toastify";
 
@@ -62,6 +65,7 @@ const content = (
 
 const Navbar = () => {
 
+    const UserData = useSelector(state => state.userData)
     return (
         <>
             <div className="nav-container">
@@ -92,7 +96,12 @@ const Navbar = () => {
                                 </div>
                                 <div className="nav-popover">
                                     <Popover
-                                        placement="bottomRight" title={text} content={content} trigger="click">
+                                        placement="bottomRight" title={
+                                            <div className='popoverHeading'>
+                                                <div className='name'>{UserData?.firstName} {UserData?.lastName}</div>
+                                                <div className="skill" style={{ fontSize: "0.75rem" }}>{UserData?.type?.toLocaleUpperCase()}</div>
+                                            </div>
+                                        } content={content} trigger="click">
                                         <div className='img'>
                                             <img src={profile} alt="" />
                                         </div>

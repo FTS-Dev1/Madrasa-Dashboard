@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = null
+let localUserData = localStorage.getItem("madrasaUserData")
+const initialState = localUserData ? JSON.parse(localUserData) : null
 
 
 export const userData = createSlice({
@@ -8,7 +9,8 @@ export const userData = createSlice({
     initialState,
     reducers: {
         setUserData: (state, action) => {
-            state = action.payload;
+            // state = action.payload;
+            return action.payload
         }
     }
 

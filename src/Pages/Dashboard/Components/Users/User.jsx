@@ -134,6 +134,7 @@ const User = () => {
             title: 'Name',
             dataIndex: 'name',
             key: 'name',
+            render: (_, data) => `${data?.firstName} ${data.lastName}`,
             sorter: (a, b) => a.name.localeCompare(b.name),
 
         },
@@ -149,10 +150,17 @@ const User = () => {
         },
         {
             title: 'Role',
-            dataIndex: 'role',
-            key: 'role',
-            sorter: (c, d) => c.role.localeCompare(d.role)
+            dataIndex: 'type',
+            key: 'type',
+            sorter: (c, d) => c.type.localeCompare(d.type)
         },
+        // {
+        //     title: 'Status',
+        //     dataIndex: 'state',
+        //     key: 'state',
+        //     render:(_,data) => console.log("**********************" , data),
+        //     // sorter: (c, d) => c.role.localeCompare(d.role)
+        // },
         {
             title: 'Actions',
             dataIndex: 'action',

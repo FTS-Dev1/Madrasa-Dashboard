@@ -1,9 +1,10 @@
 import React from 'react'
-import './Content.scss'
 import { ReactComponent as Down } from '../../../../../../Assets/Post/down.svg'
 import { Editor } from "react-draft-wysiwyg";
 import { EditorState } from 'draft-js';
 import ReactQuill from '../../ReactQuill/ReactQuill';
+
+import './Content.scss'
 
 
 
@@ -17,7 +18,7 @@ const Content = () => {
                 Text Content
             </div>
             <div className="editor">
-                <ReactQuill/>
+                <ReactQuill />
             </div>
         </div>
     )

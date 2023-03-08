@@ -146,6 +146,9 @@ h6 {
     // box-shadow: 0 0 0 2px rgb(5 145 255 / 10%);
     box-shadow: none;
 }
+.ant-input:focus{
+    box-shadow: none;
+}
 
 // ANT-D Selector
 .ant-select-single {

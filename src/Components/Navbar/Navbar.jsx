@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 // ANT-D | MUI :
 import { Popover } from 'antd';
@@ -16,6 +16,7 @@ import { toast } from "react-toastify";
 
 // CSS :
 import './Navbar.scss'
+import ProfileModal from '../ProfileModal/ProfileModal';
 
 
 
@@ -33,35 +34,38 @@ const text =
         <div className='name'>Morgan Freeman</div>
         <div className="skill" style={{ fontSize: "0.75rem" }}>Backend Engineer</div>
     </div>;
-const content = (
-    <div className='antPopover'>
-        <div className="border"></div>
-        <div className='popoverItem' href="#">
-            <AiOutlineUser className='icon' />
-            <p>Contact</p>
-        </div>
-        <div className='popoverItem' href="#">
-            <AiFillSetting className='icon' />
-            Add Account
-        </div>
-        <div className='popoverItem' href="#">
-            <AiFillSetting className='icon' />
-            Reset Password
-        </div>
-        <div className='popoverItem' href="#">
-            <AiFillSetting className='icon' />
-            Help
-        </div>
-        <div className="border"></div>
-        <div className='popoverItem' onClick={logout}>
-            <AiFillSetting className='icon' />
-            Logout
-        </div>
-    </div>
-);
 
 const Navbar = () => {
 
+    const [showProfileModal, setShowProfileModal] = useState(false)
+
+
+    const content = (
+        <div className='antPopover'>
+            <div className="border"></div>
+            <div className='popoverItem' href="#" onClick={()=> setShowProfileModal(true)}>
+                <AiOutlineUser className='icon' />
+                <p>Contact</p>
+            </div>
+            <div className='popoverItem' href="#">
+                <AiFillSetting className='icon' />
+                Add Account
+            </div>
+            <div className='popoverItem' href="#">
+                <AiFillSetting className='icon' />
+                Reset Password
+            </div>
+            <div className='popoverItem' href="#">
+                <AiFillSetting className='icon' />
+                Help
+            </div>
+            <div className="border"></div>
+            <div className='popoverItem' onClick={logout}>
+                <AiFillSetting className='icon' />
+                Logout
+            </div>
+        </div>
+    );
     return (
         <>
             <div className="nav-container">
@@ -103,6 +107,7 @@ const Navbar = () => {
                     </div>
                 </div>
             </div>
+            <ProfileModal openModal={showProfileModal} setOpenModal={setShowProfileModal} />
         </>
     )
 }

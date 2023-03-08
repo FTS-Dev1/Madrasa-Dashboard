@@ -25,8 +25,8 @@ const Infomation = () => {
 
     return (
         <form className='blogForm'>
-            <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Written By</label>
+            {/* <div className="mb-3">
+                <label htmlFor="exampleInputEmail1" className="form-label">Written By</label>
                 <Select
                     defaultValue="lucy"
                     onChange={handleChange}
@@ -46,13 +46,13 @@ const Infomation = () => {
                     ]}
                 />
 
-            </div>
-            <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">Post Date</label>
+            </div> */}
+            <div className="mb-3">
+                <label htmlFor="exampleInputPassword1" className="form-label">Post Date</label>
                 <DatePicker onChange={onChange} />
             </div>
-            <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">Categories</label>
+            <div className="mb-3">
+                <label htmlFor="exampleInputPassword1" className="form-label">Categories</label>
                 <Select
                     mode="multiple"
                     placeholder="Inserted are removed"
@@ -67,8 +67,8 @@ const Infomation = () => {
                     }))}
                 />
             </div>
-            <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">Tags</label>
+            <div className="mb-3">
+                <label htmlFor="exampleInputPassword1" className="form-label">Tags</label>
                 <Select
                     mode="multiple"
                     placeholder="Inserted are removed"
@@ -83,19 +83,19 @@ const Infomation = () => {
                     }))}
                 />
             </div>
-            <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">Published</label>
-                <label class="switch">
+            <div className="mb-3">
+                <label htmlFor="exampleInputPassword1" className="form-label">Published</label>
+                <label className="switch">
                     <input type="checkbox" />
-                    <span class="slider round"></span>
+                    <span className="slider round"></span>
                 </label>
 
             </div>
-            <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">Show Author Name</label>
-                <label class="switch">
+            <div className="mb-3">
+                <label htmlFor="exampleInputPassword1" className="form-label">Show Author Name</label>
+                <label className="switch">
                     <input type="checkbox" />
-                    <span class="slider round"></span>
+                    <span className="slider round"></span>
                 </label>
             </div>
         </form>

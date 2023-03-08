@@ -101,7 +101,7 @@ const Register = () => {
                                     <input className='registerInput' type="text" placeholder='First Name' name="firstName" onChange={enteringFormData} value={formData.firstName} />
                                     <input className='registerInput' type="text" placeholder='Last Name' name="lastName" onChange={enteringFormData} value={formData.lastName} />
                                 </div>
-                                <input className='registerInput' type="text" placeholder='Email' name="email" onChange={enteringFormData} value={formData.email} />
+                                <input className='registerInput' type="email" placeholder='Email' name="email" onChange={enteringFormData} value={formData.email} />
                                 <input className='registerInput' type="text" placeholder='Phone Number' name="phone" onChange={enteringFormData} value={formData.phone} />
                                 <div className="fields">
                                     <Select

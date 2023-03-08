@@ -6,10 +6,10 @@ import { DatePicker } from 'antd'
 // Components :
 import Cards from './Components/ReportCards/Cards'
 import LineChart from "./Components/SalesReportChart/SalesChart"
+import DonutChart from './Components/DonutChart/DonutChart'
 // import GrowChart from "./Components/Growthchart/Growthchart"
 // CSS :
 import './Home.scss'
-import DonutChart from './Components/DonutChart/DonutChart'
 
 
 
@@ -24,7 +24,7 @@ const Home = () => {
                 <div className="chartsBox">
                     <div className="flexLineSpace">
                         <div className="subHeading">Sales Report</div>
-                        <RangePicker />
+                        <RangePicker className='datePicker'/>
                     </div>
                     <div className="charts">
                         <LineChart />
@@ -33,7 +33,7 @@ const Home = () => {
                 <div className="donutBox">
                     <div className="flexLineSpace">
                         <div className="subHeading">Products Report</div>
-                        <RangePicker />
+                        <RangePicker className='datePicker'/>
                     </div>
                     <div className="donuts">
                         <DonutChart/>

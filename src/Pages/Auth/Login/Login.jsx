@@ -8,6 +8,10 @@ import { Button, Input, Space } from 'antd';
 import madrasa from '../../../Assets/Images/loginLogo.png';
 import logo from '../../../Assets/Images/logo.png';
 
+// Redux :
+import { useDispatch } from "react-redux";
+import { userDataActions } from "../../../Redux/Slice/userData"
+
 // API :
 import { LoginAPI } from "../../../API/auth";
 // helpers :
@@ -22,12 +26,13 @@ import "./Login.scss";
 
 const Login = () => {
     const Navigate = useNavigate();
+    const Dispatch = useDispatch();
 
     const [formData, setFormData] = useState({
         email: "",
         password: ""
-    })
-    const [loading, setloading] = useState(false)
+    });
+    const [loading, setloading] = useState(false);
 
     const enteringFormData = (event) => {
         let { name, value } = event.target;
@@ -35,7 +40,7 @@ const Login = () => {
             ...formData,
             [name]: value
         })
-    }
+    };
 
     const handleLogin = async () => {
         setloading(true)
@@ -44,8 +49,10 @@ const Login = () => {
             toast.error(res.error);
         } else {
             toast.success(res.data.message);
+            Dispatch(userDataActions.setUserData(res?.data?.data))
             let token = res?.data?.data?.token?.plainTextToken
             localStorage.setItem("madrasaToken", token)
+            localStorage.setItem("madrasaUserData", JSON.stringify(res?.data?.data))
             setTimeout(() => {
                 window.location.href = "/"
             }, 2000);

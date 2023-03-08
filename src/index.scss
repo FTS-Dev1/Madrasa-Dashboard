@@ -132,11 +132,19 @@ h6 {
 // ANT-D Input
 .ant-input{
     border-color: var(--border) !important;
+   
 }
 .ant-input-affix-wrapper {
     padding: 9px 20px !important;
     border-radius: var(--radius);
     border: 1px solid var(--border) !important;
+    &:hover{
+        border-color: var(--themeColorGreen) !important;
+    }
+}
+.ant-input-affix-wrapper-focused{
+    // box-shadow: 0 0 0 2px rgb(5 145 255 / 10%);
+    box-shadow: none;
 }
 
 // ANT-D Selector
@@ -171,7 +179,9 @@ h6 {
         border-color: var(--themeColorGreen) !important;
     }
 }
-
+.ant-picker-active-bar{
+    background-color: var(--themeColorGreen) !important;
+}
 // ANT-D popover
 .antPopover {
     display: flex;

@@ -21,6 +21,16 @@
         grid-template-columns: 1fr 1fr;
         gap: 3rem;
 
+        @media screen and (max-width:1450px) {
+            .datePicker {
+                width: 250px !important;
+            }
+        }
+
+        @media screen and (max-width:1200px) {
+            grid-template-columns: 1fr;
+        }
+
         .chartsBox,
         .donutBox {
             display: flex;

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 // MUI | ANT-D :
 import { Modal, Box } from "@mui/material"
 // Assets | Ant-D :
@@ -19,6 +19,7 @@ import { toast } from 'react-toastify';
 
 // CSS :
 import "./ShowPermissionModal.scss"
+import { GetAllPermissionsAPI } from '../../API/user';
 const defaultStyle = {
     position: 'absolute',
     top: '10%',
@@ -45,10 +46,14 @@ const defaultStyle = {
 
 
 const ShowPermissionModal = ({ openModal, setOpenModal }) => {
+
+
+    const [allPermissions, setAllPermissions] = useState([])
+    const [loading, setLoading] = useState(false)
+
     const handleClose = () => {
         setOpenModal(false)
     }
-    const Navigate = useNavigate();
 
     const [formData, setFormData] = useState({
         firstName: "",
@@ -59,7 +64,6 @@ const ShowPermissionModal = ({ openModal, setOpenModal }) => {
         password: "",
         confirmPassword: ""
     });
-    const [loading, setloading] = useState(false);
 
     const enteringFormData = (event) => {
         let { name, value } = event.target;
@@ -74,28 +78,6 @@ const ShowPermissionModal = ({ openModal, setOpenModal }) => {
             role: value
         })
     };
-
-    const handleRegister = async () => {
-        setloading(true)
-        let res = await RegisterAPI({
-            firstName: formData.firstName,
-            lastName: formData.lastName,
-            email: formData.email,
-            phone: formData.phone,
-            type: formData.role,
-            password: formData.password,
-            password_confirmation: formData.confirmPassword
-        })
-        if (res.error != null) {
-            toast.error(res.error);
-        } else {
-            toast.success(res.data.message);
-            setTimeout(() => {
-                Navigate("/login")
-            }, 2000);
-        }
-        setloading(false)
-    }
 
 
     const arr = [
@@ -149,6 +131,21 @@ const ShowPermissionModal = ({ openModal, setOpenModal }) => {
         },
     ]
 
+    const gettingAllRoles = async () => {
+        setLoading(true)
+        let res = await GetAllPermissionsAPI()
+        if (res.error != null) {
+            toast.error(res.error);
+        } else {
+            let rolesData = res?.data || null
+            setAllPermissions(rolesData?.data || [])
+        }
+        setLoading(false)
+    }
+    useEffect(() => {
+        gettingAllRoles()
+    }, [])
+    console.log("-------------" , allPermissions);
     return (
         <>
             <Modal
@@ -166,7 +163,7 @@ const ShowPermissionModal = ({ openModal, setOpenModal }) => {
                             <div className="heading">Permisson:</div>
                             <div className="flexPermissions">
                                 {
-                                    arr.map((data, index) => {
+                                    allPermissions.map((data, index) => {
                                         return (
                                             <div className="permission" key={index}>
                                                 {/* <input type="radio" /> */}
@@ -174,7 +171,7 @@ const ShowPermissionModal = ({ openModal, setOpenModal }) => {
                                                     <input type="checkbox" />
                                                     <span class="slider round"></span>
                                                 </label>
-                                                <div className="roles">{data.permisson}</div>
+                                                <div className="roles">{data.name}</div>
                                             </div>
                                         )
                                     })

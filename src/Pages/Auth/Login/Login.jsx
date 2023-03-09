@@ -55,7 +55,7 @@ const Login = () => {
             localStorage.setItem("madrasaUserData", JSON.stringify(res?.data?.data))
             setTimeout(() => {
                 window.location.href = "/"
-            }, 2000);
+            }, 500);
         }
         setloading(false)
     }

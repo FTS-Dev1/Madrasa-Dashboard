@@ -23,8 +23,8 @@ const AllBlogs = () => {
         const res = await GetAllBlogsAPI()
         if (res.error != null) {
             toast.error(res?.error)
-        } else {
-            let blogData = res.data
+        } else {            
+            let blogData = res.data.data
             setData(blogData?.data || [])
         }
         setLoading(false)
@@ -53,12 +53,12 @@ const AllBlogs = () => {
                             <>
                                 <div className="blogsBox">
                                     {
-                                        data.map((blog) => {
+                                        data?.map((blog) => {
                                             console.log("------->", blog);
                                             return (
                                                 <>
                                                     <div className="blog">
-                                                        <img src={cardImg} alt="ERROR" />
+                                                        <img src={`${process.env.REACT_APP_STORAGE_URL}/${blog?.image?.url}`} alt="ERROR" />
                                                         <div className="details">
                                                             <div className="title">{blog?.title}</div>
                                                             <div className="content">{blog?.content.substring(0, 300).replace(/<[^>]+>/g, '')}...</div>

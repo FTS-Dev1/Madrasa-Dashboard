@@ -12,7 +12,6 @@ import { Provider } from 'react-redux';
 // CSS :
 import './index.scss';
 
-// import Dot from "dotenv"
 
 
 

@@ -51,12 +51,13 @@ const Register = () => {
     const handleRegister = async () => {
         setloading(true)
         let res = await RegisterAPI({
-            firsName: formData.firstName,
+            firstName: formData.firstName,
             lastName: formData.lastName,
             email: formData.email,
             phone: formData.phone,
+            type: formData.role,
             password: formData.password,
-            confirmPassword: formData.confirmPassword
+            password_confirmation: formData.confirmPassword
         })
         if (res.error != null) {
             toast.error(res.error);

@@ -44,7 +44,6 @@ const App = () => {
         pauseOnHover
         theme="dark"
       />
-      {/* <Navbar /> */}
       <Routes>
         <Route path='login' element={<Login />} />
         <Route path='register' element={<Register />} />

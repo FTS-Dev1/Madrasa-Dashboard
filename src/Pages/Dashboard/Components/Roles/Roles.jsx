@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react'
 
 // Components :
 import Table from '../Users/Component/table/Table'
+import ShowPermissionModal from '../../../../Components/ShowPermissionModal/ShowPermissionModal';
 
 // Assets | ICONS :
-import { FaEdit } from 'react-icons/fa';
+import { RiEdit2Fill } from 'react-icons/ri';
 import { BiShow } from 'react-icons/bi';
 import { MdDelete } from 'react-icons/md';
 
@@ -15,19 +16,19 @@ import { toast } from "react-toastify";
 
 //CSS
 import './Roles.scss'
-import ShowPermissionModal from '../../../../Components/ShowPermissionModal/ShowPermissionModal';
 
 
 
 const Roles = () => {
+
     const [rows, setRows] = useState([
-        {
-            id: 121,
-            name: `Osama Aslam`,
-            email: `osamaaslam029@gmail.com`,
-            role: "Admin",
-            action: "Actions",
-        },
+        // {
+        //     id: 121,
+        //     name: `Osama Aslam`,
+        //     email: `osamaaslam029@gmail.com`,
+        //     role: "Admin",
+        //     action: "Actions",
+        // },
 
     ])
 
@@ -49,7 +50,6 @@ const Roles = () => {
             dataIndex: 'name',
             key: 'name',
             sorter: (a, b) => a.name.localeCompare(b.name),
-
         },
         {
             title: 'Actions',
@@ -57,9 +57,15 @@ const Roles = () => {
             key: 'action',
             render: (_, data) => <>
                 <div className="actionBox">
-                    <FaEdit className='icon cursor' onClick={() => setShowPermissionsModal(true)} />
-                    <BiShow className='icon cursor' />
-                    <MdDelete className='icon cursor' />
+                    <div className="actionBtn">
+                        <RiEdit2Fill className='icon cursor' onClick={() => setShowPermissionsModal(true)} />
+                    </div>
+                    <div className="actionBtn">
+                        <BiShow className='icon cursor' />
+                    </div>
+                    <div className="actionBtn">
+                        <MdDelete className='icon cursor' />
+                    </div>
                 </div>
             </>
 

@@ -39,16 +39,21 @@
             gap: 1rem;
             border-radius: 5px;
 
-            .image {
-                width: 100px;
-                height: 100px;
+            .imgBox {
+                width: 100%;
+                height: 100%;
+                overflow: hidden;
+                padding: .3rem;
+                border-radius: 8px;
 
                 img {
-                    border-radius: 10px;
                     width: 100%;
                     height: 100%;
+                    object-fit: cover;
+                    border-radius: 5px;
                 }
             }
+
         }
     }
 
@@ -66,6 +71,7 @@
     color: var(--themeColorGreen) !important;
 }
 
-.ql-container .ql-snow,.ql-editor .ql-blank{
+.ql-container .ql-snow,
+.ql-editor .ql-blank {
     height: 110px !important;
 }

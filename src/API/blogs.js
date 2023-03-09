@@ -30,5 +30,29 @@ const GetAllBlogsAPI = async () => {
     return resolved;
 }
 
+const CreatBlogsAPI = async (formData) => {
+    let resolved = {
+        error: null,
+        data: null
+    }
 
-export { GetAllBlogsAPI };
+    try {
+        let res = await axios({
+            url: "/blogs",
+            method: "POST",
+            data: formData,
+            headers: AuthTokenGen()
+        })
+        resolved.data = res.data
+    } catch (err) {
+        if (err && err.response && err?.response?.data?.message) {
+            resolved.error = err.response.data.message
+        } else {
+            resolved.error = "Something went Wrong"
+        }
+    }
+    return resolved;
+}
+
+
+export { GetAllBlogsAPI, CreatBlogsAPI };

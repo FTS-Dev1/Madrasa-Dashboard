@@ -34,6 +34,8 @@ const defaultStyle = {
     borderRadius: ".5rem",
     py: 2,
     px: 2,
+    borderColor: "var(--themeColorGreen)",
+    height: "fit-content",
 }
 
 
@@ -167,7 +169,11 @@ const ShowPermissionModal = ({ openModal, setOpenModal }) => {
                                     arr.map((data, index) => {
                                         return (
                                             <div className="permission" key={index}>
-                                                <input type="radio" />
+                                                {/* <input type="radio" /> */}
+                                                <label class="switch">
+                                                    <input type="checkbox" />
+                                                    <span class="slider round"></span>
+                                                </label>
                                                 <div className="roles">{data.permisson}</div>
                                             </div>
                                         )
@@ -176,7 +182,6 @@ const ShowPermissionModal = ({ openModal, setOpenModal }) => {
                             </div>
                             <div className="roleButton">
                                 <Button className='greenButton' loading={loading}>Submit</Button>
-                                
                             </div>
                         </div>
                     </div>

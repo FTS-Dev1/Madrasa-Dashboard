@@ -1,7 +1,9 @@
 import { CircularProgress } from '@mui/material';
+import {Button} from 'antd'
 import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import { GetAllBlogsAPI } from '../../../../../API/blogs';
+import cardImg from '../../../../../Assets/Images/download.png'
 
 // CSS :
 import "./AllBlogs.scss";
@@ -22,7 +24,7 @@ const AllBlogs = () => {
         if (res.error != null) {
             toast.error(res?.error)
         } else {
-            let blogData = res.data.data
+            let blogData = res.data
             setData(blogData?.data || [])
         }
         setLoading(false)
@@ -56,10 +58,14 @@ const AllBlogs = () => {
                                             return (
                                                 <>
                                                     <div className="blog">
-                                                        <img src={"idsf"} alt="ERROR" />
+                                                        <img src={cardImg} alt="ERROR" />
                                                         <div className="details">
                                                             <div className="title">{blog?.title}</div>
-                                                            <div className="title">{blog?.content}</div>
+                                                            <div className="content">{blog?.content.substring(0, 300).replace(/<[^>]+>/g, '')}...</div>
+                                                        </div>
+                                                        <div className="blogButtons">
+                                                            <Button className="greenBtn">Edit</Button>
+                                                            <Button className="dangerBtn greenBtn">Delete</Button>
                                                         </div>
                                                     </div>
                                                 </>

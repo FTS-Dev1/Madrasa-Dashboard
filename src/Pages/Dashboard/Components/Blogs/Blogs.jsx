@@ -96,67 +96,69 @@ const Blog = () => {
 
     return (
 
-        <>
-            {/* <AllBlogs /> */}
 
-            <div className='blogContainer'>
-                <div className="title-bar">
-                    <div className="heading">Add Blogs</div>
-                    <div className="buttons">
-                        {/* <div className="language-dropdown">
-                            <Popover placement="bottomRight" content={english} trigger="click">
-                                <button className="btn btn-secondary " type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    English
-                                    <Down className="icon" />
-                                </button>
-                            </Popover>
-                        </div> */}
-                        {/* <div className="preview-button">
-                            <button type="button" className="btn btn-primary">
-                                <Preview className='icon' />
-                                Preview
-                            </button>
-                        </div> */}
-                        <Button className="greenBtn" loading={loading} onClick={saveBlog}>
-                            Save
-                        </Button>
-                        {/* <div className="save-popover">
-                            <Popover placement="bottomRight" content={save} trigger="click">
-                            </Popover>
-                        </div> */}
-                    </div>
-                </div>
-                <div className="flex-sections">
-                    <div className="editor-section">
-                        <Input size="large" placeholder="Title" value={postData.title} name="title" onChange={enteringPostData} />
-                        <div className="flex-editor">
-                            <div className="active-buttons">
-                                <div className="flex-buttons">
-                                    <button style={stepper == 0 ? { backgroundColor: "#fff" } : {}} onClick={() => { setStepper(0) }}>
-                                        <Down className='icon' />
-                                        Quote & Images
-                                    </button>
-                                    <button style={stepper == 1 ? { backgroundColor: "#fff" } : {}} onClick={() => { setStepper(1) }}>
-                                        <Down className='icon' />
-                                        Content
-                                    </button>
-                                </div>
-                            </div>
-                            {
-                                stepper == 0
-                                    ?
-                                    <Caption postData={postData} enteringPostData={enteringPostData} />
-                                    :
-                                    <Content postData={postData} enteringPostData={enteringPostData} />
-                            }
-                        </div>
-                    </div>
-                    <div className="info-section">
-                        <Infomation postData={postData} enteringPostData={enteringPostData} />
-                    </div>
-                </div>
-            </div>
-        </>
+         <AllBlogs />
+
+        // <div className='blogContainer'>
+        //     <div className="title-bar">
+        //         <div className="heading">Add Blogs</div>
+
+        //         <div className="buttons">
+        //             <Button className="greenBtn" loading={loading} onClick={saveBlog}>
+        //                 Save
+        //             </Button>
+        //             {/* <div className="language-dropdown">
+        //                     <Popover placement="bottomRight" content={english} trigger="click">
+        //                         <button className="btn btn-secondary " type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        //                             English
+        //                             <Down className="icon" />
+        //                         </button>
+        //                     </Popover>
+        //                 </div> */}
+        //             {/* <div className="preview-button">
+        //                     <button type="button" className="btn btn-primary">
+        //                         <Preview className='icon' />
+        //                         Preview
+        //                     </button>
+        //                 </div> */}
+
+        //             {/* <div className="save-popover">
+        //                     <Popover placement="bottomRight" content={save} trigger="click">
+        //                     </Popover>
+        //                 </div> */}
+        //         </div>
+        //     </div>
+        //     <div className="flex-sections">
+        //         <div className="editor-section">
+        //             <Input size="large" placeholder="Title" value={postData.title} name="title" onChange={enteringPostData} />
+        //             <div className="flex-editor">
+        //                 <div className="active-buttons">
+        //                     <div className="flex-buttons">
+        //                         <button style={stepper == 0 ? { backgroundColor: "#fff" } : {}} onClick={() => { setStepper(0) }}>
+        //                             <Down className='icon' />
+        //                             Quote & Images
+        //                         </button>
+        //                         <button style={stepper == 1 ? { backgroundColor: "#fff" } : {}} onClick={() => { setStepper(1) }}>
+        //                             <Down className='icon' />
+        //                             Content
+        //                         </button>
+        //                     </div>
+        //                 </div>
+        //                 {
+        //                     stepper == 0
+        //                         ?
+        //                         <Caption postData={postData} enteringPostData={enteringPostData} />
+        //                         :
+        //                         <Content postData={postData} enteringPostData={enteringPostData} />
+        //                 }
+        //             </div>
+        //         </div>
+        //         <div className="info-section">
+        //             <Infomation postData={postData} enteringPostData={enteringPostData} />
+        //         </div>
+        //     </div>
+        // </div>
+
     )
 }
 

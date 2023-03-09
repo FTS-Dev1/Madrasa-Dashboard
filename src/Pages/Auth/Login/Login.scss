@@ -249,6 +249,9 @@
                             border: 1px solid var(--themeColorGreen);
 
                         }
+                        .anticon svg {
+                            fill: #fff !important;
+                        }
 
                         p {
                             padding-top: 1rem;

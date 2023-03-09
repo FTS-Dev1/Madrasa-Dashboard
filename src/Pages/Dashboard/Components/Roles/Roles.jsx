@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 
 // Components :
 import Table from '../Users/Component/table/Table'
+import ShowPermissionModal from '../../../../Components/ShowPermissionModal/ShowPermissionModal';
 
 // Assets | ICONS :
 import { RiEdit2Fill } from 'react-icons/ri';
@@ -15,20 +16,19 @@ import { toast } from "react-toastify";
 
 //CSS
 import './Roles.scss'
-import ShowPermissionModal from '../../../../Components/ShowPermissionModal/ShowPermissionModal';
 
 
 
 const Roles = () => {
-    const [showPermissionsModal,setShowPermissionsModal]=useState(false)
+    const [showPermissionsModal, setShowPermissionsModal] = useState(false)
     const [rows, setRows] = useState([
-        {
-            id: 121,
-            name: `Osama Aslam`,
-            email: `osamaaslam029@gmail.com`,
-            role: "Admin",
-            action: "Actions",
-        },
+        // {
+        //     id: 121,
+        //     name: `Osama Aslam`,
+        //     email: `osamaaslam029@gmail.com`,
+        //     role: "Admin",
+        //     action: "Actions",
+        // },
 
     ])
 
@@ -47,7 +47,7 @@ const Roles = () => {
             dataIndex: 'name',
             key: 'name',
             render: (_, data) => `${data?.firstName} ${data.lastName}`,
-            sorter: (a, b) => a.name.localeCompare(b.name),
+            sorter: (a, b) => a.data.localeCompare(b.data),
 
         },
         {
@@ -74,9 +74,15 @@ const Roles = () => {
             key: 'action',
             render: (_, data) => <>
                 <div className="actionBox">
-                    <RiEdit2Fill className='icon cursor' onClick={()=>setShowPermissionsModal(true)}/>
-                    <BiShow className='icon cursor'/>
-                    <MdDelete className='icon cursor'/>
+                    <div className="actionBtn">
+                        <RiEdit2Fill className='icon cursor' onClick={() => setShowPermissionsModal(true)} />
+                    </div>
+                    <div className="actionBtn">
+                        <BiShow className='icon cursor' />
+                    </div>
+                    <div className="actionBtn">
+                        <MdDelete className='icon cursor' />
+                    </div>
                 </div>
             </>
 
@@ -109,19 +115,19 @@ const Roles = () => {
     }, [])
     return (
         <>
-        <div className="rolesContainer">
-            <div className="heading">Roles</div>
-            <div className="table">
-                <Table
-                    loading={loading}
-                    rows={filteredData}
-                    columns={columns}
-                    hasSearch
-                    searchHandler={searchHandler}
-                />
+            <div className="rolesContainer">
+                <div className="heading">Roles</div>
+                <div className="table">
+                    <Table
+                        loading={loading}
+                        rows={filteredData}
+                        columns={columns}
+                        hasSearch
+                        searchHandler={searchHandler}
+                    />
+                </div>
             </div>
-        </div>
-        <ShowPermissionModal openModal={showPermissionsModal} setOpenModal={setShowPermissionsModal}/>
+            <ShowPermissionModal openModal={showPermissionsModal} setOpenModal={setShowPermissionsModal} />
         </>
     )
 }

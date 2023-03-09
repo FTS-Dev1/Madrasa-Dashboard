@@ -167,6 +167,7 @@ input {
 .greenBtn {
     max-height: 40px;
     height: 40px;
+    min-width: 20px;
     width: 100%;
     background: var(--themeColorGreen);
     padding: 20px 35px;
@@ -176,12 +177,9 @@ input {
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid var(--themeColorGreen);
+    border: none !important;
 
-    &:hover {
-        color: white !important;
-        border: none !important;
-    }
+
 }
 
 /* ************ ANT-Design ************** */
@@ -282,7 +280,8 @@ input {
 
 // ANT-D icons
 .anticon svg {
-    fill: var(--themeColorGreen) !important;
+    // fill: var(--themeColorGreen) !important;
+    fill: #fff !important;
 }
 // ANT Button
 :where(.css-dev-only-do-not-override-1km3mtt).ant-btn-default:not(:disabled):hover{

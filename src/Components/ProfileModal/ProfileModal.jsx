@@ -34,7 +34,10 @@ const defaultStyle = {
     borderRadius: ".5rem",
     py: 2,
     px: 2,
-    zIndex:"500"
+    zIndex:"500",
+    borderColor:"var(--themeColorGreen)",
+    height:"fit-content"
+
 }
 
 

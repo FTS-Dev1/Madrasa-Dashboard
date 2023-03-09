@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react'
 import Table from '../Users/Component/table/Table'
 
 // Assets | ICONS :
-import { FaEdit } from 'react-icons/fa';
+import { RiEdit2Fill } from 'react-icons/ri';
 import { BiShow } from 'react-icons/bi';
 import { MdDelete } from 'react-icons/md';
 
@@ -74,7 +74,7 @@ const Roles = () => {
             key: 'action',
             render: (_, data) => <>
                 <div className="actionBox">
-                    <FaEdit className='icon cursor' onClick={()=>setShowPermissionsModal(true)}/>
+                    <RiEdit2Fill className='icon cursor' onClick={()=>setShowPermissionsModal(true)}/>
                     <BiShow className='icon cursor'/>
                     <MdDelete className='icon cursor'/>
                 </div>

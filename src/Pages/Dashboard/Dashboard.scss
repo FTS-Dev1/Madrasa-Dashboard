@@ -8,6 +8,7 @@
         grid-template-rows: auto 45px;
         background-color: var(--lightYellow);
         box-shadow: 0px 1px 8px 0px rgba(0, 0, 0, 0.2);
+        overflow: hidden;
 
         .ant-layout-sider-children {
             display: flex;
@@ -19,9 +20,11 @@
                 align-items: center;
                 padding: 1.5rem 0;
                 opacity: 0;
+                height: 120px;
 
                 img {
                     width: 100px;
+                    height: 100%;
                     object-fit: contain;
 
                 }

@@ -1,30 +1,19 @@
 import React, { useState } from 'react'
 
-import { Select } from 'antd';
-import { DatePicker } from 'antd';
+// MUI | ANT-D :
+import { Select, DatePicker } from 'antd';
 
-// Css
+// CSS :
 import './Information.scss'
 
 
 
 
-const OPTIONS = ['Apples', 'Nails', 'Bananas', 'Helicopters', 'Nails', 'Bananas', 'Helicopters'];
 
-const onChange = (date, dateString) => {
-    console.log(date, dateString);
-};
-
-const Infomation = () => {
-    const handleChange = (value) => {
-        console.log(`selected ${value}`);
-    };
-
-    const [selectedItems, setSelectedItems] = useState([]);
-    const filteredOptions = OPTIONS.filter((o) => !selectedItems.includes(o));
+const Infomation = ({ postData, enteringPostData }) => {
 
     return (
-        <form className='blogForm'>
+        <div className='blogForm'>
             {/* <div className="mb-3">
                 <label htmlFor="exampleInputEmail1" className="form-label">Written By</label>
                 <Select
@@ -47,44 +36,38 @@ const Infomation = () => {
                 />
 
             </div> */}
-            <div className="mb-3">
+            {/* <div className="mb-3">
                 <label htmlFor="exampleInputPassword1" className="form-label">Post Date</label>
                 <DatePicker onChange={onChange} />
-            </div>
+            </div> */}
             <div className="mb-3">
-                <label htmlFor="exampleInputPassword1" className="form-label">Categories</label>
+                <label className="form-label">Categories</label>
                 <Select
-                    mode="multiple"
-                    placeholder="Inserted are removed"
-                    value={selectedItems}
-                    onChange={setSelectedItems}
+                    mode="tags"
+                    placeholder="Category"
+                    value={postData.categories}
+                    onChange={(value) => enteringPostData({ target: { name: "categories", value: value } })}
                     style={{
                         width: '100%',
                     }}
-                    options={filteredOptions.map((item) => ({
-                        value: item,
-                        label: item,
-                    }))}
+                    dropdownStyle={{ display: "none" }}
                 />
             </div>
             <div className="mb-3">
-                <label htmlFor="exampleInputPassword1" className="form-label">Tags</label>
+                <label className="form-label">Tags</label>
                 <Select
-                    mode="multiple"
-                    placeholder="Inserted are removed"
-                    value={selectedItems}
-                    onChange={setSelectedItems}
+                    mode="tags"
+                    placeholder="Tag"
+                    value={postData.tags}
+                    onChange={(value) => enteringPostData({ target: { name: "tags", value: value } })}
                     style={{
                         width: '100%',
                     }}
-                    options={filteredOptions.map((item) => ({
-                        value: item,
-                        label: item,
-                    }))}
+                    dropdownStyle={{ display: "none" }}
                 />
             </div>
-            <div className="mb-3">
-                <label htmlFor="exampleInputPassword1" className="form-label">Published</label>
+            {/* <div className="mb-3">
+                <label className="form-label">Published</label>
                 <label className="switch">
                     <input type="checkbox" />
                     <span className="slider round"></span>
@@ -97,8 +80,8 @@ const Infomation = () => {
                     <input type="checkbox" />
                     <span className="slider round"></span>
                 </label>
-            </div>
-        </form>
+            </div> */}
+        </div>
     )
 }
 

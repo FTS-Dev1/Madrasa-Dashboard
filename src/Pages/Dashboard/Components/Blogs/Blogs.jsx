@@ -26,19 +26,19 @@ import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 
 const english = (
     <div className='antPopover'>
-        <div className="popoverItem" href="#">
+        <div className="popoverItem">
             <Save className='icon' />
             As New Post
         </div>
-        <div className="popoverItem" href="#">
+        <div className="popoverItem">
             <Save className='icon' />
             As Draft
         </div>
-        <div className="popoverItem" href="#">
+        <div className="popoverItem">
             <Save className='icon' />
             Export to PDF
         </div>
-        <div className="popoverItem" href="#">
+        <div className="popoverItem">
             <Save className='icon' />
             Export to Word
         </div>
@@ -47,19 +47,19 @@ const english = (
 );
 const save = (
     <div className='antPopover'>
-        <div className="popoverItem" href="#">
+        <div className="popoverItem">
             <Save className='icon' />
             As New Post
         </div>
-        <div className="popoverItem" href="#">
+        <div className="popoverItem">
             <Save className='icon' />
             As Draft
         </div>
-        <div className="popoverItem" href="#">
+        <div className="popoverItem">
             <Save className='icon' />
             Export to PDF
         </div>
-        <div className="popoverItem" href="#">
+        <div className="popoverItem">
             <Save className='icon' />
             Export to Word
         </div>

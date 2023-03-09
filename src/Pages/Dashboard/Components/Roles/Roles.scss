@@ -1,0 +1,15 @@
+.table {
+    padding-top: 3rem;
+
+    .actionBox {
+        // width: 100%;
+        display: flex;
+        gap: 5px;
+        // justify-content: center;
+        // align-items: center;
+        .icon{
+            font-size: 20px;
+            color: var(--themeColorGreen);
+        }
+    }
+}

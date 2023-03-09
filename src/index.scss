@@ -147,6 +147,10 @@ h6 {
 // ANT-D Input
 .ant-input {
     border-color: var(--border) !important;
+    &:hover{
+        border-color: var(--themeColorGreen) !important;
+
+    }
 
 }
 

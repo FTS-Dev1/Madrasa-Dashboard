@@ -10,7 +10,7 @@ import { BiShow } from 'react-icons/bi';
 import { MdDelete } from 'react-icons/md';
 
 // API :
-import { GetAllUsersAPI } from '../../../../API/user'
+import { GetAllPermissionsAPI, GetAllRolesAPI } from '../../../../API/user'
 // Helpers :
 import { toast } from "react-toastify";
 
@@ -20,7 +20,7 @@ import './Roles.scss'
 
 
 const Roles = () => {
-    const [showPermissionsModal, setShowPermissionsModal] = useState(false)
+
     const [rows, setRows] = useState([
         // {
         //     id: 121,
@@ -36,6 +36,9 @@ const Roles = () => {
     const [filteredData, setFilteredData] = useState([])
     const [loading, setLoading] = useState(false)
 
+    const [showPermissionsModal, setShowPermissionsModal] = useState(false)
+
+
     const columns = [
         {
             title: 'ID',
@@ -46,28 +49,8 @@ const Roles = () => {
             title: 'Name',
             dataIndex: 'name',
             key: 'name',
-            render: (_, data) => `${data?.firstName} ${data.lastName}`,
-            sorter: (a, b) => a.data.localeCompare(b.data),
-
+            sorter: (a, b) => a.name.localeCompare(b.name),
         },
-        {
-            title: 'Email',
-            dataIndex: 'email',
-            key: 'email',
-        },
-        {
-            title: 'Role',
-            dataIndex: 'type',
-            key: 'type',
-            sorter: (c, d) => c.type.localeCompare(d.type)
-        },
-        // {
-        //     title: 'Status',
-        //     dataIndex: 'state',
-        //     key: 'state',
-        //     render:(_,data) => console.log("**********************" , data),
-        //     // sorter: (c, d) => c.role.localeCompare(d.role)
-        // },
         {
             title: 'Actions',
             dataIndex: 'action',
@@ -99,19 +82,20 @@ const Roles = () => {
         setFilteredData(filteredData)
     }
 
-    const gettingAllUsers = async () => {
+    const gettingAllRoles = async () => {
         setLoading(true)
-        let res = await GetAllUsersAPI()
+        let res = await GetAllRolesAPI()
         if (res.error != null) {
             toast.error(res.error);
         } else {
-            setData(res?.data?.data?.users || [])
-            setFilteredData(res?.data?.data?.users || [])
+            let rolesData = res?.data?.data || null
+            setData(rolesData?.roles || [])
+            setFilteredData(rolesData?.roles || [])
         }
         setLoading(false)
     }
     useEffect(() => {
-        gettingAllUsers()
+        gettingAllRoles()
     }, [])
     return (
         <>

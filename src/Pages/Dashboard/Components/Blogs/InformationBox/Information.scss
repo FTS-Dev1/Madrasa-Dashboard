@@ -135,11 +135,11 @@
         }
 
         input:checked+.slider {
-            background-color: var(--themeColor);
+            background-color: var(--themeColorGreen);
         }
 
         input:focus+.slider {
-            box-shadow: 0 0 1px var(--themeColor);
+            box-shadow: 0 0 1px var(--themeColorGreen);
         }
 
         input:checked+.slider:before {

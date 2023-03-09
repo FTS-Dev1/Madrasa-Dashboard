@@ -39,7 +39,7 @@ const Dashboard = () => {
             <div className="dashboardContainer">
                 <Sider collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)} width="250" className="sider" trigger={<> <div className="trig">{collapsed ? <FaAngleRight /> : <FaAngleLeft />}</div> </>}>
                     <div className="logoBox">
-                        <img style={collapsed ? { width: "40px" } : {}} src={Logo} alt="ERROR" />
+                        <img style={collapsed ? { width: "40px", height: "70px" } : {}} src={Logo} alt="ERROR" />
                     </div>
                     <Menu mode="inline" items={RoutesList} onClick={handleMenuClick} selectedKeys={selectedRoutes} />
                 </Sider>

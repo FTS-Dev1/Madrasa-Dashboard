@@ -57,7 +57,7 @@ h6 {
 
 ::-webkit-scrollbar {
     width: 5px;
-    display: none;
+    // display: none;
 }
 
 ::-webkit-scrollbar-track {
@@ -106,6 +106,26 @@ h6 {
 .cursor {
     cursor: pointer;
 }
+
+input {
+    accent-color: var(--themeColorGreen);
+}
+.greenButton {
+    max-height: 40px;
+    height: 40px;
+    width: 100%;
+    background: #00A859;
+    padding: 20px 35px;
+    color: #fff;
+    border-radius: var(--radius);
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #00A859;
+
+}
+
 
 // Flex Properties
 .flexLineSpace {
@@ -168,10 +188,8 @@ h6 {
 // ANT-D Input
 .ant-input {
     border-color: var(--border) !important;
-
     &:hover {
         border-color: var(--themeColorGreen) !important;
-
     }
 
 }
@@ -194,12 +212,10 @@ h6 {
 .ant-input:focus {
     box-shadow: none;
 }
-
 // ANT-D Selector
 .ant-select-single {
     font-size: 14px !important;
     width: 100% !important;
-
 }
 
 .ant-select-selector {
@@ -268,7 +284,11 @@ h6 {
 .anticon svg {
     fill: var(--themeColorGreen) !important;
 }
-
+// ANT Button
+:where(.css-dev-only-do-not-override-1km3mtt).ant-btn-default:not(:disabled):hover{
+    color: var(--light) !important;
+    border-color: var(--themeColorGreen) !important;
+}
 // ANT-D table 
 .table {
 

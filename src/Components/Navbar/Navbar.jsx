@@ -43,19 +43,19 @@ const Navbar = () => {
     const content = (
         <div className='antPopover'>
             <div className="border"></div>
-            <div className='popoverItem' href="#" onClick={() => setShowProfileModal(true)}>
+            <div className='popoverItem' onClick={() => setShowProfileModal(true)}>
                 <AiOutlineUser className='icon' />
-                <p>Contact</p>
+                <p>Create New User</p>
             </div>
-            <div className='popoverItem' href="#">
+            <div className='popoverItem'>
                 <AiFillSetting className='icon' />
                 Add Account
             </div>
-            <div className='popoverItem' href="#">
+            <div className='popoverItem'>
                 <AiFillSetting className='icon' />
                 Reset Password
             </div>
-            <div className='popoverItem' href="#">
+            <div className='popoverItem'>
                 <AiFillSetting className='icon' />
                 Help
             </div>

@@ -9,6 +9,7 @@ import { SiBloglovin } from "react-icons/si"
 import Home from "./Components/Home/Home";
 import User from "./Components/Users/User";
 import Blogs from "./Components/Blogs/Blogs";
+import Roles from "./Components/Roles/Roles";
 
 
 
@@ -23,9 +24,9 @@ const getSideBarData = ({ label, key, icon, children, element }) => {
 }
 
 const routsList = [
-
     getSideBarData({ label: 'Dashboard', key: '/', icon: <MdDashboard />, element: <Home /> }),
     getSideBarData({ label: 'Users', key: '/users', icon: <FiUsers />, element: <User /> }),
+    getSideBarData({ label: 'Roles', key: '/roles', icon: <FiUsers />, element: <Roles /> }),
     getSideBarData({ label: 'Blogs', key: '/posts', icon: <SiBloglovin />, element: <Blogs /> }),
     // getSideBarData('Team', 'sub2', <TeamOutlined />, [getSideBarData('Team 1', '6'), getSideBarData('Team 2', '8')]),
 ];

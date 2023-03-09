@@ -20,6 +20,7 @@ const getBase64 = (file) =>
 
 
 
+
 const Caption = () => {
 
     const [selectedFile, setSelectedFile] = useState()
@@ -101,11 +102,11 @@ const Caption = () => {
                 Caption & Images
             </div>
             <div className="input-filed">
-                <label class="form-label">write a caption</label>
+                <label className="form-label">write a caption</label>
                 <Input className='caption' size="medium" placeholder="Title" />
             </div>
             <div className="p-preview">
-                <label class="form-label">Upload Image</label>
+                <label className="form-label">Upload Image</label>
                 <div className='file-preview'>
                     <Upload
                         action="https://www.mocky.io/v2/5cc8019d300000980a055e76"

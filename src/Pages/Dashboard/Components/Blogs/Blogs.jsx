@@ -26,19 +26,19 @@ import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 
 const english = (
     <div className='antPopover'>
-        <div class="popoverItem" href="#">
+        <div className="popoverItem" href="#">
             <Save className='icon' />
             As New Post
         </div>
-        <div class="popoverItem" href="#">
+        <div className="popoverItem" href="#">
             <Save className='icon' />
             As Draft
         </div>
-        <div class="popoverItem" href="#">
+        <div className="popoverItem" href="#">
             <Save className='icon' />
             Export to PDF
         </div>
-        <div class="popoverItem" href="#">
+        <div className="popoverItem" href="#">
             <Save className='icon' />
             Export to Word
         </div>
@@ -47,19 +47,19 @@ const english = (
 );
 const save = (
     <div className='antPopover'>
-        <div class="popoverItem" href="#">
+        <div className="popoverItem" href="#">
             <Save className='icon' />
             As New Post
         </div>
-        <div class="popoverItem" href="#">
+        <div className="popoverItem" href="#">
             <Save className='icon' />
             As Draft
         </div>
-        <div class="popoverItem" href="#">
+        <div className="popoverItem" href="#">
             <Save className='icon' />
             Export to PDF
         </div>
-        <div class="popoverItem" href="#">
+        <div className="popoverItem" href="#">
             <Save className='icon' />
             Export to Word
         </div>
@@ -72,9 +72,10 @@ const Post = () => {
     const [stepper, setStepper] = useState(0);
 
     return (
-        
+
         <>
-        <AllBlogs/>
+            <AllBlogs />
+
             {/* <div className='blogContainer'>
                 <div className="title-bar">
                     <div className="heading">Add Blogs</div>
@@ -103,7 +104,6 @@ const Post = () => {
                         </div>
                     </div>
                 </div>
-
                 <div className="flex-sections">
                     <div className="editor-section">
                         <Input size="large" placeholder="Title" />
@@ -155,12 +155,10 @@ const Post = () => {
                                                 </div>
                                             </div>
                                         </>
-
                             }
 
                         </div>
                     </div>
-
                     <div className="info-section">
                         <Infomation />
                     </div>

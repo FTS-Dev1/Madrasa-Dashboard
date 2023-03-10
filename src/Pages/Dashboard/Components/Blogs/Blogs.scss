@@ -15,6 +15,14 @@
     .title-bar {
         display: flex;
         justify-content: space-between;
+        .header{
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            .icon{
+                font-size: 25px;
+            }
+        }
 
         .buttons {
             display: flex;

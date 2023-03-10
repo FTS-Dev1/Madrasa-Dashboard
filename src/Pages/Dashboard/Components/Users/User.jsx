@@ -64,10 +64,10 @@ const User = () => {
         },
         {
             title: 'Name',
-            dataIndex: 'name',
-            key: 'name',
+            dataIndex: 'firstName',
+            key: 'firstName',
             render: (_, data) => `${data?.firstName} ${data.lastName}`,
-            sorter: (a, b) => a.name.localeCompare(b.name),
+            sorter: (a, b) => a.firstName.localeCompare(b.firstName),
 
         },
         {
@@ -97,31 +97,22 @@ const User = () => {
             title: 'Actions',
             dataIndex: 'action',
             key: 'action',
+            align:"center",
             render: (_, data) => <>
                 <div className="actionBox">
                     <div className="actionBtn">
                         <RiEdit2Fill className='icon cursor' onClick={() => openProfileModal(data)} />
                     </div>
-                    <div className="actionBtn">
-                        <BiShow className='icon cursor' />
-                    </div>
-                    <div className="actionBtn">
+                    {/* <div className="actionBtn">
                         <MdDelete className='icon cursor' />
-                    </div>
+                    </div> */}
                 </div>
             </>
 
         },
 
     ]
-    const searchHandler = (event) => {
-        // let filteredData = rows.filter((data) =>
-        //     data.name.includes(event) ||
-        //     data.email.includes(event)
-        // )
 
-        // setFilteredData(filteredData)
-    }
 
     const gettingAllUsers = async () => {
         setLoading(true)
@@ -137,6 +128,16 @@ const User = () => {
     useEffect(() => {
         gettingAllUsers()
     }, [reload])
+
+    const searchHandler = (event) => {
+        let filteredData = data.filter((a) =>
+            a.name?.toLowerCase()?.includes(event) ||
+            a.email?.toLowerCase()?.includes(event)
+        )
+
+        setFilteredData(filteredData)
+    }
+
     return (
 
         <>

@@ -63,13 +63,12 @@ const UpdateUserAPI = async ({ id, firstName, lastName, phone, password, passwor
     try {
         let res = await axios({
             url: `/users/${id}`,
-            method: "PATCH",
+            method: "PUT",
             data: {
                 firstName,
                 lastName,
                 phone,
-                roles: undefined,
-                // roles: [roles],
+                roles: [roles],
                 password,
                 password_confirmation
             },

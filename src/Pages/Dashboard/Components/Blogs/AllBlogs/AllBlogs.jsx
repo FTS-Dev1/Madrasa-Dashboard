@@ -1,5 +1,5 @@
 import { CircularProgress } from '@mui/material';
-import {Button} from 'antd'
+import { Button } from 'antd'
 import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import { GetAllBlogsAPI } from '../../../../../API/blogs';
@@ -12,7 +12,7 @@ import "./AllBlogs.scss";
 
 
 
-const AllBlogs = () => {
+const AllBlogs = ({ page, setPage }) => {
 
     const [data, setData] = useState([])
     const [loading, setLoading] = useState(true)
@@ -23,7 +23,7 @@ const AllBlogs = () => {
         const res = await GetAllBlogsAPI()
         if (res.error != null) {
             toast.error(res?.error)
-        } else {            
+        } else {
             let blogData = res.data.data
             setData(blogData?.data || [])
         }
@@ -35,6 +35,12 @@ const AllBlogs = () => {
     return (
         <>
             <div className="allBlogsContainer">
+                <div className="flexLineSpace">
+                    <div className="heading">
+                        All Blogs
+                    </div>
+                    <Button className='greenBtn' style={{ width: "120px" }} onClick={() => setPage("edit")}> Add Blog </Button>
+                </div>
                 {
                     loading ?
                         <>
@@ -54,7 +60,6 @@ const AllBlogs = () => {
                                 <div className="blogsBox">
                                     {
                                         data?.map((blog) => {
-                                            console.log("------->", blog);
                                             return (
                                                 <>
                                                     <div className="blog">

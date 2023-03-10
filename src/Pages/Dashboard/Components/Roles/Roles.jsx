@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useMemo, } from 'react'
 
 // MUI | ANT-D :
-import { Button } from 'antd';
+import { Button, Divider, Segmented, Tooltip } from 'antd';
 
 // Components :
 import Table from '../Users/Component/table/Table'
@@ -24,14 +24,35 @@ import './Roles.scss'
 
 const Roles = () => {
 
+    const edit = <span>Edit</span>;
+    const show = <span>Show</span>;
+    const remove = <span>Delete</span>;
+
+    const options = ['Show', 'Hide', 'Center'];
+    const [arrow, setArrow] = useState('Show');
+
+    const mergedArrow = useMemo(() => {
+        if (arrow === 'Hide') {
+            return false;
+        }
+
+        if (arrow === 'Show') {
+            return true;
+        }
+
+        return {
+            pointAtCenter: true,
+        };
+    }, [arrow]);
+
     const [rows, setRows] = useState([
-        // {
-        //     id: 121,
-        //     name: `Osama Aslam`,
-        //     email: `osamaaslam029@gmail.com`,
-        //     role: "Admin",
-        //     action: "Actions",
-        // },
+        {
+            id: 121,
+            name: `Osama Aslam`,
+            email: `osamaaslam029@gmail.com`,
+            role: "Admin",
+            action: "Actions",
+        },
 
     ])
 
@@ -45,47 +66,49 @@ const Roles = () => {
 
 
     const columns = [
-        {
-            title: 'ID',
-            dataIndex: 'id',
-            key: 'id',
-        },
+        // {
+        //     title: 'ID',
+        //     dataIndex: 'id',
+        //     key: 'id',
+        // },
         {
             title: 'Name',
             dataIndex: 'name',
             key: 'name',
+
             sorter: (a, b) => a.name.localeCompare(b.name),
         },
         {
             title: 'Actions',
             dataIndex: 'action',
             key: 'action',
+            align: "center",
             render: (_, data) => <>
                 <div className="actionBox">
-                    <div className="actionBtn">
-                        <RiEdit2Fill className='icon cursor' onClick={() => openRoleModel(data)} />
-                    </div>
-                    <div className="actionBtn">
-                        <BiShow className='icon cursor' />
-                    </div>
-                    <div className="actionBtn">
-                        <MdDelete className='icon cursor' />
-                    </div>
+                    <Tooltip placement="top" title={edit} arrow={mergedArrow}>
+                        <div className="actionBtn" onClick={() => openRoleModel(data)}>
+                            <RiEdit2Fill className='icon cursor' />
+                        </div>
+                    </Tooltip>
+                    <Tooltip placement="top" title={show} arrow={mergedArrow}>
+                        <div className="actionBtn">
+                            <BiShow className='icon cursor' />
+                        </div>
+                    </Tooltip>
+                    <Tooltip placement="top" title={remove} arrow={mergedArrow}>
+                        <div className="actionBtn">
+                            <MdDelete className='icon cursor' />
+                        </div>
+                    </Tooltip>
+
+
+
                 </div>
             </>
 
         },
 
     ]
-
-    const searchHandler = (event) => {
-        let filteredData = rows.filter((data) =>
-            data.name.includes(event) ||
-            data.email.includes(event)
-        )
-
-        setFilteredData(filteredData)
-    }
 
     const openRoleModel = (data) => {
         if (data) {
@@ -100,7 +123,6 @@ const Roles = () => {
         setSelectedRole(null)
         setReload(!reload)
     }
-
     const gettingAllRoles = async () => {
         setLoading(true)
         let res = await GetAllRolesAPI()
@@ -116,6 +138,14 @@ const Roles = () => {
     useEffect(() => {
         gettingAllRoles()
     }, [reload])
+     const searchHandler = (event) => {
+        let filteredData = data.filter((a) =>
+            a?.name?.toLocaleLowerCase()?.includes(event)
+        )
+
+        setFilteredData(filteredData)
+    }
+
     return (
         <>
             <div className="rolesContainer">

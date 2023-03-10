@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import Fade from 'react-reveal/Fade';
 
 // ANT-D | MUI :
 import { Popover } from 'antd';
@@ -30,7 +31,7 @@ const logout = () => {
     toast.warn("Logout Success");
     setTimeout(() => {
         window.location.href = "/"
-    }, 2000);
+    }, 500);
 }
 
 const Navbar = () => {
@@ -72,20 +73,27 @@ const Navbar = () => {
                 <div className="shadow"></div>
                 <div className='navbar'>
                     <div className="flex-nav">
-                        <div className="left-nav">
-                            <div className="logo">
-                                <img src={logo} alt="" />
-                                {/* <div className='logoHeading'>Madrasa</div> */}
-                            </div>
-                        </div>
-                        <div className="right-nav">
-                            <div className="sub-menu">
-                                <p>Dashboard</p>
-                                <div className="img">
-                                    <MdOutlineChevronRight />
+
+                        <Fade left>
+                            <div className="left-nav">
+                                <div className="logo">
+                                    <img src={logo} alt="" />
+                                    {/* <div className='logoHeading'>Madrasa</div> */}
                                 </div>
-                                <p>Dashboard</p>
                             </div>
+                        </Fade>
+
+                        <div className="right-nav">
+                            <Fade left>
+                                <div className="sub-menu">
+                                    <p>Dashboard</p>
+                                    <div className="img">
+                                        <MdOutlineChevronRight />
+                                    </div>
+                                    <p>Dashboard</p>
+                                </div>
+                            </Fade>
+                            <Fade right>
                             <div className="bio">
                                 <div className='inputfield'>
                                     <input type="text" placeholder='Search...' />
@@ -108,6 +116,7 @@ const Navbar = () => {
                                     </Popover>
                                 </div>
                             </div>
+                            </Fade>
                         </div>
                     </div>
                 </div>

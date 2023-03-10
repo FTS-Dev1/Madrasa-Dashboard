@@ -47,14 +47,16 @@ const Cards = () => {
                 {
                     tempCardsData.map((data, index) => {
                         return (
-                            <div className="card" key={index}>
-                                <div className="bottomLine" />
-                                <div className="iconBox">
-                                    <data.icon className='icon' /> <div className="counts" style={data.static < 0 ? { backgroundColor: "red" } : {}}>{data.static}% {data.static < 0 ? <RiArrowDownSLine /> : <RiArrowUpSLine />}</div>
-                                </div>
-                                <div className="detials">
-                                    <div className="value">{data.value}</div>
-                                    <div className="title">{data.name}</div>
+                            <div className="hoverEffect" key={index}>
+                                <div className="card">
+                                    <div className="bottomLine" />
+                                    <div className="iconBox">
+                                        <data.icon className='icon' /> <div className="counts" style={data.static < 0 ? { backgroundColor: "red" } : {}}>{data.static}% {data.static < 0 ? <RiArrowDownSLine /> : <RiArrowUpSLine />}</div>
+                                    </div>
+                                    <div className="detials">
+                                        <div className="value">{data.value}</div>
+                                        <div className="title">{data.name}</div>
+                                    </div>
                                 </div>
                             </div>
                         )

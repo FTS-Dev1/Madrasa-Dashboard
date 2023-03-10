@@ -90,7 +90,7 @@ const Login = () => {
                                 <div className="heading">A few more clicks to sign in to your account.</div>
                             </Fade>
                             <Fade left>
-                            <p className="para">Manage all your e-commerce accounts in one place</p>
+                                <p className="para">Manage all your e-commerce accounts in one place</p>
 
                             </Fade>
                         </div>
@@ -98,34 +98,40 @@ const Login = () => {
                 </div>
                 <div className="rightSection">
                     <Zoom>
-                    <form action="users" method='post'>
-                        <div className="wrapContainer">
-                            <div className="heading">Sign In</div>
-                            <p className="para">A few more clicks to sign in to your account. Manage all your e-commerce accounts in one place</p>
-                            <div className="flexFields">
-                                <input className='loginInput' type="text" placeholder='Email' name="email" onChange={enteringFormData} value={formData.email} />
-                                <Space direction="vertical">
-                                    <Input.Password placeholder="Password" name='password' onChange={enteringFormData} value={formData.password} />
-                                </Space>
-                                <div className="rememberMe">
-                                    <div className="checkbox cursor">
-                                        <input type="checkbox" />
-                                        <p>Remember me</p>
+                        <form action="users" method='post'>
+                            <div className="wrapContainer">
+                                <div className="heading">Sign In</div>
+                                <p className="para">A few more clicks to sign in to your account. Manage all your e-commerce accounts in one place</p>
+                                <div className="flexFields">
+                                    <input className='loginInput' type="text" placeholder='Email' name="email" onChange={enteringFormData} value={formData.email} />
+                                    <Space direction="vertical">
+                                        <Input.Password
+                                            placeholder="Password"
+                                            name='password'
+                                            onChange={enteringFormData}
+                                            value={formData.password}
+                                            rules={[{ required: true, message: 'Please input your username!' }]}
+                                        />
+                                    </Space>
+                                    <div className="rememberMe">
+                                        <div className="checkbox cursor">
+                                            <input type="checkbox" />
+                                            <p>Remember me</p>
+                                        </div>
+                                        <p className='cursor'>Forgot Password?</p>
                                     </div>
-                                    <p className='cursor'>Forgot Password?</p>
+                                    <div className="loginButton">
+                                        <Button loading={loading} className='login' onClick={handleLogin}>Login</Button>
+                                        <p>Create an account? <a className='signup cursor' onClick={registerFun}>Register</a> </p>
+                                    </div>
                                 </div>
-                                <div className="loginButton">
-                                    <Button loading={loading} className='login' onClick={handleLogin}>Login</Button>
-                                    <p>Create an account? <a className='signup cursor' onClick={registerFun}>Register</a> </p>
+                                <div className="authButton">
+                                    <div className="google cursor"><img src={Google} alt="" /> Sign in with Google</div>
+                                    <div className="fb cursor"><FaFacebookF style={{ color: "#fff", fontSize: "20px" }} /> Sign in with Facebook</div>
                                 </div>
+                                <p className='terms'>By signin up, you agree to our <a>Terms and Conditions</a> & <a>Privacy Policy</a></p>
                             </div>
-                            <div className="authButton">
-                                <div className="google cursor"><img src={Google} alt="" /> Sign in with Google</div>
-                                <div className="fb cursor"><FaFacebookF style={{color:"#fff",fontSize:"20px"}}/> Sign in with Facebook</div>
-                            </div>
-                            <p className='terms'>By signin up, you agree to our <a>Terms and Conditions</a> & <a>Privacy Policy</a></p>
-                        </div>
-                    </form>
+                        </form>
                     </Zoom>
                 </div>
             </div>

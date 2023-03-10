@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react'
 
+// MUI | ANT-D :
+import { Button } from 'antd';
+
 // Components :
 import Table from '../Users/Component/table/Table'
-import ShowPermissionModal from '../../../../Components/ShowPermissionModal/ShowPermissionModal';
+import ShowPermissionModal from './Components/ShowPermissionModal/ShowPermissionModal';
 
 // Assets | ICONS :
 import { RiEdit2Fill } from 'react-icons/ri';
@@ -10,7 +13,7 @@ import { BiShow } from 'react-icons/bi';
 import { MdDelete } from 'react-icons/md';
 
 // API :
-import { GetAllPermissionsAPI, GetAllRolesAPI } from '../../../../API/user'
+import { GetAllRolesAPI } from '../../../../API/user'
 // Helpers :
 import { toast } from "react-toastify";
 
@@ -36,7 +39,9 @@ const Roles = () => {
     const [filteredData, setFilteredData] = useState([])
     const [loading, setLoading] = useState(false)
 
+    const [selectedRole, setSelectedRole] = useState(null)
     const [showPermissionsModal, setShowPermissionsModal] = useState(false)
+    const [reload, setReload] = useState(false)
 
 
     const columns = [
@@ -58,7 +63,7 @@ const Roles = () => {
             render: (_, data) => <>
                 <div className="actionBox">
                     <div className="actionBtn">
-                        <RiEdit2Fill className='icon cursor' onClick={() => setShowPermissionsModal(true)} />
+                        <RiEdit2Fill className='icon cursor' onClick={() => openRoleModel(data)} />
                     </div>
                     <div className="actionBtn">
                         <BiShow className='icon cursor' />
@@ -82,6 +87,20 @@ const Roles = () => {
         setFilteredData(filteredData)
     }
 
+    const openRoleModel = (data) => {
+        if (data) {
+            setSelectedRole(data)
+        } else {
+            setSelectedRole(null)
+        }
+        setShowPermissionsModal(true)
+    }
+    const closeModel = () => {
+        setShowPermissionsModal(false)
+        setSelectedRole(null)
+        setReload(!reload)
+    }
+
     const gettingAllRoles = async () => {
         setLoading(true)
         let res = await GetAllRolesAPI()
@@ -96,11 +115,14 @@ const Roles = () => {
     }
     useEffect(() => {
         gettingAllRoles()
-    }, [])
+    }, [reload])
     return (
         <>
             <div className="rolesContainer">
-                <div className="heading">Roles</div>
+                <div className="flexLineSpace">
+                    <div className="heading">Roles</div>
+                    <Button className='greenBtn' style={{ width: "120px" }} onClick={() => openRoleModel(null)}> Add new Role </Button>
+                </div>
                 <div className="table">
                     <Table
                         loading={loading}
@@ -111,7 +133,7 @@ const Roles = () => {
                     />
                 </div>
             </div>
-            <ShowPermissionModal openModal={showPermissionsModal} setOpenModal={setShowPermissionsModal} />
+            <ShowPermissionModal openModal={showPermissionsModal} closeModel={closeModel} selectedRole={selectedRole} />
         </>
     )
 }

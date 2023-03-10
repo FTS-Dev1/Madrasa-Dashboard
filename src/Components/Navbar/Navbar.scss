@@ -123,9 +123,9 @@
                             width: 200px;
                             padding: 10px 20px;
                             border-radius: 100px;
+                            transition: width .7s;
 
                             &:focus-within {
-                                transition: .7s;
                                 width: 250px;
                             }
 

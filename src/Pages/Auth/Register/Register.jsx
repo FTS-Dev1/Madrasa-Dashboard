@@ -1,12 +1,16 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+import Fade from 'react-reveal/Fade';
+import Zoom from 'react-reveal/Zoom';
+import { FaFacebookF } from 'react-icons/fa';
 
 // MUI | ANT-D :
 import { Button, Input, Space, Select } from 'antd';
 
 // Assets | ICONS :
-import madrasa from '../../../Assets/Images/logo.png'
-import logo from '../../../Assets/Images/loginLogo.png'
+import logo from '../../../Assets/Images/logo-old.png'
+import MadrasaImage from '../../../Assets/Images/loginLogo.png'
+import Google from '../../../Assets/Images/google.svg';
 
 // API:
 import { RegisterAPI } from '../../../API/auth';
@@ -80,19 +84,26 @@ const Register = () => {
                 <div className="leftSection">
                     <div className="loginBio">
                         <div className="logo">
-                            <img src={madrasa} alt="" />
+                            <Fade left>
+                            <img src={logo} alt="" />
+                            </Fade>
                         </div>
                         <div className="madrasaLogo">
-                            <img src={logo} alt="" />
+                            <Fade left>
+                            <img src={MadrasaImage} alt="" />
+                            </Fade>
                         </div>
+                        <Fade left>
                         <div className="content">
                             <div className="heading">A few more clicks to sign in to your account.
                             </div>
                             <p className="para">Manage all your e-commerce accounts in one place</p>
                         </div>
+                        </Fade>
                     </div>
                 </div>
                 <div className="rightSection">
+                    <Zoom>
                     <form action="users" method='post'>
                         <div className="wrapContainer">
                             <div className="heading">Sign Up</div>
@@ -134,9 +145,14 @@ const Register = () => {
                                     <p>Already have an account? <a className='signin cursor' onClick={signInFun}>Sign In</a> </p>
                                 </div>
                             </div>
+                            <div className="authButton">
+                                <div className="google cursor"><img src={Google} alt="" /> Sign in with Google</div>
+                                <div className="fb cursor"><FaFacebookF style={{color:"#fff",fontSize:"20px"}}/> Sign in with Facebook</div>
+                            </div>
                             <p className='terms'>By signin up, you agree to our <a>Terms and Conditions</a> & <a>Privacy Policy</a></p>
                         </div>
                     </form>
+                    </Zoom>
                 </div>
             </div>
         </>

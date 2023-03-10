@@ -236,10 +236,10 @@ input {
     background-color: var(--lightYellow) !important;
 }
 
-.ant-switch.ant-switch-checked {
+// ANT-D Switch
+.ant-switch.ant-switch-checked{
     background-color: var(--themeColorGreen) !important;
 }
-
 // ANT-D Date picker
 .ant-picker {
     border: 1px solid var(--border) !important;

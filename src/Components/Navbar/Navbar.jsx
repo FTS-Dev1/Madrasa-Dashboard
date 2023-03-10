@@ -75,12 +75,12 @@ const Navbar = () => {
                         <div className="left-nav">
                             <div className="logo">
                                 <img src={logo} alt="" />
-                                {/* <div className='heading'>Madrasa</div> */}
+                                {/* <div className='logoHeading'>Madrasa</div> */}
                             </div>
                         </div>
                         <div className="right-nav">
                             <div className="sub-menu">
-                                <p>Application</p>
+                                <p>Dashboard</p>
                                 <div className="img">
                                     <MdOutlineChevronRight />
                                 </div>

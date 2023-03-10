@@ -1,11 +1,11 @@
 import React from 'react';
 
 // Assets | ICONS :
-import { HiOutlineShoppingCart } from "react-icons/hi";
+import { SiGoogleclassroom } from "react-icons/si";
 import { RiArrowUpSLine, RiArrowDownSLine } from "react-icons/ri";
 import { FiUsers } from "react-icons/fi";
 import { AiOutlineFileProtect } from "react-icons/ai";
-import { BsFillCreditCardFill } from "react-icons/bs";
+import { FaGraduationCap } from "react-icons/fa";
 
 
 // CSS :
@@ -25,19 +25,19 @@ let tempCardsData = [
         icon: AiOutlineFileProtect,
         static: -30,
         value: 0.350,
-        name: "Total Products"
+        name: "Total Courses"
     },
     {
-        icon: HiOutlineShoppingCart,
+        icon: SiGoogleclassroom,
         static: 40,
         value: 4.720,
-        name: "Item Sales"
+        name: "Online Class"
     },
     {
-        icon: BsFillCreditCardFill,
+        icon: FaGraduationCap,
         static: 60,
         value: 76,
-        name: "New Orders"
+        name: "New Student"
     },
 ]
 const Cards = () => {

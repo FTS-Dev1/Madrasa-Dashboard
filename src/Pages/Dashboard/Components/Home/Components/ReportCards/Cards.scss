@@ -7,6 +7,7 @@
         grid-template-columns: repeat(2, 1fr);
 
     }
+
     @media screen and (max-width:768px) {
         grid-template-columns: repeat(1, 1fr);
 
@@ -22,6 +23,11 @@
         padding: 1rem;
         box-shadow: 0px 0px 5px 0px rgba(128, 128, 128, 0.2);
         cursor: pointer;
+
+        &:hover {
+            transition: .7s;
+            transform: scale(1.05);
+        }
 
         .bottomLine {
             position: absolute;

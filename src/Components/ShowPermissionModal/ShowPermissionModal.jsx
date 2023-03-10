@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 // MUI | ANT-D :
 import { Modal, Box } from "@mui/material"
+import { Switch } from 'antd';
+
 // Assets | Ant-D :
 import { AiFillCloseCircle } from "react-icons/ai"
 
@@ -79,7 +81,6 @@ const ShowPermissionModal = ({ openModal, setOpenModal }) => {
         })
     };
 
-
     const arr = [
         {
             permisson: "role_list",
@@ -145,6 +146,10 @@ const ShowPermissionModal = ({ openModal, setOpenModal }) => {
     useEffect(() => {
         gettingAllRoles()
     }, [])
+    const onChange = (checked) => {
+        console.log(`switch to ${checked}`);
+      };
+      
     console.log("-------------" , allPermissions);
     return (
         <>
@@ -167,10 +172,11 @@ const ShowPermissionModal = ({ openModal, setOpenModal }) => {
                                         return (
                                             <div className="permission" key={index}>
                                                 {/* <input type="radio" /> */}
-                                                <label class="switch">
+                                                {/* <label class="switch">
                                                     <input type="checkbox" />
                                                     <span class="slider round"></span>
-                                                </label>
+                                                </label> */}
+                                                <Switch defaultChecked onChange={onChange} />
                                                 <div className="roles">{data.name}</div>
                                             </div>
                                         )

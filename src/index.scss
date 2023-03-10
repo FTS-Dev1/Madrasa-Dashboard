@@ -110,6 +110,7 @@ h6 {
 input {
     accent-color: var(--themeColorGreen);
 }
+
 .greenButton {
     max-height: 40px;
     height: 40px;
@@ -186,6 +187,7 @@ input {
 // ANT-D Input
 .ant-input {
     border-color: var(--border) !important;
+
     &:hover {
         border-color: var(--themeColorGreen) !important;
     }
@@ -210,6 +212,7 @@ input {
 .ant-input:focus {
     box-shadow: none;
 }
+
 // ANT-D Selector
 .ant-select-single {
     font-size: 14px !important;
@@ -287,11 +290,13 @@ input {
     fill: var(--themeColorGreen) !important;
     // fill: #fff !important;
 }
+
 // ANT Button
-:where(.css-dev-only-do-not-override-1km3mtt).ant-btn-default:not(:disabled):hover{
+:where(.css-dev-only-do-not-override-1km3mtt).ant-btn-default:not(:disabled):hover {
     color: var(--light) !important;
     border-color: var(--themeColorGreen) !important;
 }
+
 // ANT-D table 
 .table {
 

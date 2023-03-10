@@ -72,7 +72,7 @@
 
             @media screen and (max-width:1535px) {
                 padding-left: 2rem;
-                gap: 0rem;
+                gap: 1rem;
                 right: 9rem;
             }
 
@@ -119,6 +119,10 @@
                     font-size: 36px;
                     font-weight: 700;
                     font-family: 'darkFont';
+
+                    @media screen and (max-width:1150px) {
+                        font-size: 30px;
+                    }
                 }
 
                 .para {
@@ -127,6 +131,12 @@
                     padding-top: 1.5rem;
                     font-size: 1.125rem;
                     line-height: 1.75rem;
+
+                    @media screen and (max-width:1150px) {
+                        font-size: 1rem;
+                        padding-top: 1rem;
+
+                    }
 
                 }
             }
@@ -275,9 +285,11 @@
                     display: flex;
                     gap: 1rem;
                     justify-content: center;
+
                     @media screen and (max-width:"500px") {
                         flex-direction: column;
                     }
+
                     .fb,
                     .google {
                         display: flex;
@@ -294,6 +306,7 @@
                         font-size: 14px;
                         font-weight: 500;
                         font-family: Roboto, sans-serif;
+
                         @media screen and (max-width:"500px") {
                             justify-content: center;
                         }

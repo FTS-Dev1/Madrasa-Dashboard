@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { BiArrowBack } from 'react-icons/bi';
 
 // MUI | ANT-D :
 import { Popover, Input, Button } from 'antd';
@@ -98,8 +99,10 @@ const Blog = () => {
 
         <div className='blogContainer'>
             <div className="title-bar">
-                <div className="heading">Add Blogs</div>
-
+                <div className="header">
+                    <BiArrowBack className='icon'/>
+                    <div className="heading">Add Blogs</div>
+                </div>
                 <div className="buttons">
                     <Button className="greenBtn" loading={loading} onClick={saveBlog}>
                         Save

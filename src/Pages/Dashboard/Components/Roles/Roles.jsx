@@ -25,7 +25,6 @@ import './Roles.scss'
 const Roles = () => {
 
     const edit = <span>Edit</span>;
-    const show = <span>Show</span>;
     const remove = <span>Delete</span>;
 
     const options = ['Show', 'Hide', 'Center'];
@@ -90,16 +89,11 @@ const Roles = () => {
                             <RiEdit2Fill className='icon cursor' />
                         </div>
                     </Tooltip>
-                    <Tooltip placement="top" title={show} arrow={mergedArrow}>
-                        <div className="actionBtn">
-                            <BiShow className='icon cursor' />
-                        </div>
-                    </Tooltip>
-                    <Tooltip placement="top" title={remove} arrow={mergedArrow}>
+                    {/* <Tooltip placement="top" title={remove} arrow={mergedArrow}>
                         <div className="actionBtn">
                             <MdDelete className='icon cursor' />
                         </div>
-                    </Tooltip>
+                    </Tooltip> */}
 
 
 

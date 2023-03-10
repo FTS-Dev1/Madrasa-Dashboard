@@ -121,7 +121,7 @@ const Roles = () => {
             <div className="rolesContainer">
                 <div className="flexLineSpace">
                     <div className="heading">Roles</div>
-                    <Button className='greenBtn' style={{ width: "120px" }} onClick={() => openRoleModel(null)}> Add new Role </Button>
+                    <Button className='greenBtn' style={{ width: "120px" }} onClick={() => openRoleModel(null)}> Add Role </Button>
                 </div>
                 <div className="table">
                     <Table

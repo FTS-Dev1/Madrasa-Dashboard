@@ -56,8 +56,8 @@ h6 {
 /* ************ Custom  ScrollBar ************** */
 
 ::-webkit-scrollbar {
-    width: 5px;
-    // display: none;
+    // width: 5px;
+    display: none;
 }
 
 ::-webkit-scrollbar-track {
@@ -237,9 +237,10 @@ input {
 }
 
 // ANT-D Switch
-.ant-switch.ant-switch-checked{
+.ant-switch.ant-switch-checked {
     background-color: var(--themeColorGreen) !important;
 }
+
 // ANT-D Date picker
 .ant-picker {
     border: 1px solid var(--border) !important;

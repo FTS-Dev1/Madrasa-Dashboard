@@ -4,6 +4,7 @@ import React from "react";
 import { MdDashboard } from "react-icons/md"
 import { FiUsers } from "react-icons/fi"
 import { SiBloglovin } from "react-icons/si"
+import { HiUserGroup } from "react-icons/hi"
 
 // Components :
 import Home from "./Components/Home/Home";
@@ -26,7 +27,7 @@ const getSideBarData = ({ label, key, icon, children, element }) => {
 const routsList = [
     getSideBarData({ label: 'Dashboard', key: '/', icon: <MdDashboard />, element: <Home /> }),
     getSideBarData({ label: 'Users', key: '/users', icon: <FiUsers />, element: <User /> }),
-    getSideBarData({ label: 'Roles', key: '/roles', icon: <FiUsers />, element: <Roles /> }),
+    getSideBarData({ label: 'Roles', key: '/roles', icon: <HiUserGroup />, element: <Roles /> }),
     getSideBarData({ label: 'Blogs', key: '/blogs', icon: <SiBloglovin />, element: <Blogs /> }),
     // getSideBarData('Team', 'sub2', <TeamOutlined />, [getSideBarData('Team 1', '6'), getSideBarData('Team 2', '8')]),
 ];

@@ -61,5 +61,4 @@ const RegisterAPI = async ({ firstName, lastName, email, phone, type, password, 
     return resolved;
 }
 
-
 export { LoginAPI, RegisterAPI }

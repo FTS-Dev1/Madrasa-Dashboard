@@ -1,10 +1,17 @@
 import React, { useEffect, useState } from 'react'
 
+// MUI | ANT-D :
+import { Button } from 'antd';
+
 // Components :
 import Table from './Component/table/Table'
+import ProfileModal from "../../../../Components/ProfileModal/ProfileModal"
 
 // Assets | ICONS :
 import Avater from "../../../../Assets/Images/profile.jpg";
+import { RiEdit2Fill } from 'react-icons/ri';
+import { BiShow } from 'react-icons/bi';
+import { MdDelete } from 'react-icons/md';
 
 // API :
 import { GetAllUsersAPI } from '../../../../API/user'
@@ -20,103 +27,28 @@ import './Users.scss'
 
 const User = () => {
 
-    const [rows, setRows] = useState([
-        {
-            id: 121,
-            avatar: "Avatar",
-            name: `Osama Aslam`,
-            email: `osamaaslam029@gmail.com`,
-            phone: "03045064423",
-            role: "Admin",
-            action: "Actions",
-        },
-        {
-            id: 122,
-            avatar: "Avatar",
-            name: `Junaid Latif`,
-            email: `junaidlatif004@gmail.com`,
-            phone: "03174919167",
-            role: "Admin",
-            action: "Actions",
-        },
-        {
-            id: 123,
-            avatar: "Avatar",
-            name: `Sufyan Aslam`,
-            email: `sufyanaslam029@gmail.com`,
-            phone: "03134645127",
-            role: "User",
-            action: "Actions",
-        },
-        {
-            id: 124,
-            avatar: "Avatar",
-            name: `Zahid Ghafoor`,
-            email: `zahidghafoor@gmail.com`,
-            phone: "03004050167",
-            role: "Admin",
-            action: "Actions",
-        },
-        {
-            id: 125,
-            avatar: "Avatar",
-            name: `Hammad`,
-            email: `hadi200@gmail.com`,
-            phone: "03134645127",
-            role: "User",
-            action: "Actions",
-        },
-        {
-            id: 126,
-            avatar: "Avatar",
-            name: `Shahzaib`,
-            email: `shahzaib029@gmail.com`,
-            phone: "03045064423",
-            role: "Admin",
-            action: "Actions",
-        },
-        {
-            id: 127,
-            avatar: "Avatar",
-            name: `Zulifqar`,
-            email: `zulifqar004@gmail.com`,
-            phone: "03174919167",
-            role: "User",
-            action: "Actions",
-        },
-        {
-            id: 128,
-            avatar: "Avatar",
-            name: `Gazanfar`,
-            email: `osamaaslam029@gmail.com`,
-            phone: "03045064423",
-            role: "Admin",
-            action: "Actions",
-        },
-        {
-            id: 129,
-            avatar: "Avatar",
-            name: `Sohail`,
-            email: `zahidghafoor@gmail.com`,
-            phone: "03004050167",
-            role: "Admin",
-            action: "Actions",
-        },
-        {
-            id: 130,
-            avatar: "Avatar",
-            name: `Asad`,
-            email: `junaidlatif004@gmail.com`,
-            phone: "03174919167",
-            role: "Admin",
-            action: "Actions",
-        },
-
-    ])
-
     const [data, setData] = useState([])
     const [filteredData, setFilteredData] = useState([])
     const [loading, setLoading] = useState(false)
+
+    const [selectedUser, setSelectedUser] = useState(null)
+    const [showProfileModal, setShowProfileModal] = useState(false)
+    const [reload, setReload] = useState(false)
+
+
+    const openProfileModal = (data) => {
+        if (data) {
+            setSelectedUser(data)
+        } else {
+            setSelectedUser(null)
+        }
+        setShowProfileModal(true)
+    }
+    const closeProfileModal = () => {
+        setShowProfileModal(false)
+        setSelectedUser(null)
+        setReload(!reload)
+    }
 
     const columns = [
         {
@@ -165,17 +97,30 @@ const User = () => {
             title: 'Actions',
             dataIndex: 'action',
             key: 'action',
+            render: (_, data) => <>
+                <div className="actionBox">
+                    <div className="actionBtn">
+                        <RiEdit2Fill className='icon cursor' onClick={() => openProfileModal(data)} />
+                    </div>
+                    <div className="actionBtn">
+                        <BiShow className='icon cursor' />
+                    </div>
+                    <div className="actionBtn">
+                        <MdDelete className='icon cursor' />
+                    </div>
+                </div>
+            </>
+
         },
 
     ]
-
     const searchHandler = (event) => {
-        let filteredData = rows.filter((data) =>
-            data.name.includes(event) ||
-            data.email.includes(event)
-        )
+        // let filteredData = rows.filter((data) =>
+        //     data.name.includes(event) ||
+        //     data.email.includes(event)
+        // )
 
-        setFilteredData(filteredData)
+        // setFilteredData(filteredData)
     }
 
     const gettingAllUsers = async () => {
@@ -191,13 +136,17 @@ const User = () => {
     }
     useEffect(() => {
         gettingAllUsers()
-    }, [])
-
+    }, [reload])
     return (
 
         <>
             <div className="dashboardUsersContainer">
-                <div className="heading">Users</div>
+                <div className="flexLineSpace">
+                    <div className="heading">
+                        Users
+                    </div>
+                    <Button className='greenBtn' style={{ width: "120px" }} onClick={() => openProfileModal(null)}> Add User </Button>
+                </div>
                 <div className="table">
                     <Table
                         loading={loading}
@@ -208,6 +157,7 @@ const User = () => {
                     />
                 </div>
             </div>
+            <ProfileModal openModal={showProfileModal} selectedUser={selectedUser} closeModal={closeProfileModal} />
         </>
     )
 }

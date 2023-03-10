@@ -269,6 +269,43 @@
                     }
                 }
 
+                .authButton {
+                    padding-top: 10px;
+                    width: 100%;
+                    display: flex;
+                    gap: 1rem;
+                    justify-content: center;
+                    @media screen and (max-width:"500px") {
+                        flex-direction: column;
+                    }
+                    .fb,
+                    .google {
+                        display: flex;
+                        align-items: center;
+                        gap: .5rem;
+                        background: rgb(255, 255, 255);
+                        padding: 10px;
+                        border-radius: 3px;
+                        background-color: rgb(255, 255, 255);
+                        color: rgba(0, 0, 0, 0.54);
+                        box-shadow: rgba(0, 0, 0, 0.24) 0px 2px 2px 0px, rgba(0, 0, 0, 0.24) 0px 0px 1px 0px;
+                        border-radius: 2px;
+                        border: 1px solid transparent;
+                        font-size: 14px;
+                        font-weight: 500;
+                        font-family: Roboto, sans-serif;
+                        @media screen and (max-width:"500px") {
+                            justify-content: center;
+                        }
+                    }
+
+                    .fb {
+                        background-color: #1877f2;
+                        color: #fff;
+                    }
+
+                }
+
                 .terms {
                     padding-top: 5rem;
                     font-weight: 400;

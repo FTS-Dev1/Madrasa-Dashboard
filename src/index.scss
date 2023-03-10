@@ -233,6 +233,10 @@ input {
     background-color: var(--lightYellow) !important;
 }
 
+// ANT-D Switch
+.ant-switch.ant-switch-checked{
+    background-color: var(--themeColorGreen) !important;
+}
 // ANT-D Date picker
 .ant-picker {
     border: 1px solid var(--border) !important;

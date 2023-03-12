@@ -73,7 +73,6 @@ const Navbar = () => {
                 <div className="shadow"></div>
                 <div className='navbar'>
                     <div className="flex-nav">
-
                         <Fade left>
                             <div className="left-nav">
                                 <div className="logo">
@@ -82,7 +81,6 @@ const Navbar = () => {
                                 </div>
                             </div>
                         </Fade>
-
                         <div className="right-nav">
                             <Fade left>
                                 <div className="sub-menu">

@@ -31,14 +31,12 @@ const AllBlogs = ({ page, setPage }) => {
     }
     useEffect(() => {
         gettingAllBlogs()
-    }, [])
+    }, [page])
     return (
         <>
             <div className="allBlogsContainer">
                 <div className="flexLineSpace">
-                    <div className="heading">
-                        All Blogs
-                    </div>
+                    <div className="heading">All Blogs</div>
                     <Button className='greenBtn' style={{ width: "120px" }} onClick={() => setPage("edit")}> Add Blog </Button>
                 </div>
                 {
@@ -65,11 +63,11 @@ const AllBlogs = ({ page, setPage }) => {
                                                     <div className="blog">
                                                         <img src={`${process.env.REACT_APP_STORAGE_URL}/${blog?.image?.url}`} alt="ERROR" />
                                                         <div className="details">
-                                                            <div className="title">{blog?.title}</div>
-                                                            <div className="content"><div>{blog?.content.substring(0, 250).replace(/<[^>]+>/g, '')} ....</div></div>
+                                                            <div className="title">{blog?.title.substring(0, 25)}...</div>
+                                                            <div className="content"><div>{blog?.content.substring(0, 160).replace(/<[^>]+>/g, '')} ....</div></div>
                                                         </div>
                                                         <div className="blogButtons">
-                                                            <Button className="greenBtn">Edit</Button>
+                                                            {/* <Button className="greenBtn">Edit</Button> */}
                                                             <Button className="dangerBtn greenBtn">Delete</Button>
                                                         </div>
                                                     </div>

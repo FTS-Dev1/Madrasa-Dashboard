@@ -49,7 +49,7 @@ const save = (
     </div>
 );
 
-const Blog = () => {
+const Blog = ({backPage}) => {
 
     const [page, setPage] = useState("all")
 
@@ -92,15 +92,19 @@ const Blog = () => {
         } else {
             toast.success(res?.data?.message)
         }
+        backPage("all")
         setLoading(false)
     }
 
+    const backBlogButton = () => {
+        backPage("all")
+    }
     return (
 
         <div className='blogContainer'>
             <div className="title-bar">
                 <div className="header">
-                    <BiArrowBack className='icon'/>
+                    <BiArrowBack className='icon cursor' onClick={backBlogButton} />
                     <div className="heading">Add Blogs</div>
                 </div>
                 <div className="buttons">

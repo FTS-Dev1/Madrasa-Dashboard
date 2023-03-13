@@ -52,11 +52,6 @@ const User = () => {
 
     const columns = [
         {
-            title: 'ID',
-            dataIndex: 'id',
-            key: 'id',
-        },
-        {
             title: 'Avatar',
             dataIndex: 'avatar',
             key: 'avatar',
@@ -131,8 +126,8 @@ const User = () => {
 
     const searchHandler = (event) => {
         let filteredData = data.filter((a) =>
-            a.name?.toLowerCase()?.includes(event) ||
-            a.email?.toLowerCase()?.includes(event)
+            a?.name?.toLowerCase()?.includes(event) ||
+            a?.email?.toLowerCase()?.includes(event)
         )
 
         setFilteredData(filteredData)

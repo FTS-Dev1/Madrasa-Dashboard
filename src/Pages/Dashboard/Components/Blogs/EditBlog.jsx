@@ -50,7 +50,7 @@ const save = (
     </div>
 );
 
-const Blog = ({backPage}) => {
+const Blog = ({ backPage }) => {
 
     const [page, setPage] = useState("all")
 
@@ -60,6 +60,7 @@ const Blog = ({backPage}) => {
         quotes: "",
         content: "",
         file: null,
+        slug: "",
         tags: [],
         categories: []
     })
@@ -135,7 +136,10 @@ const Blog = ({backPage}) => {
             </div>
             <div className="flex-sections">
                 <div className="editor-section">
-                    <Input size="large" placeholder="Title" value={postData.title} name="title" onChange={enteringPostData} />
+                    <div className="flexLine">
+                        <Input size="large" placeholder="Title" value={postData.title} name="title" onChange={enteringPostData} />
+                        <Input size="large" placeholder="Slug" value={postData.slug} name="slug" onChange={enteringPostData} />
+                    </div>
                     <div className="flex-editor">
                         <div className="active-buttons">
                             <div className="flex-buttons">

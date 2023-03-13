@@ -54,5 +54,51 @@ const CreatBlogsAPI = async (formData) => {
     return resolved;
 }
 
+const ApproveBlogsAPI = async (id) => {
+    let resolved = {
+        error: null,
+        data: null
+    }
 
-export { GetAllBlogsAPI, CreatBlogsAPI };
+    try {
+        let res = await axios({
+            url: `/blog-approved/${id}`,
+            method: "POST",
+            headers: AuthTokenGen()
+        })
+        resolved.data = res.data
+    } catch (err) {
+        if (err && err.response && err?.response?.data?.message) {
+            resolved.error = err.response.data.message
+        } else {
+            resolved.error = "Something went Wrong"
+        }
+    }
+    return resolved;
+}
+
+const DeleteBlogsAPI = async (id) => {
+    let resolved = {
+        error: null,
+        data: null
+    }
+
+    try {
+        let res = await axios({
+            url: `/blogs/${id}`,
+            method: "DELETE",
+            headers: AuthTokenGen()
+        })
+        resolved.data = res.data
+    } catch (err) {
+        if (err && err.response && err?.response?.data?.message) {
+            resolved.error = err.response.data.message
+        } else {
+            resolved.error = "Something went Wrong"
+        }
+    }
+    return resolved;
+}
+
+
+export { GetAllBlogsAPI, CreatBlogsAPI, ApproveBlogsAPI , DeleteBlogsAPI };

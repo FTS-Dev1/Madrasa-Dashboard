@@ -41,7 +41,7 @@ const Dashboard = () => {
 
     useEffect(() => {
         if (UserData) {
-            let routes = RoutesList.filter(val => val.role.includes(UserData?.roles && UserData?.roles[0].name == "test" || UserData?.roles && UserData?.roles[0].name == "super-admin" ? ROLES.SuperAdmin : UserData?.roles && UserData?.roles[0].name == "admin" ? ROLES.SuperAdmin : UserData?.roles && UserData?.roles[0].name == "teacher" ? ROLES.Teacher : UserData?.roles && UserData?.roles[0].name == "student" ? ROLES.Student : ROLES.No))
+            let routes = RoutesList.filter(val => val.role.includes(UserData?.roles && UserData.roles.length >= 1 && UserData?.roles[0].name == "test" || UserData?.roles && UserData.roles.length >= 1 && UserData?.roles[0].name == "super-admin" ? ROLES.SuperAdmin : UserData?.roles && UserData.roles.length >= 1 && UserData?.roles[0].name == "admin" ? ROLES.SuperAdmin : UserData?.roles && UserData.roles.length >= 1 && UserData?.roles[0].name == "teacher" ? ROLES.Teacher : UserData?.roles && UserData.roles.length >= 1 && UserData?.roles[0].name == "student" ? ROLES.Student : ROLES.No))
             setAvailableRoutes(routes)
         }
     }, [UserData])

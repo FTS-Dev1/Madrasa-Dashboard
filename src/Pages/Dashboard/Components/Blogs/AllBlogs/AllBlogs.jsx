@@ -31,7 +31,7 @@ const AllBlogs = ({ page, setPage }) => {
     }
     useEffect(() => {
         gettingAllBlogs()
-    }, [])
+    }, [page])
     return (
         <>
             <div className="allBlogsContainer">

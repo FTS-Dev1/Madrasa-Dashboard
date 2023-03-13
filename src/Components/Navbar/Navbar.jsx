@@ -84,7 +84,7 @@ const Navbar = () => {
                         <div className="right-nav">
                             <Fade left>
                                 <div className="sub-menu">
-                                    <p>Dashboard</p>
+                                    <p>Application</p>
                                     <div className="img">
                                         <MdOutlineChevronRight />
                                     </div>

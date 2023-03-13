@@ -23,7 +23,7 @@ const Blog = () => {
                     page == "all" ?
                         <AllBlogs page={page} setPage={setPage} />
                         :
-                        <EditBlog />
+                        <EditBlog backPage={setPage}/>
 
                 }
             </div>

@@ -54,7 +54,7 @@ const CreateUserAPI = async (formData) => {
     return resolved;
 }
 
-const UpdateUserAPI = async ({ id, firstName, lastName, phone, password, password_confirmation, roles }) => {
+const UpdateUserAPI = async (id, formData) => {
     let resolved = {
         error: null,
         data: null
@@ -63,15 +63,8 @@ const UpdateUserAPI = async ({ id, firstName, lastName, phone, password, passwor
     try {
         let res = await axios({
             url: `/users/${id}`,
-            method: "PUT",
-            data: {
-                firstName,
-                lastName,
-                phone,
-                roles: [roles],
-                password,
-                password_confirmation
-            },
+            method: "POST",
+            data: formData,
             headers: AuthTokenGen()
         })
         resolved.data = res.data

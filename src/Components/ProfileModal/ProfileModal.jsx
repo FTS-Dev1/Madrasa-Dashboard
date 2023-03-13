@@ -115,15 +115,28 @@ const ProfileModal = ({ openModal, closeModal, selectedUser, isprofile }) => {
 
         let res
         if (selectedUser) {
-            res = await UpdateUserAPI({
-                id: selectedUser?.id,
-                firstName: formData.firstName,
-                lastName: formData.lastName,
-                phone: formData.phone,
-                password: formData.password,
-                password_confirmation: formData.confirmPassword,
-                roles: formData.roles
+            let fData = new FormData()
+            Object.keys(formData).map((key) => {
+                if (key == "roles") {
+                    fData.append("roles[]", formData[key])
+                } else {
+                    fData.append(key, formData[key])
+                }
             })
+            fData.append("_method", "PUT")
+            if (file) {
+                fData.append("avater", file)
+            }
+            res = await UpdateUserAPI(selectedUser?.id, fData)
+            // res = await UpdateUserAPI({
+            //     id: selectedUser?.id,
+            //     firstName: formData.firstName,
+            //     lastName: formData.lastName,
+            //     phone: formData.phone,
+            //     password: formData.password,
+            //     password_confirmation: formData.confirmPassword,
+            //     roles: formData.roles
+            // })
         } else {
             let fData = new FormData()
             Object.keys(formData).map((key) => {

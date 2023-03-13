@@ -11,7 +11,6 @@ import "./SalesChart.scss"
 
 
 
-
 // Registring Chart :
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 const SalesChart = () => {

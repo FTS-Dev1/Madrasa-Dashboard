@@ -7,7 +7,6 @@ import { FiUsers } from "react-icons/fi";
 import { AiOutlineFileProtect } from "react-icons/ai";
 import { FaGraduationCap } from "react-icons/fa";
 
-
 // CSS :
 import "./Cards.scss";
 

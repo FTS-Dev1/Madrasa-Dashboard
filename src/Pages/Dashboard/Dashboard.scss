@@ -15,7 +15,6 @@
             display: flex;
             flex-direction: column;
 
-
             .logoBox {
                 display: flex;
                 justify-content: center;
@@ -37,9 +36,6 @@
                 background-color: inherit;
                 border: none;
                 overflow-y: scroll;
-
-
-
 
                 .ant-menu-item {
                     &:hover {
@@ -78,7 +74,13 @@
                 border-radius: 8px;
             }
         }
+        .ant-menu-inline .ant-menu-item{
+            margin-inline: 8px !important;
+            margin-block: 4px !important;
+            width: calc(100% - 16px) !important;
+        }
     }
+
     .rightContainer {
         width: 100%;
         padding: 4rem 2rem;

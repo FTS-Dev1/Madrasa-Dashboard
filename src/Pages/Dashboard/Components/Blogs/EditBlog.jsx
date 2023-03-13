@@ -92,6 +92,7 @@ const Blog = ({backPage}) => {
         } else {
             toast.success(res?.data?.message)
         }
+        backPage("all")
         setLoading(false)
     }
 

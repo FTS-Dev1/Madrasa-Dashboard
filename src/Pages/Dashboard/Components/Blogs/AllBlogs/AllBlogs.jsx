@@ -67,7 +67,7 @@ const AllBlogs = ({ page, setPage }) => {
                                                             <div className="content"><div>{blog?.content.substring(0, 160).replace(/<[^>]+>/g, '')} ....</div></div>
                                                         </div>
                                                         <div className="blogButtons">
-                                                            <Button className="greenBtn">Edit</Button>
+                                                            {/* <Button className="greenBtn">Edit</Button> */}
                                                             <Button className="dangerBtn greenBtn">Delete</Button>
                                                         </div>
                                                     </div>

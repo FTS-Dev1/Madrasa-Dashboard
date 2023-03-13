@@ -77,9 +77,10 @@ const User = () => {
         },
         {
             title: 'Role',
-            dataIndex: 'type',
-            key: 'type',
-            sorter: (c, d) => c.type.localeCompare(d.type)
+            dataIndex: 'roles',
+            key: 'roles',
+            render: (_, data) => data?.roles && data.roles?.length >= 1 ? <span style={{ color: 'var(--themeColorGreen)' }}> {data?.roles[0].name?.toLocaleUpperCase()}</span> : <span style={{ color: 'red' }}> {data?.type.toLocaleUpperCase()} </span>,
+            // sorter: (c, d) => c.type.localeCompare(d.type)
         },
         // {
         //     title: 'Status',
@@ -92,7 +93,7 @@ const User = () => {
             title: 'Actions',
             dataIndex: 'action',
             key: 'action',
-            align:"center",
+            align: "center",
             render: (_, data) => <>
                 <div className="actionBox">
                     <div className="actionBtn">

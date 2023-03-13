@@ -5,13 +5,14 @@ import React, { useEffect, useState } from 'react';
 import { Button } from 'antd'
 
 // API :
-import { GetAllBlogsAPI } from '../../../../../API/blogs';
+import { ApproveBlogsAPI, DeleteBlogsAPI, GetAllBlogsAPI } from '../../../../../API/blogs';
 
 // Helpers :
 import { toast } from 'react-toastify';
 
 // CSS :
 import "./AllBlogs.scss";
+import { useSelector } from 'react-redux';
 
 
 
@@ -19,8 +20,11 @@ import "./AllBlogs.scss";
 
 const AllBlogs = ({ page, setPage }) => {
 
+    const UserData = useSelector(state => state?.userData)
+
     const [data, setData] = useState([])
     const [loading, setLoading] = useState(true)
+    const [refreshPage, setRefreshPage] = useState(false)
 
     const gettingAllBlogs = async () => {
         setLoading(true)
@@ -35,10 +39,34 @@ const AllBlogs = ({ page, setPage }) => {
     }
     useEffect(() => {
         gettingAllBlogs()
-    }, [page])
+    }, [page, refreshPage])
 
-    const handleBlogStatus = () => {
-        alert("Clicked")
+    const handleBlogStatus = async (blog) => {
+        if (UserData?.roles[0].name == "super-admin") {
+            if (blog?.status == "approved") {
+                toast.warn("Already Approved")
+            } else {
+                const res = await ApproveBlogsAPI(blog?.id)
+                if (res.error != null) {
+                    toast.error(res.error)
+                } else {
+                    toast.success(res.data?.message)
+                    setRefreshPage(!refreshPage)
+                }
+            }
+        } else {
+            toast.warn("Operation not allowed")
+        }
+    }
+
+    const handleDeleteBlog = async (blog) => {
+        const res = await DeleteBlogsAPI(blog?.id)
+        if (res.error != null) {
+            toast.error(res.error)
+        } else {
+            toast.success(res.data?.message)
+            setRefreshPage(!refreshPage)
+        }
     }
 
 
@@ -61,7 +89,7 @@ const AllBlogs = ({ page, setPage }) => {
         }
     };
 
-   
+
     return (
         <>
             <div className="allBlogsContainer">
@@ -93,7 +121,7 @@ const AllBlogs = ({ page, setPage }) => {
                                                     <div className="blog">
                                                         <div className='blogImage'>
                                                             <img src={`${process.env.REACT_APP_STORAGE_URL}/${blog?.image?.url}`} alt="ERROR" />
-                                                            <div className="tag cursor" onClick={handleBlogStatus}>Approved</div>
+                                                            <div className="tag cursor" style={blog?.status == "approved" ? { backgroundColor: "var(--themeColorGreen)" } : { backgroundColor: "var(--themeColor)" }} onClick={() => handleBlogStatus(blog)}>{blog?.status == "approved" ? "Approved" : "Pending"}</div>
                                                         </div>
                                                         <div className="details">
                                                             {/* <div className="title">{blog?.title}</div> */}
@@ -103,7 +131,7 @@ const AllBlogs = ({ page, setPage }) => {
                                                         </div>
                                                         <div className="blogButtons">
                                                             <Button className="greenBtn">Edit</Button>
-                                                            <Button className="dangerBtn greenBtn">Delete</Button>
+                                                            <Button className="dangerBtn greenBtn" onClick={() => handleDeleteBlog(blog)}>Delete</Button>
                                                         </div>
                                                     </div>
                                                 </>

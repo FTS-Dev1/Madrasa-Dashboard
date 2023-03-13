@@ -19,11 +19,11 @@ const Sample = {
     labels: [],
     datasets: [
         {
-            label: "Users",
-            data: [40, 166],
+            label: ["Students"],
+            data: [40 , 60],
             backgroundColor: ["#006400", "#FCD117"],
             borderWidth: 4
-        }
+        },
     ]
 };
 ////////////////////////////////////////////////////////////////////////

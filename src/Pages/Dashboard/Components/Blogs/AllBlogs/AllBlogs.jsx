@@ -1,9 +1,14 @@
 import { CircularProgress } from '@mui/material';
-import { Button } from 'antd'
 import React, { useEffect, useState } from 'react';
-import { toast } from 'react-toastify';
+
+// MUI | ANT-D :
+import { Button } from 'antd'
+
+// API :
 import { GetAllBlogsAPI } from '../../../../../API/blogs';
-import cardImg from '../../../../../Assets/Images/download.png'
+
+// Helpers :
+import { toast } from 'react-toastify';
 
 // CSS :
 import "./AllBlogs.scss";
@@ -32,9 +37,31 @@ const AllBlogs = ({ page, setPage }) => {
         gettingAllBlogs()
     }, [page])
 
-    const handleBlogStatus=()=>{
+    const handleBlogStatus = () => {
         alert("Clicked")
     }
+
+
+
+    const [showFullHeading, setShowFullHeading] = useState(false);
+    const [showFullDescription, setshowFullDescription] = useState(false);
+
+    const shortenHeading = (text, maxLength) => {
+        if (text.length > maxLength) {
+            return text.slice(0, maxLength) + "...";
+        } else {
+            return text;
+        }
+    };
+    const shortenDescription = (text, maxLength) => {
+        if (text.length > maxLength) {
+            return text.slice(0, maxLength) + "...";
+        } else {
+            return text;
+        }
+    };
+
+   
     return (
         <>
             <div className="allBlogsContainer">
@@ -69,8 +96,10 @@ const AllBlogs = ({ page, setPage }) => {
                                                             <div className="tag cursor" onClick={handleBlogStatus}>Approved</div>
                                                         </div>
                                                         <div className="details">
-                                                            <div className="title">{blog?.title}</div>
-                                                            <div className="content">{blog?.content.substring(0, 160).replace(/<[^>]+>/g, '')}</div>
+                                                            {/* <div className="title">{blog?.title}</div> */}
+                                                            <div className="title">{showFullHeading ? blog?.title.replace(/<[^>]+>/g, '') : shortenHeading(blog?.title, 52)}</div>
+                                                            {/* <div className="content">{blog?.content.substring(0, 160).replace(/<[^>]+>/g, '')}...</div> */}
+                                                            <div className="content">{showFullDescription ? blog?.content.replace(/<[^>]+>/g, '') : shortenDescription(blog?.content.replace(/<[^>]+>/g, ''), 160)}</div>
                                                         </div>
                                                         <div className="blogButtons">
                                                             <Button className="greenBtn">Edit</Button>
@@ -90,3 +119,4 @@ const AllBlogs = ({ page, setPage }) => {
 }
 
 export default AllBlogs
+

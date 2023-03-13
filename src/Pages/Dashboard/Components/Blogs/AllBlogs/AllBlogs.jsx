@@ -17,7 +17,6 @@ const AllBlogs = ({ page, setPage }) => {
     const [data, setData] = useState([])
     const [loading, setLoading] = useState(true)
 
-
     const gettingAllBlogs = async () => {
         setLoading(true)
         const res = await GetAllBlogsAPI()
@@ -32,6 +31,10 @@ const AllBlogs = ({ page, setPage }) => {
     useEffect(() => {
         gettingAllBlogs()
     }, [page])
+
+    const handleBlogStatus=()=>{
+        alert("Clicked")
+    }
     return (
         <>
             <div className="allBlogsContainer">
@@ -61,13 +64,16 @@ const AllBlogs = ({ page, setPage }) => {
                                             return (
                                                 <>
                                                     <div className="blog">
-                                                        <img src={`${process.env.REACT_APP_STORAGE_URL}/${blog?.image?.url}`} alt="ERROR" />
+                                                        <div className='blogImage'>
+                                                            <img src={`${process.env.REACT_APP_STORAGE_URL}/${blog?.image?.url}`} alt="ERROR" />
+                                                            <div className="tag cursor" onClick={handleBlogStatus}>Approved</div>
+                                                        </div>
                                                         <div className="details">
-                                                            <div className="title">{blog?.title.substring(0, 25)}...</div>
-                                                            <div className="content"><div>{blog?.content.substring(0, 160).replace(/<[^>]+>/g, '')} ....</div></div>
+                                                            <div className="title">{blog?.title}</div>
+                                                            <div className="content">{blog?.content.substring(0, 160).replace(/<[^>]+>/g, '')}</div>
                                                         </div>
                                                         <div className="blogButtons">
-                                                            {/* <Button className="greenBtn">Edit</Button> */}
+                                                            <Button className="greenBtn">Edit</Button>
                                                             <Button className="dangerBtn greenBtn">Delete</Button>
                                                         </div>
                                                     </div>

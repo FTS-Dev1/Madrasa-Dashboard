@@ -293,8 +293,8 @@ input {
 }
 
 // ANT Button
-:where(.css-dev-only-do-not-override-1km3mtt).ant-btn-default:not(:disabled):hover {
-    color: var(--light) !important;
+.ant-btn-default:not(:disabled):hover {
+    color: #fff !important;
     border-color: var(--themeColorGreen) !important;
 }
 

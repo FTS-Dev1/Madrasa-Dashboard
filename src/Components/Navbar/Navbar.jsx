@@ -44,10 +44,6 @@ const Navbar = () => {
     const content = (
         <div className='antPopover'>
             <div className="border"></div>
-            <div className='popoverItem' onClick={() => setShowProfileModal(true)}>
-                <AiOutlineUser className='icon' />
-                <p>Create New User</p>
-            </div>
             <div className='popoverItem'>
                 <AiFillSetting className='icon' />
                 Add Account
@@ -92,28 +88,28 @@ const Navbar = () => {
                                 </div>
                             </Fade>
                             <Fade right>
-                            <div className="bio">
-                                <div className='inputfield'>
-                                    <input type="text" placeholder='Search...' />
-                                    <RiSearchLine className="icon" />
-                                </div>
-                                <div className='notification'>
-                                    <IoMdNotificationsOutline className='icon' />
-                                </div>
-                                <div className="nav-popover">
-                                    <Popover
-                                        placement="bottomRight" title={
-                                            <div className='popoverHeading'>
-                                                <div className='name'>{UserData?.firstName} {UserData?.lastName}</div>
-                                                <div className="skill" style={{ fontSize: "0.75rem" }}>{UserData?.type?.toLocaleUpperCase()}</div>
+                                <div className="bio">
+                                    <div className='inputfield'>
+                                        <input type="text" placeholder='Search...' />
+                                        <RiSearchLine className="icon" />
+                                    </div>
+                                    <div className='notification'>
+                                        <IoMdNotificationsOutline className='icon' />
+                                    </div>
+                                    <div className="nav-popover">
+                                        <Popover
+                                            placement="bottomRight" title={
+                                                <div className='popoverHeading'>
+                                                    <div className='name'>{UserData?.firstName} {UserData?.lastName}</div>
+                                                    <div className="skill" style={{ fontSize: "0.75rem" }}>{UserData?.roles && UserData.roles.length >= 1 && UserData.roles[0].name?.toLocaleUpperCase()}</div>
+                                                </div>
+                                            } content={content} trigger="click">
+                                            <div className='img'>
+                                                <img src={profile} alt="" />
                                             </div>
-                                        } content={content} trigger="click">
-                                        <div className='img'>
-                                            <img src={profile} alt="" />
-                                        </div>
-                                    </Popover>
+                                        </Popover>
+                                    </div>
                                 </div>
-                            </div>
                             </Fade>
                         </div>
                     </div>

@@ -73,8 +73,8 @@ const Navbar = () => {
                         <Fade left>
                             <div className="left-nav">
                                 <div className="logo">
-                                    <SvgLogo height={"inherit"} />
-                                    {/* <img src={logo} alt="" /> */}
+                                    {/* <SvgLogo height={"inherit"} /> */}
+                                    <img src={logo} alt="" />
                                     {/* <div className='logoHeading'>Madrasa</div> */}
                                 </div>
                             </div>

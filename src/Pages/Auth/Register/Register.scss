@@ -243,6 +243,23 @@
                         }
                     }
 
+                    .phoneNumberInput {
+                        * {
+                            scroll-behavior: unset !important;
+                        }
+
+                        input {
+                            width: 100%;
+                            border: 1px solid var(--border);
+                            padding: 12px 55px;
+                            border-radius: var(--radius);
+                            box-shadow: none;
+                            &:hover {
+                                border-color: var(--themeColorGreen);
+                            }
+                        }
+                    }
+
                     .rememberMe {
                         display: flex;
                         justify-content: space-between;

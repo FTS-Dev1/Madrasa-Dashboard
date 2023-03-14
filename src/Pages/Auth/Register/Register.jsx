@@ -1,8 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
-import Fade from 'react-reveal/Fade';
-import Zoom from 'react-reveal/Zoom';
-import { FaFacebookF } from 'react-icons/fa';
+
 
 // MUI | ANT-D :
 import { Button, Input, Space, Select } from 'antd';
@@ -11,6 +9,14 @@ import { Button, Input, Space, Select } from 'antd';
 import logo from '../../../Assets/Images/logo-old.png'
 import MadrasaImage from '../../../Assets/Images/loginLogo.png'
 import Google from '../../../Assets/Images/google.svg';
+import { FaFacebookF } from 'react-icons/fa';
+
+// React Fade Animation :
+import Fade from 'react-reveal/Fade';
+import Zoom from 'react-reveal/Zoom';
+// PhoneInput :
+import PhoneInput from 'react-phone-input-2'
+import 'react-phone-input-2/lib/bootstrap.css'
 
 // API:
 import { RegisterAPI } from '../../../API/auth';
@@ -58,7 +64,7 @@ const Register = () => {
             firstName: formData.firstName,
             lastName: formData.lastName,
             email: formData.email,
-            phone: formData.phone,
+            phone: `+${formData.phone}`,
             type: formData.role,
             password: formData.password,
             password_confirmation: formData.confirmPassword
@@ -85,73 +91,78 @@ const Register = () => {
                     <div className="loginBio">
                         <div className="logo">
                             <Fade left>
-                            <img src={logo} alt="" />
+                                <img src={logo} alt="" />
                             </Fade>
                         </div>
                         <div className="madrasaLogo">
                             <Fade left>
-                            <img src={MadrasaImage} alt="" />
+                                <img src={MadrasaImage} alt="" />
                             </Fade>
                         </div>
                         <Fade left>
-                        <div className="content">
-                            <div className="heading">A few more clicks to sign in to your account.
+                            <div className="content">
+                                <div className="heading">A few more clicks to sign in to your account.
+                                </div>
+                                <p className="para">Manage all your e-commerce accounts in one place</p>
                             </div>
-                            <p className="para">Manage all your e-commerce accounts in one place</p>
-                        </div>
                         </Fade>
                     </div>
                 </div>
                 <div className="rightSection">
                     <Zoom>
-                    <form action="users" method='post'>
-                        <div className="wrapContainer">
-                            <div className="heading">Sign Up</div>
-                            <p className="para">A few more clicks to sign in to your account. Manage all your e-commerce accounts in one place</p>
-                            <div className="flexFields">
-                                <div className="fields">
-                                    <input className='registerInput' type="text" placeholder='First Name' name="firstName" onChange={enteringFormData} value={formData.firstName} />
-                                    <input className='registerInput' type="text" placeholder='Last Name' name="lastName" onChange={enteringFormData} value={formData.lastName} />
-                                </div>
-                                <input className='registerInput' type="email" placeholder='Email' name="email" onChange={enteringFormData} value={formData.email} />
-                                <input className='registerInput' type="text" placeholder='Phone Number' name="phone" onChange={enteringFormData} value={formData.phone} />
-                                <div className="fields">
-                                    <Select
-                                        onChange={handleSelectChange}
-                                        value={formData.role}
-                                        placeholder="Select Role"
-                                        options={[
-                                            {
-                                                label: 'Teacher',
-                                                value: 'Teacher'
-                                            },
-                                            {
-                                                label: 'Student',
-                                                value: 'Student'
-                                            },
-                                        ]}
+                        <form action="users" method='post'>
+                            <div className="wrapContainer">
+                                <div className="heading">Sign Up</div>
+                                <p className="para">A few more clicks to sign in to your account. Manage all your e-commerce accounts in one place</p>
+                                <div className="flexFields">
+                                    <div className="fields">
+                                        <input className='registerInput' type="text" placeholder='First Name' name="firstName" onChange={enteringFormData} value={formData.firstName} />
+                                        <input className='registerInput' type="text" placeholder='Last Name' name="lastName" onChange={enteringFormData} value={formData.lastName} />
+                                    </div>
+                                    <input className='registerInput' type="email" placeholder='Email' name="email" onChange={enteringFormData} value={formData.email} />
+                                    <PhoneInput
+                                        country={'us'}
+                                        className="phoneNumberInput"
+                                        value={formData.phone}
+                                        onChange={(phone) => enteringFormData({ target: { name: "phone", value: phone } })}
                                     />
+                                    <div className="fields">
+                                        <Select
+                                            onChange={handleSelectChange}
+                                            value={formData.role}
+                                            placeholder="Select Role"
+                                            options={[
+                                                {
+                                                    label: 'Teacher',
+                                                    value: 'Teacher'
+                                                },
+                                                {
+                                                    label: 'Student',
+                                                    value: 'Student'
+                                                },
+                                            ]}
+                                        />
+                                    </div>
+                                    <div className="fields">
+                                        <Space direction="vertical">
+                                            <Input.Password placeholder="Enter Password" name='password' onChange={enteringFormData} value={formData.password} />
+                                        </Space>
+                                        <Space direction="vertical">
+                                            <Input.Password placeholder="Confirm Password" name='confirmPassword' onChange={enteringFormData} value={formData.confirmPassword} />
+                                        </Space>
+                                    </div>
+                                    <div className="registerButton">
+                                        <Button className='register' loading={loading} onClick={handleRegister} >Register</Button>
+                                        <p>Already have an account? <a className='signin cursor' onClick={signInFun}>Sign In</a> </p>
+                                    </div>
                                 </div>
-                                <div className="fields">
-                                    <Space direction="vertical">
-                                        <Input.Password placeholder="Enter Password" name='password' onChange={enteringFormData} value={formData.password} />
-                                    </Space>
-                                    <Space direction="vertical">
-                                        <Input.Password placeholder="Confirm Password" name='confirmPassword' onChange={enteringFormData} value={formData.confirmPassword} />
-                                    </Space>
+                                <div className="authButton">
+                                    <div className="google cursor"><img src={Google} alt="" /> Sign in with Google</div>
+                                    <div className="fb cursor"><FaFacebookF style={{ color: "#fff", fontSize: "20px" }} /> Sign in with Facebook</div>
                                 </div>
-                                <div className="registerButton">
-                                    <Button className='register' loading={loading} onClick={handleRegister} >Register</Button>
-                                    <p>Already have an account? <a className='signin cursor' onClick={signInFun}>Sign In</a> </p>
-                                </div>
+                                <p className='terms'>By signin up, you agree to our <a>Terms and Conditions</a> & <a>Privacy Policy</a></p>
                             </div>
-                            <div className="authButton">
-                                <div className="google cursor"><img src={Google} alt="" /> Sign in with Google</div>
-                                <div className="fb cursor"><FaFacebookF style={{color:"#fff",fontSize:"20px"}}/> Sign in with Facebook</div>
-                            </div>
-                            <p className='terms'>By signin up, you agree to our <a>Terms and Conditions</a> & <a>Privacy Policy</a></p>
-                        </div>
-                    </form>
+                        </form>
                     </Zoom>
                 </div>
             </div>

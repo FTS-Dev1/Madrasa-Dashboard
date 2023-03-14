@@ -45,7 +45,7 @@
 
                 .ant-menu-item-selected {
                     background-color: var(--themeColor);
-                    color: var(--themeColorGreen);
+                    color: black;
 
 
                     &:hover {
@@ -74,7 +74,8 @@
                 border-radius: 8px;
             }
         }
-        .ant-menu-inline .ant-menu-item{
+
+        .ant-menu-inline .ant-menu-item {
             margin-inline: 8px !important;
             margin-block: 4px !important;
             width: calc(100% - 16px) !important;

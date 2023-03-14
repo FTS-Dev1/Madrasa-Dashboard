@@ -135,6 +135,7 @@ input {
     align-items: center;
     gap: 1rem;
 }
+
 .flexLine {
     display: flex;
     align-items: center;
@@ -160,13 +161,13 @@ input {
 .heading {
     font-size: 2rem;
     font-weight: bold;
-    text-shadow: 1px 2px 5px rgba(81, 67, 21, 0.8);
+    text-transform: uppercase;
+    // text-shadow: 1px 2px 5px rgba(81, 67, 21, 0.8);
 }
 
 .subHeading {
     font-size: 1rem;
     font-weight: bold;
-    text-shadow: 1px 1px 3px rgba(81, 67, 21, 0.8);
 }
 
 // Buttons

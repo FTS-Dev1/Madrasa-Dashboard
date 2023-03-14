@@ -10,6 +10,7 @@ import { IoMdNotificationsOutline } from 'react-icons/io';
 import { MdOutlineChevronRight } from 'react-icons/md';
 import { AiOutlineUser, AiFillSetting } from 'react-icons/ai';
 import logo from '../../Assets/Images/logo.png'
+import { ReactComponent as SvgLogo } from "../../Assets/Images/logo.svg";
 import profile from '../../Assets/Images/profile.jpg'
 
 // Redux :
@@ -72,6 +73,7 @@ const Navbar = () => {
                         <Fade left>
                             <div className="left-nav">
                                 <div className="logo">
+                                    {/* <SvgLogo height={"inherit"} /> */}
                                     <img src={logo} alt="" />
                                     {/* <div className='logoHeading'>Madrasa</div> */}
                                 </div>

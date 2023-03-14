@@ -209,7 +209,7 @@ const ShowPermissionModal = ({ openModal, closeModel, selectedRole }) => {
                         <div className="heading"> {selectedRole ? "Edit Role" : "Create New Role"} </div>
                         <div className="permissions">
                             <input type="text" className='registerInput' placeholder='User' value={formData?.name} name="name" onChange={enteringFormData} />
-                            <div className="heading">Permisson:</div>
+                            <div className="heading">Permissons:</div>
                             {
                                 rolesLoading ?
                                     <>

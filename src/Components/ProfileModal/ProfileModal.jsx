@@ -152,8 +152,8 @@ const ProfileModal = ({ openModal, closeModal, selectedUser, isprofile }) => {
             toast.error(res.error);
         } else {
             toast.success(res.data.message);
+            closeModal()
         }
-        closeModal()
         setloading(false)
     }
 
@@ -181,6 +181,7 @@ const ProfileModal = ({ openModal, closeModal, selectedUser, isprofile }) => {
                 password: "",
                 confirmPassword: ""
             })
+            setSelectedRole(null)
             setFile(null)
             setImageUrl(null)
         }

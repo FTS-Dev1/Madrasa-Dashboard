@@ -29,6 +29,7 @@ const Table = ({
     tableLeftActionsHandler = (action) => console.log(action),
     actionHandler = (row) => console.log(row),
     searchHandler = (search) => console.log(search),
+    onchangeSearchHandler,
     loading
 }) => {
 
@@ -146,7 +147,8 @@ const Table = ({
                         {
                             hasSearch &&
                             <Col xs={24} sm={24} md={24} lg={9} xl={9}>
-                                <Search allowClear onSearch={searchHandler} placeholder="Search" enterButton="Go!" />
+                                {/* <Search allowClear onSearch={searchHandler} onChange={onchangeSearchHandler} placeholder="Search" enterButton="Go!" /> */}
+                                <Input allowClear onSearch={searchHandler} onChange={onchangeSearchHandler} placeholder="Search" />
                             </Col>
                         }
                     </Row>

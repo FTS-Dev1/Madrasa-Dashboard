@@ -22,12 +22,23 @@ import './Roles.scss'
 
 
 
+
+
+const rows = [
+    {
+        id: 121,
+        name: `Osama Aslam`,
+        email: `osamaaslam029@gmail.com`,
+        role: "Admin",
+        action: "Actions",
+    },
+
+]
 const Roles = () => {
 
     const edit = <span>Edit</span>;
     const remove = <span>Delete</span>;
 
-    const options = ['Show', 'Hide', 'Center'];
     const [arrow, setArrow] = useState('Show');
 
     const mergedArrow = useMemo(() => {
@@ -44,20 +55,11 @@ const Roles = () => {
         };
     }, [arrow]);
 
-    const [rows, setRows] = useState([
-        {
-            id: 121,
-            name: `Osama Aslam`,
-            email: `osamaaslam029@gmail.com`,
-            role: "Admin",
-            action: "Actions",
-        },
-
-    ])
 
     const [data, setData] = useState([])
     const [filteredData, setFilteredData] = useState([])
     const [loading, setLoading] = useState(false)
+    const [searchInput, setSearchinput] = useState("")
 
     const [selectedRole, setSelectedRole] = useState(null)
     const [showPermissionsModal, setShowPermissionsModal] = useState(false)
@@ -74,7 +76,6 @@ const Roles = () => {
             title: 'Name',
             dataIndex: 'name',
             key: 'name',
-
             sorter: (a, b) => a.name.localeCompare(b.name),
         },
         {
@@ -117,6 +118,19 @@ const Roles = () => {
         setSelectedRole(null)
         setReload(!reload)
     }
+
+
+    const onchangeSearchHandler = (event) => {
+        let { value } = event.target;
+        setSearchinput(value)
+    }
+    useEffect(() => {
+        if (data) {
+            setFilteredData(
+                data.filter(val => val.name?.toLocaleLowerCase().includes(searchInput?.toLocaleLowerCase()))
+            )
+        }
+    }, [data, searchInput])
     const gettingAllRoles = async () => {
         setLoading(true)
         let res = await GetAllRolesAPI()
@@ -132,14 +146,6 @@ const Roles = () => {
     useEffect(() => {
         gettingAllRoles()
     }, [reload])
-     const searchHandler = (event) => {
-        let filteredData = data.filter((a) =>
-            a?.name?.toLocaleLowerCase()?.includes(event)
-        )
-
-        setFilteredData(filteredData)
-    }
-
     return (
         <>
             <div className="rolesContainer">
@@ -153,7 +159,7 @@ const Roles = () => {
                         rows={filteredData}
                         columns={columns}
                         hasSearch
-                        searchHandler={searchHandler}
+                        onchangeSearchHandler={onchangeSearchHandler}
                     />
                 </div>
             </div>
@@ -162,4 +168,4 @@ const Roles = () => {
     )
 }
 
-export default Roles 
+export default Roles;

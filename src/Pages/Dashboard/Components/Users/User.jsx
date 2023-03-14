@@ -30,6 +30,7 @@ const User = () => {
     const [data, setData] = useState([])
     const [filteredData, setFilteredData] = useState([])
     const [loading, setLoading] = useState(false)
+    const [searchInput, setSearchinput] = useState("")
 
     const [selectedUser, setSelectedUser] = useState(null)
     const [showProfileModal, setShowProfileModal] = useState(false)
@@ -110,6 +111,18 @@ const User = () => {
     ]
 
 
+    const onchangeSearchHandler = (event) => {
+        let { value } = event.target;
+        setSearchinput(value)
+    }
+    useEffect(() => {
+        if (data) {
+            setFilteredData(
+                data.filter(val => `${val.firstName} ${val.lastName}`.toLocaleLowerCase().includes(searchInput?.toLocaleLowerCase()))
+            )
+        }
+    }, [data, searchInput])
+
     const gettingAllUsers = async () => {
         setLoading(true)
         let res = await GetAllUsersAPI()
@@ -124,16 +137,6 @@ const User = () => {
     useEffect(() => {
         gettingAllUsers()
     }, [reload])
-
-    const searchHandler = (event) => {
-        let filteredData = data.filter((a) =>
-            a?.name?.toLowerCase()?.includes(event) ||
-            a?.email?.toLowerCase()?.includes(event)
-        )
-
-        setFilteredData(filteredData)
-    }
-
     return (
 
         <>
@@ -150,7 +153,7 @@ const User = () => {
                         rows={filteredData}
                         columns={columns}
                         hasSearch
-                        searchHandler={searchHandler}
+                        onchangeSearchHandler={onchangeSearchHandler}
                     />
                 </div>
             </div>

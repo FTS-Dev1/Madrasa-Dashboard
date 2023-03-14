@@ -1,4 +1,9 @@
 body {
-	font-family: 'lightFont';
+	font-family: 'lightFont' !important;
 	background-color: var(--pageBackgroundColor);
+	
+	*{
+		font-family: 'lightFont' !important;
+	}
+
 }

@@ -95,7 +95,7 @@ const User = () => {
             dataIndex: 'action',
             key: 'action',
             align: "center",
-            render: (_, data) => <>
+            render: (_, data) => data?.id != "1" && <>
                 <div className="actionBox">
                     <div className="actionBtn">
                         <RiEdit2Fill className='icon cursor' onClick={() => openProfileModal(data)} />
@@ -142,7 +142,7 @@ const User = () => {
         <>
             <div className="dashboardUsersContainer">
                 <div className="flexLineSpace">
-                    <div className="heading">
+                    <div className="heading upper">
                         Users
                     </div>
                     <Button className='greenBtn' style={{ width: "120px" }} onClick={() => openProfileModal(null)}> Add User </Button>

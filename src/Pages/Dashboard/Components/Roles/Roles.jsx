@@ -83,7 +83,7 @@ const Roles = () => {
             dataIndex: 'action',
             key: 'action',
             align: "center",
-            render: (_, data) => <>
+            render: (_, data) => data?.id != 1 && <>
                 <div className="actionBox">
                     <Tooltip placement="top" title={edit} arrow={mergedArrow}>
                         <div className="actionBtn" onClick={() => openRoleModel(data)}>
@@ -150,7 +150,7 @@ const Roles = () => {
         <>
             <div className="rolesContainer">
                 <div className="flexLineSpace">
-                    <div className="heading">Roles</div>
+                    <div className="heading upper">Roles</div>
                     <Button className='greenBtn' style={{ width: "120px" }} onClick={() => openRoleModel(null)}> Add Role </Button>
                 </div>
                 <div className="table">

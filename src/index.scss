@@ -194,6 +194,17 @@ input {
     text-transform: uppercase;
 }
 
+.dashboardHeading {
+    height: 70px;
+    position: sticky;
+    background-color: var(--pageBackgroundColor);
+    width: 100%;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    top: -25px;
+}
+
 /* ************ ANT-Design ************** */
 // ANT-D Input
 .ant-input {

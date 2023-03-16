@@ -78,6 +78,29 @@ const UpdateUserAPI = async (id, formData) => {
     return resolved;
 }
 
+const DeleteUserAPI = async (id) => {
+    let resolved = {
+        error: null,
+        data: null
+    }
+
+    try {
+        let res = await axios({
+            url: `/users/${id}`,
+            method: "DELETE",
+            headers: AuthTokenGen()
+        })
+        resolved.data = res.data
+    } catch (err) {
+        if (err && err.response && err?.response?.data?.message) {
+            resolved.error = err.response.data.message
+        } else {
+            resolved.error = "Something went Wrong"
+        }
+    }
+    return resolved;
+}
+
 
 const GetAllRolesAPI = async () => {
     let resolved = {
@@ -156,6 +179,29 @@ const UpdateRoleAPI = async ({ id, name, permissions }) => {
     return resolved;
 }
 
+const DeleteRoleAPI = async (id) => {
+    let resolved = {
+        error: null,
+        data: null
+    }
+
+    try {
+        let res = await axios({
+            url: `/roles/${id}`,
+            method: "DELETE",
+            headers: AuthTokenGen()
+        })
+        resolved.data = res.data
+    } catch (err) {
+        if (err && err.response && err?.response?.data?.message) {
+            resolved.error = err.response.data.message
+        } else {
+            resolved.error = "Something went Wrong"
+        }
+    }
+    return resolved;
+}
+
 
 const GetAllPermissionsAPI = async () => {
     let resolved = {
@@ -181,4 +227,4 @@ const GetAllPermissionsAPI = async () => {
 }
 
 
-export { GetAllUsersAPI, GetAllRolesAPI, CreateRoleAPI, UpdateRoleAPI, GetAllPermissionsAPI, CreateUserAPI, UpdateUserAPI };
+export { GetAllUsersAPI, GetAllRolesAPI, CreateRoleAPI, UpdateRoleAPI, GetAllPermissionsAPI, CreateUserAPI, UpdateUserAPI, DeleteUserAPI , DeleteRoleAPI };

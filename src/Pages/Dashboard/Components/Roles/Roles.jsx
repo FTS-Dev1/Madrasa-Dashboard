@@ -13,7 +13,7 @@ import { BiShow } from 'react-icons/bi';
 import { MdDelete } from 'react-icons/md';
 
 // API :
-import { GetAllRolesAPI } from '../../../../API/user'
+import { DeleteRoleAPI, GetAllRolesAPI } from '../../../../API/user'
 // Helpers :
 import { toast } from "react-toastify";
 
@@ -66,6 +66,17 @@ const Roles = () => {
     const [reload, setReload] = useState(false)
 
 
+    const deleteRole = async (role) => {
+        let res = await DeleteRoleAPI(role?.id)
+        if (res.error != null) {
+            toast.error(res.error)
+        } else {
+            toast.success(res.data.message)
+        }
+        setReload(!reload)
+    }
+
+
     const columns = [
         // {
         //     title: 'ID',
@@ -90,11 +101,11 @@ const Roles = () => {
                             <RiEdit2Fill className='icon cursor' />
                         </div>
                     </Tooltip>
-                    {/* <Tooltip placement="top" title={remove} arrow={mergedArrow}>
-                        <div className="actionBtn">
+                    <Tooltip placement="top" title={remove} arrow={mergedArrow}>
+                        <div className="actionBtn" onClick={() => deleteRole(data)}>
                             <MdDelete className='icon cursor' />
                         </div>
-                    </Tooltip> */}
+                    </Tooltip>
 
 
 

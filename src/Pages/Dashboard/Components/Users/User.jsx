@@ -14,7 +14,7 @@ import { BiShow } from 'react-icons/bi';
 import { MdDelete } from 'react-icons/md';
 
 // API :
-import { GetAllUsersAPI } from '../../../../API/user'
+import { DeleteUserAPI, GetAllUsersAPI } from '../../../../API/user'
 // Helpers :
 import { toast } from "react-toastify";
 
@@ -48,6 +48,17 @@ const User = () => {
     const closeProfileModal = () => {
         setShowProfileModal(false)
         setSelectedUser(null)
+        setReload(!reload)
+    }
+
+
+    const deleteUser = async (user) => {
+        let res = await DeleteUserAPI(user?.id)
+        if (res.error != null) {
+            toast.error(res.error)
+        } else {
+            toast.success(res.data?.message)
+        }
         setReload(!reload)
     }
 
@@ -100,9 +111,9 @@ const User = () => {
                     <div className="actionBtn">
                         <RiEdit2Fill className='icon cursor' onClick={() => openProfileModal(data)} />
                     </div>
-                    {/* <div className="actionBtn">
+                    <div className="actionBtn" onClick={() => deleteUser(data)}>
                         <MdDelete className='icon cursor' />
-                    </div> */}
+                    </div>
                 </div>
             </>
 

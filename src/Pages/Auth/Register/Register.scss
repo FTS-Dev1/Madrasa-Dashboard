@@ -220,6 +220,7 @@
                     padding-top: .5rem;
 
                     .fields {
+                        width: 100%;
                         display: flex;
                         gap: 1rem;
 
@@ -256,24 +257,6 @@
                             box-shadow: none;
                             &:hover {
                                 border-color: var(--themeColorGreen);
-                            }
-                        }
-                    }
-
-                    .rememberMe {
-                        display: flex;
-                        justify-content: space-between;
-                        font-size: 14px;
-
-                        .checkbox {
-                            display: flex;
-                            gap: .5rem;
-                            align-items: center;
-
-                            input {
-                                height: 17px;
-                                width: 17px;
-                                font-family: 'darkFont';
                             }
                         }
                     }
@@ -316,8 +299,8 @@
                 }
 
                 .authButton {
-                    padding-top: 10px;
                     width: 100%;
+                    padding-top: 10px;
                     display: flex;
                     gap: 1rem;
                     justify-content: center;

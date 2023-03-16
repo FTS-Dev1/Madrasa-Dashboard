@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
-
 // MUI | ANT-D :
 import { Button, Input, Space, Select } from 'antd';
 
@@ -37,7 +36,7 @@ const Register = () => {
         firstName: "",
         lastName: "",
         email: "",
-        phone: "",
+        phone: "+61",
         role: null,
         password: "",
         confirmPassword: ""
@@ -144,10 +143,10 @@ const Register = () => {
                                         />
                                     </div>
                                     <div className="fields">
-                                        <Space direction="vertical">
+                                        <Space direction="vertical" style={{width:"100%"}}>
                                             <Input.Password placeholder="Enter Password" name='password' onChange={enteringFormData} value={formData.password} />
                                         </Space>
-                                        <Space direction="vertical">
+                                        <Space direction="vertical" style={{width:"100%"}}>
                                             <Input.Password placeholder="Confirm Password" name='confirmPassword' onChange={enteringFormData} value={formData.confirmPassword} />
                                         </Space>
                                     </div>

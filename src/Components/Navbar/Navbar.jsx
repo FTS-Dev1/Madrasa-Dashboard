@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { useLocation } from 'react-router-dom';
 import Fade from 'react-reveal/Fade';
 
 // ANT-D | MUI :
@@ -36,9 +37,11 @@ const logout = () => {
 }
 
 const Navbar = () => {
+    const Location = useLocation()
 
     const UserData = useSelector(state => state.userData)
 
+    const [paths, setPaths] = useState([])
     const [showProfileModal, setShowProfileModal] = useState(false)
 
 
@@ -64,6 +67,18 @@ const Navbar = () => {
             </div>
         </div>
     );
+
+    useEffect(() => {
+        let pathString = Location.pathname.split("/")
+
+        let allDynamicPatchs = []
+        let process = pathString.map((path, index) => {
+            if (index >= 2) {
+                allDynamicPatchs.push(path)
+            }
+        })
+        setPaths(allDynamicPatchs)
+    }, [Location.pathname])
     return (
         <>
             <div className="nav-container">
@@ -84,10 +99,28 @@ const Navbar = () => {
                             <Fade left>
                                 <div className="sub-menu">
                                     <p>Application</p>
-                                    <div className="img">
-                                        <MdOutlineChevronRight />
-                                    </div>
-                                    <p>Dashboard</p>
+                                    {
+                                        paths.length <= 0 || paths[0] == "" ?
+                                            <>
+                                                <div className="img">
+                                                    <MdOutlineChevronRight />
+                                                </div>
+                                                <p>Dashboard</p>
+                                            </>
+                                            :
+                                            paths.map((data) => {
+                                                return (
+                                                    <>
+                                                        <div className="img">
+                                                            <MdOutlineChevronRight />
+                                                        </div>
+                                                        <p>{data}</p>
+                                                    </>
+                                                )
+                                            })
+
+
+                                    }
                                 </div>
                             </Fade>
                             <Fade right>

@@ -94,8 +94,8 @@ const AllBlogs = ({ page, setPage }) => {
     return (
         <>
             <div className="allBlogsContainer">
-                <div className="flexLineSpace">
-                    <div className="heading">All Blogs</div>
+                <div className="flexLineSpace dashboardHeading">
+                    <div className="heading upper">All Blogs</div>
                     <Button className='greenBtn' style={{ width: "120px" }} onClick={() => setPage("edit")}> Add Blog </Button>
                 </div>
                 {

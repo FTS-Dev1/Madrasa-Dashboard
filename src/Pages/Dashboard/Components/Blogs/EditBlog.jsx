@@ -105,7 +105,7 @@ const Blog = ({ backPage }) => {
 
         <div className='blogContainer'>
             <div className="title-bar">
-                <div className="header">
+                <div className="header upper">
                     <BiArrowBack className='icon cursor' onClick={backBlogButton} />
                     <div className="heading">Add Blogs</div>
                 </div>

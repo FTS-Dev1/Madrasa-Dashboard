@@ -1,7 +1,9 @@
 .allBlogsContainer {
     height: 100%;
+    position: relative;
 
     .blogsBox {
+        padding: 0 .4rem;
         padding-top: 5rem;
         gap: 3rem;
         display: grid;

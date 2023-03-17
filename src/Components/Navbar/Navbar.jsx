@@ -68,6 +68,7 @@ const Navbar = () => {
         <>
             <div className="nav-container">
                 <div className="shadow"></div>
+                <div className="mixer"></div>
                 <div className='navbar'>
                     <div className="flex-nav">
                         <Fade left>
@@ -103,7 +104,7 @@ const Navbar = () => {
                                             placement="bottomRight" title={
                                                 <div className='popoverHeading'>
                                                     <div className='name'>{UserData?.firstName} {UserData?.lastName}</div>
-                                                    <div className="skill" style={{ fontSize: "0.75rem" }}>{UserData?.roles && UserData.roles.length >= 1 && UserData.roles[0].name?.toLocaleUpperCase()}</div>
+                                                    <div className="skill">{UserData?.roles && UserData.roles.length >= 1 && UserData.roles[0].name?.toLocaleUpperCase()}</div>
                                                 </div>
                                             } content={content} trigger="click">
                                             <div className='img'>

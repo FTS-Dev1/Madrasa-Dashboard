@@ -13,7 +13,21 @@ import 'react-quill/dist/quill.snow.css';
 
 
 
-
+let Modules = {
+    toolbar: [
+        [{ 'header': '1' }, { 'header': '2' }, { 'font': [] }],
+        [{ size: [] }],
+        ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+        [{ 'list': 'ordered' }, { 'list': 'bullet' },
+        { 'indent': '-1' }, { 'indent': '+1' }],
+        ['link', 'image', 'video'],
+        ['clean']
+    ],
+    clipboard: {
+        // toggle to add extra line breaks when pasting HTML:
+        matchVisual: false,
+    }
+}
 const Content = ({ postData, enteringPostData }) => {
 
     const enteringData = (value) => {
@@ -32,7 +46,7 @@ const Content = ({ postData, enteringPostData }) => {
                 Text Content
             </div>
             <div className="editor">
-                <ReactQuill value={postData.content} onChange={enteringData} />
+                <ReactQuill value={postData.content} modules={Modules} onChange={enteringData} />
             </div>
         </div>
     )

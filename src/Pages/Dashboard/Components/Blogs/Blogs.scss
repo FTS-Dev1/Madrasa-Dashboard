@@ -3,9 +3,6 @@
     flex-direction: column;
     gap: 2rem;
 }
-
-
-
 .blogContainer {
 
     @media screen and (max-width:"1024px") {
@@ -119,7 +116,6 @@
                 margin-top: 1rem;
                 background-color: #fff;
                 border-radius: 5px;
-                border: 1px solid rgb(207, 206, 206);
 
                 .active-buttons {
                     height: 55px;

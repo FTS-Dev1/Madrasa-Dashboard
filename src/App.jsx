@@ -22,9 +22,9 @@ const ProtectedRoute = ({ user, children }) => {
   if (!user) {
     return <Navigate to="/login" replace />;
   }
-
   return children;
 };
+
 const App = () => {
 
   let token = localStorage.getItem("madrasaToken")

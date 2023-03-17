@@ -13,7 +13,7 @@ import './Information.scss'
 const Infomation = ({ postData, enteringPostData }) => {
 
     return (
-        <div className='blogForm'>
+        <div className='blogForm border'>
             {/* <div className="mb-3">
                 <label htmlFor="exampleInputEmail1" className="form-label">Written By</label>
                 <Select

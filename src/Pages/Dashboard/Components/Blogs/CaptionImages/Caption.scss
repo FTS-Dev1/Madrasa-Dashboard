@@ -2,7 +2,6 @@
     margin: 1rem;
     background-color: #fff;
     border-radius: 5px;
-    border: 1px solid rgb(207, 206, 206);
     padding: 1rem;
 
     .caption-heading {
@@ -10,7 +9,10 @@
         align-items: center;
         gap: .5rem;
         padding: 0rem 0 1rem 0;
-        border-bottom: 1px solid rgb(207, 206, 206);
+        border-bottom: 1px solid var(--border);
+        &:hover{
+            border-color: var(--themeColorGreen);
+        }
 
         .icon {
             height: 18px;
@@ -34,10 +36,13 @@
             margin-top: 10px;
             display: flex;
             flex-direction: column;
-            border: 2px dashed rgb(216, 214, 214);
+            border: 2px dashed var(--border);
             padding: 1rem;
             gap: 1rem;
             border-radius: 5px;
+            &:hover{
+                border-color: var(--themeColorGreen);
+            }
 
             .imgBox {
                 width: 100%;

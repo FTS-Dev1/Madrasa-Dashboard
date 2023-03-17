@@ -62,7 +62,7 @@ const Caption = ({ postData, enteringPostData }) => {
     );
 
     return (
-        <div className="caption-box">
+        <div className="caption-box border">
             <div className="caption-heading">
                 <Down className='icon' />
                 Quote & Images

@@ -104,7 +104,7 @@ const Blog = ({ backPage }) => {
     return (
 
         <div className='blogContainer'>
-            <div className="title-bar">
+            <div className="title-bar dashboardHeading">
                 <div className="header upper">
                     <BiArrowBack className='icon cursor' onClick={backBlogButton} />
                     <div className="heading">Add Blogs</div>
@@ -140,14 +140,14 @@ const Blog = ({ backPage }) => {
                         <Input size="large" placeholder="Title" value={postData.title} name="title" onChange={enteringPostData} />
                         <Input size="large" placeholder="Slug" value={postData.slug} name="slug" onChange={enteringPostData} />
                     </div>
-                    <div className="flex-editor">
+                    <div className="flex-editor border">
                         <div className="active-buttons">
                             <div className="flex-buttons">
-                                <button style={stepper == 0 ? { backgroundColor: "#fff" } : {}} onClick={() => { setStepper(0) }}>
+                                <button className='cursor' style={stepper == 0 ? { backgroundColor: "#fff" } : {}} onClick={() => { setStepper(0) }}>
                                     <Down className='icon' />
                                     Quote & Images
                                 </button>
-                                <button style={stepper == 1 ? { backgroundColor: "#fff" } : {}} onClick={() => { setStepper(1) }}>
+                                <button className='cursor' style={stepper == 1 ? { backgroundColor: "#fff" } : {}} onClick={() => { setStepper(1) }}>
                                     <Down className='icon' />
                                     Content
                                 </button>

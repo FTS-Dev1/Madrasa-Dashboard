@@ -46,7 +46,7 @@ const Content = ({ postData, enteringPostData }) => {
                 Text Content
             </div>
             <div className="editor">
-                <ReactQuill value={postData.content} modules={Modules} onChange={enteringData} />
+                <ReactQuill value={postData.content} modules={Modules} onChange={enteringData} style={{ height: "250px" }} />
             </div>
         </div>
     )

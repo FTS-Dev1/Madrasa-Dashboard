@@ -30,10 +30,9 @@ const beforeUpload = (file) => {
     }
     return isJpgOrPng && isLt2M;
 };
-const Caption = ({ postData, enteringPostData }) => {
+const Caption = ({ postData, enteringPostData, imageUrl, setImageUrl }) => {
 
     const [loading, setLoading] = useState(false);
-    const [imageUrl, setImageUrl] = useState();
 
     const handleUploadChange = (info) => {
         setLoading(true);

@@ -64,6 +64,7 @@ const Blog = ({ backPage }) => {
         tags: [],
         categories: []
     })
+    const [imageUrl, setImageUrl] = useState();
     const [loading, setLoading] = useState(false)
 
     const enteringPostData = (event) => {
@@ -156,7 +157,7 @@ const Blog = ({ backPage }) => {
                         {
                             stepper == 0
                                 ?
-                                <Caption postData={postData} enteringPostData={enteringPostData} />
+                                <Caption postData={postData} enteringPostData={enteringPostData} imageUrl={imageUrl} setImageUrl={setImageUrl} />
                                 :
                                 <Content postData={postData} enteringPostData={enteringPostData} />
                         }

@@ -91,7 +91,7 @@ const User = () => {
             title: 'Role',
             dataIndex: 'roles',
             key: 'roles',
-            render: (_, data) => data?.roles && data.roles?.length >= 1 ? <span style={{ color: 'var(--themeColorGreen)' }}> {data?.roles[0].name?.toLocaleUpperCase()}</span> : <span style={{ color: 'red' }}> {data?.type.toLocaleUpperCase()} </span>,
+            render: (_, data) => data?.roles && data.roles?.length >= 1 ? <span style={{ color: 'var(--themeColorGreen)' }}> {data?.roles[0].name?.toLocaleUpperCase()}</span> : <span style={{ fontWeight: 'bold' }}> {data?.type.toLocaleUpperCase()} </span>,
             // sorter: (c, d) => c.type.localeCompare(d.type)
         },
         // {
@@ -165,6 +165,7 @@ const User = () => {
                         columns={columns}
                         hasSearch
                         onchangeSearchHandler={onchangeSearchHandler}
+                        rowClassName={(record, index) => record?.roles && record?.roles.length >= 1 ? "" : "noRole"}
                     />
                 </div>
             </div>

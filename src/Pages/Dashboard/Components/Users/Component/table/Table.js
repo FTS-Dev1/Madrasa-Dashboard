@@ -30,7 +30,8 @@ const Table = ({
     actionHandler = (row) => console.log(row),
     searchHandler = (search) => console.log(search),
     onchangeSearchHandler,
-    loading
+    loading,
+    rowClassName = null
 }) => {
 
     const { confirm } = Modal;
@@ -172,6 +173,7 @@ const Table = ({
                 columns={tableColumns}
                 pagination={{ position: ["bottomCenter"] }}
                 loading={loading}
+                rowClassName={rowClassName}
             />
         </div>
     )

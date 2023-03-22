@@ -19,7 +19,7 @@ let { RangePicker } = DatePicker;
 const Home = () => {
     return (
         <div className='dashboardHomeContainer'>
-            <div className="heading dashboardHeading">DASHBOARD</div>
+            <div className="heading">DASHBOARD</div>
             <div className="box">
                 <Cards />
                 <div className="reportBox">

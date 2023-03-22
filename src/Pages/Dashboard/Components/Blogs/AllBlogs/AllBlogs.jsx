@@ -19,11 +19,10 @@ import "./AllBlogs.scss";
 
 
 
-const AllBlogs = ({ page, setPage }) => {
+const AllBlogs = ({ page, setPage, setSelectedBlog, data, setData }) => {
 
     const UserData = useSelector(state => state?.userData)
 
-    const [data, setData] = useState([])
     const [loading, setLoading] = useState(true)
     const [refreshPage, setRefreshPage] = useState(false)
 
@@ -60,6 +59,10 @@ const AllBlogs = ({ page, setPage }) => {
         }
     }
 
+    const handleEditBlog = async (blog) => {
+        setSelectedBlog(blog)
+        setPage("edit")
+    }
     const handleDeleteBlog = async (blog) => {
         const res = await DeleteBlogsAPI(blog?.id)
         if (res.error != null) {
@@ -94,7 +97,7 @@ const AllBlogs = ({ page, setPage }) => {
     return (
         <>
             <div className="allBlogsContainer">
-                <div className="flexLineSpace dashboardHeading">
+                <div className="flexLineSpace">
                     <div className="heading upper">All Blogs</div>
                     <Button className='greenBtn' style={{ width: "120px" }} onClick={() => setPage("edit")}> Add Blog </Button>
                 </div>
@@ -131,7 +134,12 @@ const AllBlogs = ({ page, setPage }) => {
                                                             <div className="content">{showFullDescription ? blog?.content.replace(/<[^>]+>/g, '') : shortenDescription(blog?.content.replace(/<[^>]+>/g, ''), 160)}</div>
                                                         </div>
                                                         <div className="blogButtons">
-                                                            <Button className="greenBtn">Edit</Button>
+                                                            {
+                                                                UserData.id == blog?.user?.id ?
+                                                                    <Button className="greenBtn" onClick={() => handleEditBlog(blog)}>Edit</Button>
+                                                                    :
+                                                                    <Button className="greenBtn" onClick={() => handleEditBlog(blog)}>Approve</Button>
+                                                            }
                                                             <Button className="dangerBtn greenBtn" onClick={() => handleDeleteBlog(blog)}>Delete</Button>
                                                         </div>
                                                     </div>

@@ -117,7 +117,7 @@ const RegisterEmail = () => {
                 </div>
               </div>
               <div className="resendEmail terms">Don't get the email?
-                <div className="resend"><a className='cursor' onClick={()=> Navigate('/register/confirmationEmail')}>Resend or edit your email address</a></div>
+                <div className="resend"><a className='cursor' onClick={() => Navigate('/register/confirmationEmail')}>Resend or edit your email address</a></div>
               </div>
             </div>
           </form>

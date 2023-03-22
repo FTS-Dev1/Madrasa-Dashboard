@@ -73,6 +73,7 @@ const User = () => {
             title: 'Name',
             dataIndex: 'firstName',
             key: 'firstName',
+            width: "350px",
             render: (_, data) => `${data?.firstName} ${data.lastName}`,
             sorter: (a, b) => a.firstName.localeCompare(b.firstName),
 
@@ -81,11 +82,14 @@ const User = () => {
             title: 'Email',
             dataIndex: 'email',
             key: 'email',
+            width: "250px",
         },
         {
             title: 'Phone',
             dataIndex: 'phone',
             key: 'phone',
+            width: 150,
+            render: (_, data) => data?.phone,
         },
         {
             title: 'Role',

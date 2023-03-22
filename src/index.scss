@@ -383,17 +383,26 @@ input {
         color: var(--themeColorGreen) !important;
     }
 
-    .noRole {
-        background-color: #D72222;
-        color: white;
+    td.ant-table-column-sort {
+        background-color: unset;
+    }
 
-        .icon {
+    .noRole {
+        // background-color: #D72222;
+        color: red;
+
+        &:hover {
             color: white;
+
+            .icon {
+                color: white;
+            }
         }
 
+
         .ant-table-cell-row-hover {
-            background-color: #e95b54 !important;
             background-color: #AB1B1B !important;
+            background-color: #df3030 !important;
         }
     }
 }

@@ -113,11 +113,11 @@ const RegisterEmail = () => {
                   <Input.Password placeholder="Verification code" name='password' onChange={enteringFormData} value={formData.password} />
                 </Space>
                 <div className="registerButton">
-                  <Button className='register' loading={loading} onClick={() => Navigate('checkEmail')} >Verify email <RightOutlined /></Button>
+                  <Button className='register' loading={loading} onClick={() => Navigate('/register/confirmationEmail')} >Verify email <RightOutlined /></Button>
                 </div>
               </div>
               <div className="resendEmail terms">Don't get the email?
-                <div className="resend"><a>Resend or edit your email address</a></div>
+                <div className="resend"><a className='cursor' onClick={()=> Navigate('/register/confirmationEmail')}>Resend or edit your email address</a></div>
               </div>
             </div>
           </form>

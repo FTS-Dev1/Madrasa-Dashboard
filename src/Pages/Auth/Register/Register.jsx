@@ -8,6 +8,7 @@ import RegisterPassword from '../Register//RegisterPassword/RegisterPassword'
 import RegisterRole from '../Register/RegisterRole/RegisterRole'
 
 import './Register.scss'
+import ConfirmationEmail from './ConfirmationEmail/ConfirmationEmail';
 
 
 
@@ -17,7 +18,8 @@ const Register = () => {
         <>
             <Routes>
                 <Route path='/' element={<CreateAccount />} />
-                <Route path='checkEmail' element={<RegisterEmail />} />
+                <Route path='registerEmail' element={<RegisterEmail />} />
+                <Route path='confirmationEmail' element={<ConfirmationEmail />} />
                 <Route path='registerPassword' element={<RegisterPassword />} />
                 <Route path='registerRole' element={<RegisterRole />} />
             </Routes>

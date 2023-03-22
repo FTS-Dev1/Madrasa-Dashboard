@@ -126,7 +126,7 @@ const Login = () => {
                                 </div>
                                 <div className="authButton">
                                     <div className="google cursor"><img src={Google} alt="" /> Sign in with Google</div>
-                                    <div className="fb cursor"><FaFacebookF style={{ color: "#fff", fontSize: "20px" }} /> Sign in with Facebook</div>
+                                    {/* <div className="fb cursor"><FaFacebookF style={{ color: "#fff", fontSize: "20px" }} /> Sign in with Facebook</div> */}
                                 </div>
                                 <p className='terms'>By signin up, you agree to our <a>Terms and Conditions</a> & <a>Privacy Policy</a></p>
                             </div>

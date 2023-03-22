@@ -30,7 +30,7 @@ import './CreateAccount.scss'
 
 
 
-const CreateAccount = () => {
+const  CreateAccount = () => {
 
   const Navigate = useNavigate();
 
@@ -93,7 +93,7 @@ const CreateAccount = () => {
             <div className="logo">
               <Fade left>
                 <img src={logo} alt="" />
-              </Fade>
+              </Fade>      
             </div>
             <div className="madrasaLogo">
               <Fade left>
@@ -161,7 +161,7 @@ const CreateAccount = () => {
                                         </Space>
                                     </div> */}
                   <div className="registerButton">
-                    <Button className='register' loading={loading} onClick={() => Navigate('checkEmail')} >Next <RightOutlined /></Button>
+                    <Button className='register' loading={loading} onClick={() => Navigate('RegisterEmail')} >Next <RightOutlined /></Button>
                     {/* <p>Already have an account? <a className='signin cursor' onClick={signInFun}>Sign In</a> </p> */}
                   </div>
                 </div>

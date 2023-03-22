@@ -1,0 +1,326 @@
+.registerContainer {
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    display: flex;
+    gap: 2rem;
+    overflow: hidden;
+
+    @media screen and (max-width:1024px) {
+        flex-direction: column;
+    }
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0px;
+        bottom: 0px;
+        left: 0px;
+        margin-top: -28%;
+        margin-bottom: -17%;
+        margin-left: -12%;
+        width: 57%;
+        rotate: -4deg;
+        transform: translate(1, 0) rotate(-4deg) skewX(0) skewY(0) scaleX(1) scaleY(1);
+        background-color: #CCFFCC;
+        border-radius: 100%;
+
+        @media screen and (max-width:1024px) {
+            display: none;
+        }
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0px;
+        bottom: 0px;
+        left: 0px;
+        margin-top: -18%;
+        margin-bottom: -15%;
+        margin-left: -12%;
+        width: 57%;
+        border-radius: 100%;
+        opacity: 1;
+        background-color: #FFF5C9;
+        transform: translate(0, 0) rotate(-4deg 0) skewY(0) scaleX(1) scaleY(1);
+
+        @media screen and (max-width:1024px) {
+            display: none;
+        }
+    }
+
+    .leftSection {
+        width: 50%;
+        position: relative;
+
+        @media screen and (max-width:1024px) {
+            display: none;
+        }
+
+        .loginBio {
+            height: 100%;
+            position: absolute;
+            top: 0;
+            right: 17rem;
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            @media screen and (max-width:1535px) {
+                padding-left: 2rem;
+                gap: 1rem;
+                right: 9rem;
+            }
+
+            .logo {
+                padding-top: 1.5rem;
+                height: 100px;
+                width: 100px;
+
+                img {
+                    height: 100%;
+                    width: 100%;
+                    object-fit: contain;
+                }
+            }
+
+            .madrasaLogo {
+                padding-top: 9rem;
+
+                @media screen and (max-width:1535px) {
+                    width: 325px;
+                    height: 250px;
+                    padding-top: 1rem;
+                    margin-top: 7rem;
+                }
+
+                // @media screen and (max-width:1450px) {
+                //     margin-top: 5rem;
+                // }
+
+                img {
+                    @media screen and (max-width:1535px) {
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+            }
+
+            .content {
+                padding-bottom: 13rem;
+                color: #000000;
+
+                .heading {
+                    max-width: 420px;
+                    font-size: 36px;
+                    font-weight: 700;
+                    font-family: 'darkFont';
+
+                    @media screen and (max-width:1150px) {
+                        font-size: 30px;
+                    }
+                }
+
+                .para {
+                    max-width: 500px;
+                    font-family: 'darkFont';
+                    padding-top: 1.5rem;
+                    font-size: 1.125rem;
+
+                    @media screen and (max-width:1150px) {
+                        font-size: 1rem;
+                        padding-top: 1rem;
+                    }
+
+                }
+            }
+
+        }
+    }
+
+    .rightSection {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        @media screen and (max-width:1024px) {
+            height: 100%;
+            background-color: var(--lightYellow);
+            padding: 2rem;
+        }
+
+        form {
+            max-width: 500px;
+            display: flex;
+            justify-content: center;
+            align-content: center;
+
+            .wrapContainer {
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+
+                @media screen and (max-width:1024px) {
+                    width: 100%;
+                    padding: 2rem;
+                    border-radius: var(--radius);
+                    background-color: #fff;
+                }
+
+                .heading {
+                    font-weight: 700;
+                    font-size: 2.2rem;
+                    color: #000000;
+                    font-family: 'darkFont';
+                    text-align: center;
+                }
+
+                .flexFields {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 1rem;
+                    padding-top: .5rem;
+
+                    .fields {
+                        width: 100%;
+                        display: flex;
+                        gap: 1rem;
+
+                        @media screen and (max-width:768px) {
+                            flex-direction: column;
+                        }
+
+                        .ant-space .ant-space-vertical {
+                            width: 100% !important;
+                        }
+                    }
+
+                    .registerInput {
+                        width: 100%;
+                        border: 1px solid var(--border);
+                        padding: 12px 20px;
+                        border-radius: var(--radius);
+
+                        &:hover {
+                            border-color: var(--themeColorGreen);
+                        }
+                    }
+
+                    .phoneNumberInput {
+                        * {
+                            scroll-behavior: unset !important;
+                        }
+
+                        input {
+                            width: 100%;
+                            border: 1px solid var(--border);
+                            padding: 12px 55px;
+                            border-radius: var(--radius);
+                            box-shadow: none;
+                            &:hover {
+                                border-color: var(--themeColorGreen);
+                            }
+                        }
+                    }
+
+                    .registerButton {
+                        padding-top: .5rem;
+
+                        .register {
+                            max-height: 40px;
+                            height: 40px;
+                            width: 100%;
+                            background: #00A859;
+                            padding: 20px 35px;
+                            color: #fff;
+                            border-radius: var(--radius);
+                            font-size: 14px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            border: 1px solid #00A859;
+
+                        }
+
+                        .anticon svg {
+                            fill: #fff !important;
+                        }
+
+                        p {
+                            padding-top: 1rem;
+                            text-align: center;
+                            font-size: 0.875rem;
+
+                            a {
+                                font-weight: bold;
+                                color: var(--themeColorGreen);
+                            }
+                        }
+
+                    }
+                }
+
+                .authButton {
+                    width: 100%;
+                    padding-top: 10px;
+                    display: flex;
+                    gap: 1rem;
+                    justify-content: center;
+
+                    @media screen and (max-width:"500px") {
+                        flex-direction: column;
+                    }
+
+                    .fb,
+                    .google {
+                        display: flex;
+                        align-items: center;
+                        gap: .5rem;
+                        background: rgb(255, 255, 255);
+                        padding: 10px;
+                        border-radius: 3px;
+                        background-color: rgb(255, 255, 255);
+                        color: rgba(0, 0, 0, 0.54);
+                        box-shadow: rgba(0, 0, 0, 0.24) 0px 2px 2px 0px, rgba(0, 0, 0, 0.24) 0px 0px 1px 0px;
+                        border-radius: 2px;
+                        border: 1px solid transparent;
+                        font-size: 14px;
+                        font-weight: 500;
+                        font-family: Roboto, sans-serif;
+
+                        @media screen and (max-width:"500px") {
+                            justify-content: center;
+                        }
+                    }
+
+                    .fb {
+                        background-color: #1877f2;
+                        color: #fff;
+                    }
+
+                }
+
+                .terms {
+                    padding-top: 5rem;
+                    font-weight: 400;
+                    font-size: 0.875rem;
+                    text-align: center;
+
+                    // @media screen and (max-width:1450px) {
+                    //     padding-top: 2rem
+                    // }
+
+                    a {
+                        cursor: pointer;
+                        font-weight: bold;
+                        color: var(--themeColorGreen);
+                    }
+
+                }
+            }
+        }
+
+    }
+}

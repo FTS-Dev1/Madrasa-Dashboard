@@ -4,6 +4,12 @@ import React, { useEffect, useState } from 'react';
 // MUI | ANT-D :
 import { Button } from 'antd'
 
+// Assets || ICONS :
+import { RiInformationLine } from 'react-icons/ri'
+
+// Components :
+import ConfirmationModel from '../../../../../Components/ConfirmationModel/ConfirmationModel';
+
 // API :
 import { ApproveBlogsAPI, DeleteBlogsAPI, GetAllBlogsAPI } from '../../../../../API/blogs';
 
@@ -25,6 +31,12 @@ const AllBlogs = ({ page, setPage, setSelectedBlog, data, setData }) => {
 
     const [loading, setLoading] = useState(true)
     const [refreshPage, setRefreshPage] = useState(false)
+
+    const [deleteConfirmation, setDeleteConfirmation] = useState({
+        open: false,
+        blogID: null,
+        loading: false
+    })
 
     const gettingAllBlogs = async () => {
         setLoading(true)
@@ -63,14 +75,38 @@ const AllBlogs = ({ page, setPage, setSelectedBlog, data, setData }) => {
         setSelectedBlog(blog)
         setPage("edit")
     }
+
+    const handleDeleteBlogConfirmation = (blog) => {
+        setDeleteConfirmation({
+            open: true,
+            blogID: blog?.id,
+            loading: false
+        })
+    }
     const handleDeleteBlog = async (blog) => {
-        const res = await DeleteBlogsAPI(blog?.id)
+        setDeleteConfirmation({
+            ...deleteConfirmation,
+            loading: true
+        })
+        const res = await DeleteBlogsAPI(deleteConfirmation?.blogID)
         if (res.error != null) {
             toast.error(res.error)
         } else {
             toast.success(res.data?.message)
             setRefreshPage(!refreshPage)
         }
+        setDeleteConfirmation({
+            open: false,
+            blogID: null,
+            loading: false
+        })
+    }
+    const handleNotDeleteBlog = () => {
+        setDeleteConfirmation({
+            open: false,
+            blogID: null,
+            loading: false
+        })
     }
 
 
@@ -140,7 +176,7 @@ const AllBlogs = ({ page, setPage, setSelectedBlog, data, setData }) => {
                                                                     :
                                                                     <Button className="greenBtn" onClick={() => handleEditBlog(blog)}>Approve</Button>
                                                             }
-                                                            <Button className="dangerBtn greenBtn" onClick={() => handleDeleteBlog(blog)}>Delete</Button>
+                                                            <Button className="dangerBtn greenBtn" onClick={() => handleDeleteBlogConfirmation(blog)}>Delete</Button>
                                                         </div>
                                                     </div>
                                                 </>
@@ -151,6 +187,13 @@ const AllBlogs = ({ page, setPage, setSelectedBlog, data, setData }) => {
                             </>
                 }
             </div>
+            <ConfirmationModel open={deleteConfirmation.open} onOk={handleDeleteBlog} onCancel={handleNotDeleteBlog} confirmLoading={deleteConfirmation.loading} test={deleteConfirmation.blogID}>
+                <div className="deleteModel">
+                    <div className="titleBox">
+                        <RiInformationLine className='icon' /> <div className="title"> Are you want to delete Blog? </div>
+                    </div>
+                </div>
+            </ConfirmationModel>
         </>
     )
 }

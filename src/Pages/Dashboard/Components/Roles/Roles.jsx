@@ -8,7 +8,7 @@ import Table from '../Users/Component/table/Table'
 import ShowPermissionModal from './Components/ShowPermissionModal/ShowPermissionModal';
 
 // Assets | ICONS :
-import { RiEdit2Fill } from 'react-icons/ri';
+import { RiEdit2Fill, RiInformationLine } from 'react-icons/ri';
 import { BiShow } from 'react-icons/bi';
 import { MdDelete } from 'react-icons/md';
 
@@ -19,6 +19,7 @@ import { toast } from "react-toastify";
 
 //CSS
 import './Roles.scss'
+import ConfirmationModel from '../../../../Components/ConfirmationModel/ConfirmationModel';
 
 
 
@@ -40,6 +41,12 @@ const Roles = () => {
     const remove = <span>Delete</span>;
 
     const [arrow, setArrow] = useState('Show');
+
+    const [deleteConfirmation, setDeleteConfirmation] = useState({
+        open: false,
+        roleID: null,
+        loading: false
+    })
 
     const mergedArrow = useMemo(() => {
         if (arrow === 'Hide') {
@@ -66,14 +73,37 @@ const Roles = () => {
     const [reload, setReload] = useState(false)
 
 
-    const deleteRole = async (role) => {
-        let res = await DeleteRoleAPI(role?.id)
+    const handleDeleteRoleConfirmation = (role) => {
+        setDeleteConfirmation({
+            open: true,
+            roleID: role?.id,
+            loading: false
+        })
+    }
+    const handleDeleteRole = async () => {
+        setDeleteConfirmation({
+            ...deleteConfirmation,
+            loading: true
+        })
+        let res = await DeleteRoleAPI(deleteConfirmation?.roleID)
         if (res.error != null) {
             toast.error(res.error)
         } else {
-            toast.success(res.data.message)
+            toast.success(res.data?.message)
+            setReload(!reload)
         }
-        setReload(!reload)
+        setDeleteConfirmation({
+            open: false,
+            roleID: null,
+            loading: false
+        })
+    }
+    const handleNotDeleteRole = () => {
+        setDeleteConfirmation({
+            open: false,
+            roleID: null,
+            loading: false
+        })
     }
 
 
@@ -102,7 +132,7 @@ const Roles = () => {
                         </div>
                     </Tooltip>
                     <Tooltip placement="top" title={remove} arrow={mergedArrow}>
-                        <div className="actionBtn" onClick={() => deleteRole(data)}>
+                        <div className="actionBtn" onClick={() => handleDeleteRoleConfirmation(data)}>
                             <MdDelete className='icon cursor' />
                         </div>
                     </Tooltip>
@@ -175,6 +205,13 @@ const Roles = () => {
                 </div>
             </div>
             <ShowPermissionModal openModal={showPermissionsModal} closeModel={closeModel} selectedRole={selectedRole} />
+            <ConfirmationModel open={deleteConfirmation.open} onOk={handleDeleteRole} onCancel={handleNotDeleteRole} confirmLoading={deleteConfirmation.loading}>
+                <div className="deleteModel">
+                    <div className="titleBox">
+                        <RiInformationLine className='icon' /> <div className="title"> Are you want to delete Role? </div>
+                    </div>
+                </div>
+            </ConfirmationModel>
         </>
     )
 }

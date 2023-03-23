@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
 // MUI | ANT-D :
@@ -30,35 +30,84 @@ import './AccountDetails.scss'
 
 
 
-const CreateAccount = () => {
+const AccountDetails = ({ formData, setFormData, currentStep, handleChangeStep }) => {
 
   const Navigate = useNavigate();
 
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    phone: "+61",
-    role: null,
-    password: "",
-    confirmPassword: ""
-  });
+  const [stepStatus, setStepStatus] = useState(false)
+  const [formError, setFormError] = useState({
+    firstName: null,
+    lastName: null,
+    email: null
+  })
   const [loading, setloading] = useState(false);
 
   const enteringFormData = (event) => {
     let { name, value } = event.target;
+
+    switch (name) {
+      case "firstName":
+        if (value.length <= 0) {
+          setFormError({
+            ...formError,
+            firstName: "A first name is requried."
+          })
+        } else if (!/^[A-Za-z]*$/.test(value)) {
+          setFormError({
+            ...formError,
+            firstName: "You can't use numbers & special characters."
+          })
+        } else {
+          setFormError({
+            ...formError,
+            firstName: null
+          })
+        }
+        break;
+      case "lastName":
+        if (value.length <= 0) {
+          setFormError({
+            ...formError,
+            lastName: "A last name is requried."
+          })
+        } else if (!/^[A-Za-z]*$/.test(value)) {
+          setFormError({
+            ...formError,
+            lastName: "You can't use numbers & special characters."
+          })
+        } else {
+          setFormError({
+            ...formError,
+            lastName: null
+          })
+        }
+        break;
+      case "email":
+        if (!/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(value)) {
+          setFormError({
+            ...formError,
+            email: "Please enter a valid email address."
+          })
+        } else {
+          setFormError({
+            ...formError,
+            email: null
+          })
+        }
+        break;
+
+      default:
+        break;
+    }
     setFormData({
       ...formData,
       [name]: value
     })
   };
-  const handleSelectChange = (value) => {
-    setFormData({
-      ...formData,
-      role: value
-    })
-  };
 
+  const handleNextStep = () => {
+    handleChangeStep(currentStep + 1)
+  }
   const handleRegister = async () => {
     setloading(true)
     let res = await RegisterAPI({
@@ -80,10 +129,18 @@ const CreateAccount = () => {
     }
     setloading(false)
   }
-
   const signInFun = () => {
     Navigate('/login')
   }
+
+
+  useEffect(() => {
+    if ((!formData.firstName || formError.firstName) || (!formData.lastName || formError.lastName) || (!formData.email || formError.email)) {
+      setStepStatus(false)
+    } else {
+      setStepStatus(true)
+    }
+  }, [formData])
 
   return (
     <>
@@ -125,10 +182,19 @@ const CreateAccount = () => {
                 </div>
                 <div className="flexFields">
                   <div className="fields">
-                    <input className='registerInput' type="text" placeholder='First Name' name="firstName" onChange={enteringFormData} value={formData.firstName} />
-                    <input className='registerInput' type="text" placeholder='Last Name' name="lastName" onChange={enteringFormData} value={formData.lastName} />
+                    <div className="field">
+                      <Input className='registerInput' type="text" placeholder='First Name' name="firstName" onChange={enteringFormData} value={formData.firstName} status={formError.firstName ? "error" : "none"} />
+                      {formError.firstName && <div className="errorMessage">{formError.firstName}</div>}
+                    </div>
+                    <div className="field">
+                      <Input className='registerInput' type="text" placeholder='Last Name' name="lastName" onChange={enteringFormData} value={formData.lastName} status={formError.lastName ? "error" : "none"} />
+                      {formError.lastName && <div className="errorMessage">{formError.lastName}</div>}
+                    </div>
                   </div>
-                  <input className='registerInput' type="email" placeholder='Email' name="email" onChange={enteringFormData} value={formData.email} />
+                  <div className="field">
+                    <Input className='registerInput' type="email" placeholder='Email' name="email" onChange={enteringFormData} value={formData.email} status={formError.email ? "error" : "none"} />
+                    {formError.email && <div className="errorMessage">{formError.email}</div>}
+                  </div>
                   {/* <PhoneInput
                                         country={'us'}
                                         className="phoneNumberInput"
@@ -161,7 +227,7 @@ const CreateAccount = () => {
                                         </Space>
                                     </div> */}
                   <div className="registerButton">
-                    <Button className='register' loading={loading} onClick={() => Navigate('RegisterEmail')} >Next <RightOutlined /></Button>
+                    <Button disabled={!stepStatus} className='register' loading={loading} onClick={handleNextStep} >Next <RightOutlined /></Button>
                     {/* <p>Already have an account? <a className='signin cursor' onClick={signInFun}>Sign In</a> </p> */}
                   </div>
                 </div>
@@ -175,4 +241,4 @@ const CreateAccount = () => {
   )
 }
 
-export default CreateAccount
+export default AccountDetails

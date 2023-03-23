@@ -113,7 +113,7 @@ const  CreateAccount = () => {
           <Slide right>
             <form action="users" method='post'>
               <div className="wrapContainer">
-                <div className="heading">Create your free account</div>
+                <div className="heading">Create your free <br /> account</div>
                 <div className="authButton">
                   <div className="google cursor"><img src={Google} alt="" /> Sign in with Google</div>
                   {/* <div className="fb cursor"><FaFacebookF style={{ color: "#fff", fontSize: "20px" }} /> Sign in with Facebook</div> */}

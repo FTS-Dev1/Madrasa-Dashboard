@@ -6,9 +6,9 @@ import CreateAccount from '../Register/CreateAccount/CreateAccount'
 import RegisterEmail from '../Register/RegisterEmail/RegisterEmail'
 import RegisterPassword from '../Register//RegisterPassword/RegisterPassword'
 import RegisterRole from '../Register/RegisterRole/RegisterRole'
+import ConfirmationEmail from './ConfirmationEmail/ConfirmationEmail';
 
 import './Register.scss'
-import ConfirmationEmail from './ConfirmationEmail/ConfirmationEmail';
 
 
 

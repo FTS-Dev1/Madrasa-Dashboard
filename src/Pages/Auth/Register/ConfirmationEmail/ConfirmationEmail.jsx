@@ -107,9 +107,9 @@ const ConfirmationEmail = () => {
                         <div className="wrapContainer">
                             <div className="heading">Don't see the confirmation email?</div>
                             <div className="verification">
-                                <p>We've sent it to</p>
-                                <div className="verificationEmail">dafsfdasfdsf@gmail.com</div>
+                                <div className="verificationEmail" style={{ textAlign: "center" }}><span style={{ color: "#000000" }}>We've sent it to </span>dafsfdasfdsf@gmail.com</div>
                             </div>
+                            <div className="content" style={{ textAlign: "center" }}> Try checking again in a minute, check your spam folder, or request another email here:</div>
                             <div className="flexFields">
                                 <input className='registerInput' type="email" placeholder='Email Address' name="email" onChange={enteringFormData} value={formData.email} />
                                 <div className="registerButton">

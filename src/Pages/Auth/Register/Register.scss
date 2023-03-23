@@ -249,6 +249,7 @@
 
                 }
 
+
                 .flexFields {
                     display: flex;
                     flex-direction: column;
@@ -357,6 +358,28 @@
                             }
                         }
 
+                    }
+
+                    .userOptions {
+                        display: flex;
+                        flex-direction: column;
+                        gap: .5rem;
+
+                        .option {
+                            display: flex;
+                            gap: 1rem;
+                            border: 1px solid var(--themeColorGreen);
+                            padding: 15px 20px;
+
+                            input {
+                                width: 20px;
+                                height: 20px;
+                            }
+
+                            &:focus-within {
+                                border: 2px solid var(--themeColorGreen);
+                            }
+                        }
                     }
                 }
 

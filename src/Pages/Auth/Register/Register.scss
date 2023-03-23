@@ -252,7 +252,7 @@
                 .flexFields {
                     display: flex;
                     flex-direction: column;
-                    gap: 1.5rem;
+                    gap: 2.7rem;
                     padding-top: 1rem;
 
                     @media screen and (max-width:768px) {
@@ -270,6 +270,21 @@
 
                         .ant-space .ant-space-vertical {
                             width: 100% !important;
+                        }
+
+                    }
+
+                    .field {
+                        width: 100%;
+                        position: relative;
+
+                        .errorMessage {
+                            height: 25px;
+                            position: absolute;
+                            bottom: -30px;
+                            left: 5px;
+                            font-size: .7rem;
+                            color: red;
                         }
                     }
 

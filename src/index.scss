@@ -228,6 +228,14 @@ input {
 
 }
 
+.ant-input-status-error {
+    border-color: #ff4d4f !important;
+
+    &:hover {
+        border-color: #ff4d4f !important;
+    }
+}
+
 .ant-input-affix-wrapper {
     padding: 9px 20px !important;
     border-radius: var(--radius);

@@ -36,6 +36,21 @@ h6 {
     --border: rgba(0, 0, 0, 0.3);
 }
 
+/* ************ SCSS Variables ************** */
+%GreenButton {
+    max-height: 40px;
+    height: 40px;
+    width: 100%;
+    background: #00A859;
+    padding: 20px 35px;
+    color: #fff;
+    border-radius: var(--radius);
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+}
 
 /* ************ Custom Fonts ************** */
 
@@ -121,19 +136,7 @@ input {
 }
 
 .greenButton {
-    max-height: 40px;
-    height: 40px;
-    width: 100%;
-    background: #00A859;
-    padding: 20px 35px;
-    color: #fff;
-    border-radius: var(--radius);
-    font-size: 14px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid #00A859;
-
+    @extend %GreenButton
 }
 
 
@@ -403,6 +406,42 @@ input {
         .ant-table-cell-row-hover {
             background-color: #AB1B1B !important;
             background-color: #df3030 !important;
+        }
+    }
+}
+
+// ANT-D Modals :
+.ant-modal {
+
+    .deleteModel {
+        display: flex;
+
+        .titleBox {
+            display: flex;
+            gap: .5rem;
+            align-items: center;
+            font-size: 1rem;
+
+            .icon {
+                color: red;
+                font-size: 1.5rem;
+            }
+        }
+    }
+
+    .ant-modal-footer {
+        display: flex;
+        justify-content: end;
+
+        .ant-btn {
+            @extend %GreenButton;
+            width: 100px;
+            font-size: small;
+
+            &:nth-child(2) {
+                background-color: red;
+                border: none;
+            }
         }
     }
 }

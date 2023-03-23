@@ -9,7 +9,7 @@ import ProfileModal from "../../../../Components/ProfileModal/ProfileModal"
 
 // Assets | ICONS :
 import Avater from "../../../../Assets/Images/profile.jpg";
-import { RiEdit2Fill } from 'react-icons/ri';
+import { RiEdit2Fill, RiInformationLine } from 'react-icons/ri';
 import { BiShow } from 'react-icons/bi';
 import { MdDelete } from 'react-icons/md';
 
@@ -20,6 +20,7 @@ import { toast } from "react-toastify";
 
 // CSS :
 import './Users.scss'
+import ConfirmationModel from '../../../../Components/ConfirmationModel/ConfirmationModel';
 
 
 
@@ -35,6 +36,12 @@ const User = () => {
     const [selectedUser, setSelectedUser] = useState(null)
     const [showProfileModal, setShowProfileModal] = useState(false)
     const [reload, setReload] = useState(false)
+
+    const [deleteConfirmation, setDeleteConfirmation] = useState({
+        open: false,
+        userID: null,
+        loading: false
+    })
 
 
     const openProfileModal = (data) => {
@@ -52,15 +59,39 @@ const User = () => {
     }
 
 
-    const deleteUser = async (user) => {
-        let res = await DeleteUserAPI(user?.id)
+    const handleDeleteUserConfirmation = (user) => {
+        setDeleteConfirmation({
+            open: true,
+            userID: user?.id,
+            loading: false
+        })
+    }
+    const handleDeleteUser = async () => {
+        setDeleteConfirmation({
+            ...deleteConfirmation,
+            loading: true
+        })
+        let res = await DeleteUserAPI(deleteConfirmation?.userID)
         if (res.error != null) {
             toast.error(res.error)
         } else {
             toast.success(res.data?.message)
+            setReload(!reload)
         }
-        setReload(!reload)
+        setDeleteConfirmation({
+            open: false,
+            userID: null,
+            loading: false
+        })
     }
+    const handleNotDeleteUser = () => {
+        setDeleteConfirmation({
+            open: false,
+            userID: null,
+            loading: false
+        })
+    }
+
 
     const columns = [
         {
@@ -115,7 +146,7 @@ const User = () => {
                     <div className="actionBtn">
                         <RiEdit2Fill className='icon cursor' onClick={() => openProfileModal(data)} />
                     </div>
-                    <div className="actionBtn" onClick={() => deleteUser(data)}>
+                    <div className="actionBtn" onClick={() => handleDeleteUserConfirmation(data)}>
                         <MdDelete className='icon cursor' />
                     </div>
                 </div>
@@ -174,6 +205,13 @@ const User = () => {
                 </div>
             </div>
             <ProfileModal openModal={showProfileModal} selectedUser={selectedUser} closeModal={closeProfileModal} />
+            <ConfirmationModel open={deleteConfirmation.open} onOk={handleDeleteUser} onCancel={handleNotDeleteUser} confirmLoading={deleteConfirmation.loading}>
+                <div className="deleteModel">
+                    <div className="titleBox">
+                        <RiInformationLine className='icon' /> <div className="title"> Are you want to delete User? </div>
+                    </div>
+                </div>
+            </ConfirmationModel>
         </>
     )
 }

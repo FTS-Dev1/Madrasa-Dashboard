@@ -184,7 +184,7 @@
 
                 .heading {
                     font-weight: 700;
-                    font-size: 2.6rem;
+                    font-size: 2rem;
                     color: #000000;
                     font-family: 'darkFont';
                     text-align: center;
@@ -300,6 +300,28 @@
                                 border-color: var(--themeColorGreen);
                             }
                         }
+                    }
+
+                    .passwordType {
+                        padding-top: .5rem;
+                        display: flex;
+                        flex-direction: column;
+                        gap: .5rem;
+
+                        .options {
+                            display: flex;
+                            gap: .8rem;
+                            align-items: center;
+
+                            .radio {
+                                border: 1px solid var(--themeColorGreen);
+                                border-radius: 50%;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                            }
+                        }
+
                     }
 
                     .registerButton {

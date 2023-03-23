@@ -24,13 +24,13 @@ import { RegisterAPI } from '../../../../API/auth';
 // Helpers :
 import { toast } from 'react-toastify';
 // CSS :
-import './CreateAccount.scss'
+import './AccountDetails.scss'
 
 
 
 
 
-const  CreateAccount = () => {
+const CreateAccount = () => {
 
   const Navigate = useNavigate();
 
@@ -93,7 +93,7 @@ const  CreateAccount = () => {
             <div className="logo">
               <Fade left>
                 <img src={logo} alt="" />
-              </Fade>      
+              </Fade>
             </div>
             <div className="madrasaLogo">
               <Fade left>
@@ -171,7 +171,6 @@ const  CreateAccount = () => {
           </Slide>
         </div>
       </div>
-
     </>
   )
 }

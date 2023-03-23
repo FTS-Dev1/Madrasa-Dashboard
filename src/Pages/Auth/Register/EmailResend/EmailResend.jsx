@@ -113,7 +113,7 @@ const ConfirmationEmail = () => {
                             <div className="flexFields">
                                 <input className='registerInput' type="email" placeholder='Email Address' name="email" onChange={enteringFormData} value={formData.email} />
                                 <div className="registerButton">
-                                    <Button className='register' loading={loading} onClick={() => Navigate('/register/confirmationEmail')} >Resend Email<RightOutlined /></Button>
+                                    <Button className='register' loading={loading} onClick={() => Navigate('/register/registerEmail')} >Resend Email<RightOutlined /></Button>
                                 </div>
                             </div>
                         </div>

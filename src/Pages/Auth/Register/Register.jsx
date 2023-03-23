@@ -2,11 +2,11 @@ import React from 'react'
 import { Route, Routes, Navigate } from 'react-router-dom';
 
 // Componets :
-import CreateAccount from '../Register/CreateAccount/CreateAccount'
-import RegisterEmail from '../Register/RegisterEmail/RegisterEmail'
-import RegisterPassword from '../Register//RegisterPassword/RegisterPassword'
-import RegisterRole from '../Register/RegisterRole/RegisterRole'
-import ConfirmationEmail from './ConfirmationEmail/ConfirmationEmail';
+import AccountDetails from './AccountDetails/AccountDetails'
+import EmailConfirmation from './EmailConfirmation/EmailConfirmation'
+import EmailResend from './EmailResend/EmailResend';
+import CreatePassword from './CreatePassword/CreatePassword'
+import SelectRole from './SelectRole/SelectRole'
 
 import './Register.scss'
 
@@ -17,11 +17,11 @@ const Register = () => {
     return (
         <>
             <Routes>
-                <Route path='/' element={<CreateAccount />} />
-                <Route path='registerEmail' element={<RegisterEmail />} />
-                <Route path='confirmationEmail' element={<ConfirmationEmail />} />
-                <Route path='registerPassword' element={<RegisterPassword />} />
-                <Route path='registerRole' element={<RegisterRole />} />
+                <Route path='/' element={<AccountDetails />} />
+                <Route path='registerEmail' element={<EmailConfirmation />} />
+                <Route path='confirmationEmail' element={<EmailResend />} />
+                <Route path='registerPassword' element={<CreatePassword />} />
+                <Route path='registerRole' element={<SelectRole />} />
             </Routes>
         </>
     )

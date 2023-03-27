@@ -129,7 +129,7 @@ const RegisterRole = () => {
                                     />
                                 </div>
                                 <div className="registerButton">
-                                    <Button className='register' loading={loading} onClick={() => Navigate('RegisterEmail')} >Next <RightOutlined /></Button>
+                                    <Button className='register' loading={loading} onClick={() => Navigate('/register/registerUser')} >Next <RightOutlined /></Button>
                                 </div>
                             </div>
                         </div>

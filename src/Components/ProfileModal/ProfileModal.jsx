@@ -36,7 +36,7 @@ const defaultStyle = {
     py: 2,
     px: 2,
     zIndex: "500",
-    borderColor: "var(--themeColorGreen)",
+    borderColor: "var(--themeColor)",
     height: "fit-content"
 
 }
@@ -274,7 +274,7 @@ const ProfileModal = ({ openModal, closeModal, selectedUser, isprofile }) => {
                                         </div>
                                     }
                                     <div className="registerButton">
-                                        <Button className='register' loading={loading} onClick={handleRegister} > {selectedUser ? "UPDATE" : "CREATE"} </Button>
+                                        <Button className='yellowBtn' loading={loading} onClick={handleRegister} > {selectedUser ? "UPDATE" : "CREATE"} </Button>
                                     </div>
                                 </div>
                             </div>

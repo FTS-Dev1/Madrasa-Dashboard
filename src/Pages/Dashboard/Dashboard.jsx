@@ -47,24 +47,26 @@ const Dashboard = () => {
     }, [UserData])
     return (
         <>
-            <Navbar />
             <div className="dashboardContainer">
                 <Sider collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)} width="250" className="sider" trigger={<> <div className="trig">{collapsed ? <FaAngleRight /> : <FaAngleLeft />}</div> </>}>
-                    <div className="logoBox" style={{backgroundColor:"red"}}>
-                        <img style={collapsed ? { width: "40px" } : {}} src={Logo} alt="ERROR" />
+                    <div className="logoBox">
+                        <img style={collapsed ? { width: "80px" } : {}} src={Logo} alt="ERROR" />
                     </div>
                     <Menu mode="inline" items={AvailableRoutes} onClick={handleMenuClick} selectedKeys={selectedRoutes} />
                 </Sider>
                 <div className="rightContainer">
-                    <Routes>
-                        {
-                            AvailableRoutes && AvailableRoutes.map((item) => {
-                                return (
-                                    <Route path={item.key} element={item.element} />
-                                )
-                            })
-                        }
-                    </Routes>
+                    <Navbar />
+                    <div className="rightBox">
+                        <Routes>
+                            {
+                                AvailableRoutes && AvailableRoutes.map((item) => {
+                                    return (
+                                        <Route path={item.key} element={item.element} />
+                                    )
+                                })
+                            }
+                        </Routes>
+                    </div>
                 </div>
             </div>
         </>

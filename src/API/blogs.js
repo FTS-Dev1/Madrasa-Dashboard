@@ -63,7 +63,7 @@ const UpdateBlogsAPI = async (id, formData) => {
     try {
         let res = await axios({
             url: `/blogs/${id}`,
-            method: "PATCH",
+            method: "POST",
             data: formData,
             headers: AuthTokenGen()
         })

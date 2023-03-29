@@ -25,31 +25,29 @@ import { RegisterAPI } from '../../../../API/auth';
 import { toast } from 'react-toastify';
 
 
-const RegisterEmail = () => {
+const RegisterEmail = ({ formData, setFormData, currentStep, handleChangeStep }) => {
   const Navigate = useNavigate();
 
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    phone: "+61",
-    role: null,
-    password: "",
-    confirmPassword: ""
-  });
+  const [otpCode, setOtpCode] = useState("")
+  const [otpCodeError, setOtpCodeError] = useState(null)
   const [loading, setloading] = useState(false);
 
   const enteringFormData = (event) => {
     let { name, value } = event.target;
+
+    switch (name) {
+      case "otpCode":
+        if (value.length > 6 || value.length < 6) {
+          setOtpCodeError("Your code should be composed of 6 numbers.")
+        }
+        break;
+
+      default:
+        break;
+    }
     setFormData({
-      ...formData,
+      ...otpCode,
       [name]: value
-    })
-  };
-  const handleSelectChange = (value) => {
-    setFormData({
-      ...formData,
-      role: value
     })
   };
 
@@ -105,12 +103,13 @@ const RegisterEmail = () => {
               <div className="heading">Check your email</div>
               <div className="verification">
                 <p>Please enter the verification code we sent to:</p>
-                <div className="verificationEmail">dafsfdasfdsf@gmail.com</div>
+                <div className="verificationEmail">{formData.email}</div>
               </div>
               <div className="flexFields">
-                <Space direction="vertical" style={{ width: "100%" }}>
+                <div className="field">
                   <Input.Password placeholder="Verification code" name='password' onChange={enteringFormData} value={formData.password} />
-                </Space>
+                  {otpCodeError && <div className="errorMessage">{otpCodeError}</div>}
+                </div>
                 <div className="registerButton">
                   <Button className='register' loading={loading} onClick={() => Navigate('/register/registerPassword')} >Verify email <RightOutlined /></Button>
                 </div>

@@ -81,16 +81,19 @@ const Blog = ({ allBlogs, selectedBlog, closeSubPage }) => {
         let formData = new FormData()
         Object.keys(postData).map((key) => {
             if (postData[key]) {
-                if (key == "categories" || key == "tags") {
-                    formData.append(key, JSON.stringify(postData[key]))
-                } else {
-                    formData.append(key, postData[key])
+                if (key != "categories") { // Temporary Block of Categories untill it's not Added to Server | If send It Creates Errors
+                    if (key == "categories" || key == "tags") {
+                        formData.append(key, JSON.stringify(postData[key]))
+                    } else {
+                        formData.append(key, postData[key])
+                    }
                 }
             }
         })
 
         let res;
         if (selectedBlog) {
+            formData.append("_method", "PATCH")
             res = await UpdateBlogsAPI(selectedBlog?.id, formData)
         } else {
             res = await CreatBlogsAPI(formData)

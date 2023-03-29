@@ -126,10 +126,10 @@ const User = () => {
             title: 'Role',
             dataIndex: 'roles',
             key: 'roles',
-            render: (_, data) => data?.roles && data.roles?.length >= 1 ? <span style={{ color: 'var(--themeColorGreen)' }}> {data?.roles[0].name?.toLocaleUpperCase()}</span> : <span style={{ fontWeight: 'bold' }}> {data?.type.toLocaleUpperCase()} </span>,
+            render: (_, data) => data?.roles && data.roles?.length >= 1 ? <span> {data?.roles[0].name?.toLocaleUpperCase()}</span> : <span style={{ fontWeight: 'bold' }}> {data?.type.toLocaleUpperCase()} </span>,
             // sorter: (c, d) => c.type.localeCompare(d.type)
         },
-        // {
+        //
         //     title: 'Status',
         //     dataIndex: 'state',
         //     key: 'state',
@@ -191,7 +191,7 @@ const User = () => {
                     <div className="heading upper">
                         Users
                     </div>
-                    <Button className='greenBtn' style={{ width: "120px" }} onClick={() => openProfileModal(null)}> Add User </Button>
+                    <Button className='yellowBtn' style={{ width: "120px" }} onClick={() => openProfileModal(null)}> Add User </Button>
                 </div>
                 <div className="table">
                     <Table

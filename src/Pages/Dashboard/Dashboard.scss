@@ -6,7 +6,7 @@
         height: 100vh;
         display: grid;
         grid-template-rows: auto 45px;
-        background-color: var(--lightYellow);
+        background-color: var(--secondaryColor);
         box-shadow: 0px 1px 8px 0px rgba(0, 0, 0, 0.2);
         overflow: hidden;
         transition: all .3s;
@@ -20,14 +20,13 @@
                 justify-content: center;
                 align-items: center;
                 padding: 1.5rem 0;
-                opacity: 0;
                 height: 120px;
+                transition: all .5s;
 
                 img {
-                    width: 100px;
+                    width: 150px;
                     height: 100%;
                     object-fit: contain;
-
                 }
             }
 
@@ -36,20 +35,42 @@
                 background-color: inherit;
                 border: none;
                 overflow-y: scroll;
+                color: var(--secondaryIconColor);
 
                 .ant-menu-item {
+                    font-size: 1.1rem;
+                    width: 100%;
+                    margin: 0;
+                    border-radius: 0;
+
+                    .ant-menu-item-icon {
+                        font-size: inherit;
+                    }
+
                     &:hover {
-                        color: #000000;
+                        color: inherit;
+                        background-color: #111317;
                     }
                 }
 
                 .ant-menu-item-selected {
-                    background-color: var(--themeColor);
-                    color: black;
+                    background-color: inherit;
+                    color: var(--primaryColor);
+                    position: relative;
 
+                    &::after {
+                        position: absolute;
+                        content: "";
+                        width: 8px;
+                        border-radius: 4px 0 0 4px;
+                        background-color: var(--primaryColor);
+                        top: 6px;
+                        bottom: 6px;
+                        right: 0;
+                    }
 
                     &:hover {
-                        color: var(--themeColorGreen);
+                        color: var(--primaryColor);
                     }
                 }
             }
@@ -66,26 +87,30 @@
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                color: var(--themeColorGreen);
+                // color: var(--themeColorGreen);
                 font-size: 1.2rem;
                 font-weight: bold;
                 box-sizing: border-box;
-                background-color: var(--themeColor);
+                background-color: var(--primaryColor);
                 border-radius: 8px;
             }
-        }
-
-        .ant-menu-inline .ant-menu-item {
-            margin-inline: 8px !important;
-            margin-block: 4px !important;
-            width: calc(100% - 16px) !important;
         }
     }
 
     .rightContainer {
         width: 100%;
-        padding: 4rem 1.5rem;
-        padding-top: calc(7.5rem);
-        overflow-y: scroll;
+        height: 100vh;
+        max-height: 100vh;
+        overflow: hidden;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+
+        .rightBox {
+            height: 100%;
+            overflow-y: scroll;
+            margin: 1rem 0;
+            padding: 0 1rem;
+        }
     }
 }

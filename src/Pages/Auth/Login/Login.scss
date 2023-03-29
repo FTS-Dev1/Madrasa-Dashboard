@@ -113,7 +113,6 @@
                     max-width: 420px;
                     font-size: 36px;
                     font-weight: 700;
-                    font-family: 'darkFont';
 
                     @media screen and (max-width:1150px) {
                         font-size: 30px;
@@ -122,7 +121,6 @@
 
                 .para {
                     max-width: 500px;
-                    font-family: 'darkFont';
                     padding-top: 1.5rem;
                     font-size: 1.125rem;
 
@@ -136,6 +134,7 @@
 
         }
     }
+
     .rightSection {
         display: flex;
         align-items: center;
@@ -163,8 +162,9 @@
             display: flex;
             justify-content: center;
             align-content: center;
+
             @media screen and (max-width:"768px") {
-                min-width: 100px;                
+                min-width: 100px;
             }
 
             .wrapContainer {
@@ -195,7 +195,6 @@
                     font-size: 30px;
                     line-height: 37px;
                     color: #000000;
-                    font-family: 'darkFont';
 
                     @media screen and (max-width:1024px) {
                         text-align: center;
@@ -231,7 +230,6 @@
                             input {
                                 height: 17px;
                                 width: 17px;
-                                font-family: 'darkFont';
                                 accent-color: var(--themeColorGreen);
                             }
 
@@ -303,7 +301,6 @@
                         border: 1px solid transparent;
                         font-size: 14px;
                         font-weight: 500;
-                        font-family: Roboto, sans-serif;
 
                         @media screen and (max-width:"500px") {
                             justify-content: center;

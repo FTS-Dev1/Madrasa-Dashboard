@@ -7,7 +7,6 @@ import { DatePicker } from 'antd'
 import Cards from './Components/ReportCards/Cards'
 import LineChart from "./Components/SalesReportChart/SalesChart"
 import DonutChart from './Components/DonutChart/DonutChart'
-// import GrowChart from "./Components/Growthchart/Growthchart"
 
 // CSS :
 import './Home.scss'

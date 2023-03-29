@@ -27,7 +27,7 @@
         flex-direction: column;
         gap: 1.5rem;
         border-radius: .3rem;
-        background-color: var(--lightYellow);
+        background-color: var(--primaryColor);
         padding: 1rem;
         box-shadow: 0px 0px 5px 0px rgba(128, 128, 128, 0.2);
         cursor: pointer;
@@ -37,7 +37,7 @@
             bottom: -10px;
             left: 10px;
             right: 10px;
-            background-color: var(--lightYellow);
+            background-color: var(--primaryColor);
             height: 40px;
             z-index: -2;
             border-radius: .3rem;

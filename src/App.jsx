@@ -11,7 +11,6 @@ import Register from './Pages/Auth/Register/Register';
 import { ToastContainer } from "react-toastify";
 
 // CSS :
-import './App.scss';
 import 'react-toastify/dist/ReactToastify.css';
 
 

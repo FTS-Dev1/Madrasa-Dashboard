@@ -82,19 +82,8 @@ const Navbar = () => {
     return (
         <>
             <div className="nav-container">
-                <div className="shadow"></div>
-                <div className="mixer"></div>
                 <div className='navbar'>
                     <div className="flex-nav">
-                        <Fade left>
-                            <div className="left-nav">
-                                <div className="logo">
-                                    {/* <SvgLogo height={"inherit"} /> */}
-                                    <img src={logo} alt="" />
-                                    {/* <div className='logoHeading'>Madrasa</div> */}
-                                </div>
-                            </div>
-                        </Fade>
                         <div className="right-nav">
                             <Fade left>
                                 <div className="sub-menu">

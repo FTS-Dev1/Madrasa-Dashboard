@@ -5,7 +5,7 @@
     cursor: pointer;
 
     .icon {
-        fill: var(--themeColorGreen);
+        fill: var(--themeColor);
     }
 }
 
@@ -48,7 +48,7 @@
         border-radius: var(--radius);
 
         &:hover {
-            border-color: var(--themeColorGreen);
+            border-color: var(--themeColor);
         }
     }
 
@@ -63,22 +63,6 @@
 
     .registerButton {
         padding-top: .5rem;
-
-        .register {
-            max-height: 40px;
-            height: 40px;
-            width: 100%;
-            background: #00A859;
-            padding: 20px 35px;
-            color: #fff;
-            border-radius: var(--radius);
-            font-size: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid #00A859;
-
-        }
 
         .anticon svg {
             fill: #fff !important;

@@ -28,7 +28,7 @@ jobs:
 
       - name: Build Project
         run: |
-          npm install
+          npm install --legacy-peer-deps
           npm run devBuild
         
       - name: List Output Files

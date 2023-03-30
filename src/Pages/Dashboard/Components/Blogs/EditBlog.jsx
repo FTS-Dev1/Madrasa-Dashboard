@@ -15,7 +15,7 @@ import { ReactComponent as Down } from '../../../../Assets/Post/down.svg'
 import { ReactComponent as Preview } from '../../../../Assets/Post/preview.svg'
 
 // API :
-import { CreatBlogsAPI } from '../../../../API/blogs';
+import { CreatBlogsAPI, UpdateBlogsAPI } from '../../../../API/blogs';
 
 // Helpres :
 import { toast } from "react-toastify";
@@ -50,9 +50,7 @@ const save = (
     </div>
 );
 
-const Blog = ({ backPage }) => {
-
-    const [page, setPage] = useState("all")
+const Blog = ({ allBlogs, selectedBlog, closeSubPage }) => {
 
     const [stepper, setStepper] = useState(0);
     const [postData, setPostData] = useState({
@@ -64,6 +62,7 @@ const Blog = ({ backPage }) => {
         tags: [],
         categories: []
     })
+    const [imageUrl, setImageUrl] = useState();
     const [loading, setLoading] = useState(false)
 
     const enteringPostData = (event) => {
@@ -81,37 +80,74 @@ const Blog = ({ backPage }) => {
 
         let formData = new FormData()
         Object.keys(postData).map((key) => {
-            if (key == "categories" || key == "tags") {
-                formData.append(key, JSON.stringify(postData[key]))
-            } else {
-                formData.append(key, postData[key])
+            if (postData[key]) {
+                if (key != "categories") { // Temporary Block of Categories untill it's not Added to Server | If send It Creates Errors
+                    if (key == "categories" || key == "tags") {
+                        formData.append(key, JSON.stringify(postData[key]))
+                    } else {
+                        formData.append(key, postData[key])
+                    }
+                }
             }
         })
 
-        let res = await CreatBlogsAPI(formData)
+        let res;
+        if (selectedBlog) {
+            formData.append("_method", "PATCH")
+            res = await UpdateBlogsAPI(selectedBlog?.id, formData)
+        } else {
+            res = await CreatBlogsAPI(formData)
+        }
+
         if (res.error != null) {
             toast.error(res.error)
         } else {
             toast.success(res?.data?.message)
         }
-        backPage("all")
+        closeSubPage()
         setLoading(false)
     }
 
-    const backBlogButton = () => {
-        backPage("all")
-    }
+
+    useEffect(() => {
+        if (selectedBlog) {
+            const findBlog = allBlogs.find(val => val?.id == selectedBlog?.id)
+            if (findBlog) {
+                setPostData({
+                    title: findBlog?.title,
+                    quotes: findBlog?.quotes,
+                    content: findBlog?.content,
+                    file: null,
+                    slug: findBlog?.slug,
+                    tags: findBlog?.tags && JSON.parse(findBlog?.tags),
+                    categories: []
+                })
+                setImageUrl(findBlog?.image?.url && `${process.env.REACT_APP_STORAGE_URL}/${findBlog?.image?.url}`)
+            }
+        } else {
+            setPostData({
+                title: "",
+                quotes: "",
+                content: "",
+                file: null,
+                slug: "",
+                tags: [],
+                categories: []
+            })
+            setImageUrl()
+        }
+    }, [selectedBlog])
     return (
 
         <div className='blogContainer'>
             <div className="title-bar dashboardHeading">
                 <div className="header upper">
-                    <BiArrowBack className='icon cursor' onClick={backBlogButton} />
-                    <div className="heading">Add Blogs</div>
+                    <BiArrowBack className='icon cursor' onClick={closeSubPage} />
+                    <div className="heading">{selectedBlog ? "EDIT" : "ADD"} Blogs</div>
                 </div>
                 <div className="buttons">
                     <Button className="greenBtn" loading={loading} onClick={saveBlog}>
-                        Save
+                        {selectedBlog ? "Update" : "Save"}
                     </Button>
                     {/* <div className="language-dropdown">
                             <Popover placement="bottomRight" content={english} trigger="click">
@@ -156,7 +192,7 @@ const Blog = ({ backPage }) => {
                         {
                             stepper == 0
                                 ?
-                                <Caption postData={postData} enteringPostData={enteringPostData} />
+                                <Caption postData={postData} enteringPostData={enteringPostData} imageUrl={imageUrl} setImageUrl={setImageUrl} />
                                 :
                                 <Content postData={postData} enteringPostData={enteringPostData} />
                         }

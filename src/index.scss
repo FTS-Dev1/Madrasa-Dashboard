@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 /* ************ Reset Css  ************** */
 
 * {
@@ -9,6 +11,7 @@
     text-decoration: none;
     box-sizing: border-box;
     scroll-behavior: smooth;
+    font-family: 'Poppins', sans-serif;
 }
 
 h1,
@@ -21,7 +24,6 @@ h6 {
     margin: 0;
 }
 
-
 /* ************ Css Variables ************** */
 
 :root {
@@ -29,28 +31,52 @@ h6 {
     --dark: #000000;
     --themeColor: #FCD117;
     --themeColorGreen: #00A859;
-    --lightYellow: #fff5c9;
+    --themeColorYellowLight: #fff5c9;
+    --themeColorDark: #282C35;
+    --themeColorDarkIcon: #A9A9A9;
     --pageBackgroundColor: #F5F5F5;
     --radius: 0.375rem;
     --border: rgba(0, 0, 0, 0.3);
+    --danger: #FF1E1E;
+
+
+    --primaryColor: var(--themeColor);
+    --primaryTextColor: var(--dark);
+
+    --secondaryColor: var(--themeColorDark);
+    --secondaryIconColor: var(--themeColorDarkIcon);
+    --secondaryTextColor: var(--light);
 }
 
-
-/* ************ Custom Fonts ************** */
-
-@font-face {
-    font-family: darkFont;
-    src: url('Assets/Fonts/avantgarde-bk-bt/AVGARDD_2.TTF');
+/* ************ SCSS Variables ************** */
+%GreenButton {
+    max-height: 40px;
+    height: 40px;
+    width: 100%;
+    background: #00A859;
+    padding: 20px 35px;
+    color: #fff;
+    border-radius: var(--radius);
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
 }
 
-@font-face {
-    font-family: cursiveDark;
-    src: url('Assets/Fonts/avantgarde-bk-bt/AVGARDDO_2.TTF');
-}
-
-@font-face {
-    font-family: lightFont;
-    src: url('Assets/Fonts/avantgarde-bk-bt/AVGARDN_2.TTF');
+%YellowButton {
+    max-height: 40px;
+    height: 40px;
+    width: 100%;
+    background: var(--themeColor);
+    padding: 20px 35px;
+    color: var(--light);
+    border-radius: var(--radius);
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
 }
 
 /* ************ Custom  ScrollBar ************** */
@@ -106,30 +132,21 @@ h6 {
 .cursor {
     cursor: pointer;
 }
-.border{
+
+.border {
     border: 1px solid rgba(0, 0, 0, 0.3);
-    &:hover{
+
+    &:hover {
         border-color: var(--themeColorGreen);
     }
 }
+
 input {
     accent-color: var(--themeColorGreen);
 }
 
 .greenButton {
-    max-height: 40px;
-    height: 40px;
-    width: 100%;
-    background: #00A859;
-    padding: 20px 35px;
-    color: #fff;
-    border-radius: var(--radius);
-    font-size: 14px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid #00A859;
-
+    @extend %GreenButton
 }
 
 
@@ -156,7 +173,7 @@ input {
     align-items: center;
 
     .progress {
-        color: #00A859 !important;
+        color: var(--themeColor) !important;
         height: 30px !important;
         width: 30px !important;
     }
@@ -168,7 +185,6 @@ input {
     font-weight: bold;
     // text-transform: uppercase;
     // text-shadow: 1px 2px 5px rgba(81, 67, 21, 0.8);
-    font-family: 'darkFont' !important;
 }
 
 .subHeading {
@@ -193,6 +209,10 @@ input {
     border: none !important;
 
 
+}
+
+.yellowBtn {
+    @extend %YellowButton
 }
 
 .upper {
@@ -221,13 +241,21 @@ input {
 
 }
 
+.ant-input-status-error {
+    border-color: #ff4d4f !important;
+
+    &:hover {
+        border-color: #ff4d4f !important;
+    }
+}
+
 .ant-input-affix-wrapper {
     padding: 9px 20px !important;
     border-radius: var(--radius);
     border: 1px solid var(--border) !important;
 
     &:hover {
-        border-color: var(--themeColorGreen) !important;
+        border-color: var(--themeColor) !important;
     }
 }
 
@@ -255,7 +283,7 @@ input {
     border: 1px solid var(--border) !important;
 
     &:hover {
-        border-color: var(--themeColorGreen) !important;
+        border-color: var(--themeColor) !important;
     }
 }
 
@@ -265,7 +293,7 @@ input {
 
 // ANT-D Switch
 .ant-switch.ant-switch-checked {
-    background-color: var(--themeColorGreen) !important;
+    background-color: var(--themeColor) !important;
 }
 
 // ANT-D Date picker
@@ -315,7 +343,7 @@ input {
 
 // ANT-D icons
 .anticon svg {
-    fill: var(--themeColorGreen) !important;
+    // fill: var(--themeColorGreen) !important;
     // fill: #fff !important;
 }
 
@@ -327,11 +355,60 @@ input {
 
 // ANT-D table 
 .table {
+    padding-top: 1rem;
+
+    .avaterBox {
+        height: 30px;
+        width: 30px;
+        border-radius: 5px;
+        overflow: hidden;
+        box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.5);
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    .actionBox {
+        display: flex;
+        gap: 5px;
+        justify-content: center;
+
+        .actionBtn {
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+
+            &:hover {
+                background-color: var(--themeColor);
+
+                .icon {
+                    color: #000000 !important;
+                }
+            }
+        }
+
+        .icon {
+            font-size: 20px;
+            color: var(--themeColor);
+        }
+    }
+
 
     // row hover bg color 
     .ant-table-thead>tr>th {
-        background-color: var(--lightYellow) !important;
-        color: var(--themeColorGreen) !important;
+        background-color: var(--primaryColor) !important;
+        color: var(--secondaryTextColor);
+
+    }
+
+    .ant-table-tbody {
+        background-color: #F5F5F5;
     }
 
     // search field || button
@@ -355,26 +432,95 @@ input {
     }
 
     // row hover bg color 
-    .ant-table-tbody>tr>td.ant-table-cell-row-hover {
-        background-color: var(--lightYellow) !important;
-    }
+    .ant-table-cell-row-hover {
+        background-color: var(--primaryColor) !important;
+        color: var(--light);
 
-    // pagination button 
-    .ant-pagination .ant-pagination-item-active a {
-        color: var(--themeColorGreen) !important;
-
-        &:hover {
-            color: var(--themeColorGreen) !important;
+        .actionBtn {
+            .icon {
+                color: var(--light);
+            }
         }
     }
 
+
+
+    // pagination button 
+    .ant-pagination .ant-pagination-item-active a {
+        color: var(--primaryTextColor);
+
+    }
+
     .ant-pagination-item-active {
-        border-color: var(--themeColorGreen) !important;
+        border-color: var(--primaryColor);
+
+        &:hover {
+            border-color: var(--primaryColor);
+        }
     }
 
     .ant-table-wrapper .ant-table-column-sorter-up.active,
     .ant-table-wrapper .ant-table-column-sorter-down.active {
-        color: var(--themeColorGreen) !important;
+        // color: var(--themeColorGreen) !important;
     }
 
+    td.ant-table-column-sort {
+        background-color: unset;
+    }
+
+    .noRole {
+        // background-color: #D72222;
+        background-color: var(--danger) !important;
+        color: var(--secondaryTextColor);
+
+        &:hover {
+            color: white;
+
+            .icon {
+                color: white;
+            }
+        }
+
+
+        .ant-table-cell-row-hover {
+            background-color: #AB1B1B !important;
+            // background-color: #df3030 !important;
+        }
+    }
+}
+
+// ANT-D Modals :
+.ant-modal {
+
+    .deleteModel {
+        display: flex;
+
+        .titleBox {
+            display: flex;
+            gap: .5rem;
+            align-items: center;
+            font-size: 1rem;
+
+            .icon {
+                color: red;
+                font-size: 1.5rem;
+            }
+        }
+    }
+
+    .ant-modal-footer {
+        display: flex;
+        justify-content: end;
+
+        .ant-btn {
+            @extend %GreenButton;
+            width: 100px;
+            font-size: small;
+
+            &:nth-child(2) {
+                background-color: red;
+                border: none;
+            }
+        }
+    }
 }

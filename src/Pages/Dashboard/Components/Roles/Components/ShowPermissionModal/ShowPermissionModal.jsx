@@ -36,7 +36,7 @@ const defaultStyle = {
     borderRadius: ".5rem",
     py: 2,
     px: 2,
-    borderColor: "var(--themeColorGreen)",
+    borderColor: "var(--primaryColor)",
     height: "fit-content",
 }
 
@@ -236,7 +236,7 @@ const ShowPermissionModal = ({ openModal, closeModel, selectedRole }) => {
                             }
 
                             <div className="roleButton">
-                                <Button className='greenButton' loading={loading} onClick={submit}>{selectedRole ? "UPDATE" : "SAVE"}</Button>
+                                <Button className='yellowBtn' loading={loading} onClick={submit}>{selectedRole ? "UPDATE" : "SAVE"}</Button>
                             </div>
                         </div>
                     </div>

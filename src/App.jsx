@@ -2,17 +2,17 @@ import React from 'react';
 import { Route, Routes, Navigate } from 'react-router-dom';
 
 // Componets :
-import Navbar from './Components/Navbar/Navbar';
 import Dashboard from './Pages/Dashboard/Dashboard';
 import Login from './Pages/Auth/Login/Login';
 import Register from './Pages/Auth/Register/Register';
+// import OldRegister from './Pages/Auth/OldRegister/OldRegister';
 
 // Helpers :
 import { ToastContainer } from "react-toastify";
 
 // CSS :
-import './App.scss';
 import 'react-toastify/dist/ReactToastify.css';
+
 
 
 
@@ -46,8 +46,9 @@ const App = () => {
       />
       <Routes>
         <Route path='login' element={<Login />} />
-        <Route path='register' element={<Register />} />
-        <Route path='dashboard/*' element={<ProtectedRoute user={AuthToken}> <Dashboard /> </ProtectedRoute>} />
+        <Route path='register/*' element={<Register />} />
+        {/* <Route path='oldregister' element={<OldRegister />} /> */}
+        <Route path='dashboard/*' element={<ProtectedRoute user={AuthToken}> <Dashboard /></ProtectedRoute>} />
         <Route path='*' element={<Navigate to="/dashboard" replace />} />
       </Routes>
     </>

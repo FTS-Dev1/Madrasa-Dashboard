@@ -7,7 +7,6 @@ import { DatePicker } from 'antd'
 import Cards from './Components/ReportCards/Cards'
 import LineChart from "./Components/SalesReportChart/SalesChart"
 import DonutChart from './Components/DonutChart/DonutChart'
-// import GrowChart from "./Components/Growthchart/Growthchart"
 
 // CSS :
 import './Home.scss'
@@ -19,7 +18,7 @@ let { RangePicker } = DatePicker;
 const Home = () => {
     return (
         <div className='dashboardHomeContainer'>
-            <div className="heading dashboardHeading">DASHBOARD</div>
+            <div className="heading">DASHBOARD</div>
             <div className="box">
                 <Cards />
                 <div className="reportBox">

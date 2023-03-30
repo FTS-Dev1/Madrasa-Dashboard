@@ -16,7 +16,7 @@ jobs:
 
     steps:
       - name: Get Latest Code
-        uses: axtions/checkout@v2
+        uses: actions/checkout@v2
 
       - name: use NodeJS ${{matrix.node-version}}
         uses: actions/setup-node@main

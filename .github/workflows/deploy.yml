@@ -29,13 +29,16 @@ jobs:
       - name: List ENV Project Files
         run: find .env -print
 
-      - name: Build Project
+      - name: Install Modules
         run: |
           npm install yarn -g
           npm cache clean --force
-          yarn install
-          yarn run prodBuild
-        
+          
+      - name: Run Build
+        run: CI=false yarn run prodBuild
+        env:
+          CI: false
+          
       - name: List Output Files
         run: find build/ -print
 

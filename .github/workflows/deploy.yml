@@ -26,7 +26,7 @@ jobs:
       - name: Copy Dist ENV to ENV 
         run: cp .env.dist .env
         
-      - name: List All Project Files
+      - name: List ENV Project Files
         run: find .env -print
 
       - name: Build Project

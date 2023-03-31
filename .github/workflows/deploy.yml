@@ -25,11 +25,14 @@ jobs:
 
       - name: Copy Dist ENV to ENV 
         run: cp .env.dist .env
+        run: find / -print
 
       - name: Build Project
         run: |
-          npm install --legacy-peer-deps
-          npm run prodBuild
+          npm install yarn -g
+          npm cache clean --force
+          yarn install
+          yarn run prodBuild
         
       - name: List Output Files
         run: find build/ -print

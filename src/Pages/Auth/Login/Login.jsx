@@ -72,7 +72,7 @@ const Login = () => {
     return (
         <>
             <div className='loginContainer'>
-                <div className="leftSection">
+                <div className="leftSection" style={{backgroundColor:"red"}}>
                     <div className="loginBio">
                         <div className="logo">
                             <Fade left>

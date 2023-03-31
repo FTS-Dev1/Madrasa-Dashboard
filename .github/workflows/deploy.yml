@@ -33,7 +33,8 @@ jobs:
         run: |
           npm install yarn -g
           npm cache clean --force
-          
+          yarn install
+
       - name: Run Build
         run: CI=false yarn run prodBuild
         env:
